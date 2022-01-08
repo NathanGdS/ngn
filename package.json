@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --poll -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
-    "test": "NODE_ENV=test jest"
+    "test": "jest"
   },
   "keywords": [],
   "author": "nathan <nathangar01@gmail.com>",

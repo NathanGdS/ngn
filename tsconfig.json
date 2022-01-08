@@ -5,6 +5,14 @@
     "outDir": "./dist",
     "rootDir": "./",
     "baseUrl": "./src",
+    "paths": {
+      "@modules/*": ["modules/*"],
+      "@config/*": ["config/*"],
+      "@shared/*": ["shared/*"],
+      "@errors/*": ["./shared/errors/*"],
+      "@utils/*": ["utils/*"],
+      "@middlewares/*": ["middlewares/*"]
+  },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
