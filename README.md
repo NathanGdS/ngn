@@ -1,4 +1,5 @@
-##Requisitos Não-Funcionais da Aplicação##
+***Requisitos Não-Funcionais da Aplicação***
+
 A API RESTFul deve ser desenvolvida na linguagem Typescript utilizando o framework Node.js;
 O banco de dados utilizado deve ser o PostgreSQL;
 Os containers devem ser rodados através do Docker Compose;
@@ -13,7 +14,7 @@ Para garantir a corretude, deve ser realizado o TDD e TDA na aplicação;
 O versionamento do código deve ser feito através da ferramenta Git;
 O repositório deve estar contido na plataforma GitHub;
 
-##Usuários##
+***Usuários***
 
 Requisitos Funcionais
 Deve ser possível cadastrar novos Usuários;
@@ -25,7 +26,7 @@ Não deve ser possível cadastrar um usuário com o mesmo CPF;
 Deve ser possível diferenciar usuários administradores de usuários comuns;
 Por padrão, os usuários são cadastrados como sendo usuários comuns;
 
-##Endereço##
+***Endereço***
 
 Requisitos Funcionais
 Deve ser possível cadastrar novos Endereços;
@@ -50,14 +51,14 @@ O carro deve ser cadastrado com disponibilidade por padrão.
 O usuário responsável pelo cadastro deve ser um usuário administrador.
 
 
-##Tipo Automóvel##
+***Tipo Automóvel***
 
 Requisitos Funcionais
 Deve ser possível listar os tipos de automóveis;
 O cadastro deve ser realizado através de seeders;
 
 
-##Status Ordem##
+***Status Ordem***
 
 Requisitos Funcionais
 Deve ser possível listar os tipos de automóveis;
@@ -65,7 +66,7 @@ O cadastro deve ser realizado através de seeders;
 Tipos de Status devem ser: 1 - Aberta, 2- Aprovada, 3 - Reaberta, 4 - Finalizada, 5 - Cancelada.
 
 
-##Ordem de Serviço##
+***Ordem de Serviço***
 
 Requisitos Funcionais
 Deve ser possível gerar uma nova ordem de serviço;
