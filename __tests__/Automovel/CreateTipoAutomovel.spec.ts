@@ -1,4 +1,5 @@
 import { TipoAutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/TipoAutomovelRepositoryInMemory";
+import { AppError } from "@shared/errors/AppError";
 import { CreateTipoAutomovelUseCase } from "../../src/modules/automovel/useCases/createTipoAutomovel/CreateTipoAutomovelUseCase";
 
 let tipoAutomovelRepositoryInMemory: TipoAutomovelRepositoryInMemory;
@@ -17,10 +18,20 @@ describe("Create a new Tipo Automovel", () => {
             description: 'car',
         });
 
-        console.log(tipoAutomovel);
-
         expect(tipoAutomovel).toHaveProperty("id");
+        expect(tipoAutomovel).toHaveProperty("description");
         
+    });
+
+    it("Shouldn't be able to create a new Tipo Automovel if the description already exists", async() => {
+        expect(async() => {
+           await createTipoAutomovelUseCase.execute({
+                description: 'car',
+            });
+           await createTipoAutomovelUseCase.execute({
+                description: 'car',
+            });
+        }).rejects.toBeInstanceOf(AppError);
     });
 
 });
