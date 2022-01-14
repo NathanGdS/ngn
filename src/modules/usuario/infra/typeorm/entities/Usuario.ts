@@ -1,6 +1,6 @@
 import { v4 as uuidV4 } from "uuid";
 
-class Cliente {
+class Usuario {
     id: string;
 
     name: string;
@@ -28,4 +28,4 @@ class Cliente {
     }
 }
 
-export { Cliente };
+export { Usuario };

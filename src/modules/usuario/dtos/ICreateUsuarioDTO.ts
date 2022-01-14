@@ -1,4 +1,4 @@
-interface ICreateClienteDTO {
+interface ICreateUsuarioDTO {
     name: string,
     password: string,
     rg: string,
@@ -7,4 +7,4 @@ interface ICreateClienteDTO {
     email: string,
 }
 
-export { ICreateClienteDTO }; 
+export { ICreateUsuarioDTO }; 
