@@ -16,8 +16,6 @@ class CreateTipoAutomovelUseCase {
 
         const tipoAutomovel = await this.tipoAutomovelRepository.create({description});
 
-
-
         return tipoAutomovel;
 
     }

@@ -1,7 +1,7 @@
-import { IUsuarioRepository } from "../repositories/IUsuarioRepository";
-import { Usuario } from "../infra/typeorm/entities/Usuario";
+import { IUsuarioRepository } from "../../repositories/IUsuarioRepository";
+import { Usuario } from "../../infra/typeorm/entities/Usuario";
 import { AppError } from "@shared/errors/AppError";
-import { ICreateUsuarioDTO } from "../dtos/ICreateUsuarioDTO";
+import { ICreateUsuarioDTO } from "../../dtos/ICreateUsuarioDTO";
 
 class CreateUsuarioUseCase {
     constructor(
@@ -11,7 +11,7 @@ class CreateUsuarioUseCase {
     async execute({name, password, rg, cpf, birthDate, email}: ICreateUsuarioDTO): Promise<Usuario> {
         const usuarioExists = await this.usuarioRepository.findByCpf(cpf);
 
-        if (usuarioExists) throw new AppError('Cliente already exists!');
+        if (usuarioExists) throw new AppError('Usuário already exists!');
 
         const usuario = await this.usuarioRepository.create({ name, password, rg, cpf, birthDate, email });
 

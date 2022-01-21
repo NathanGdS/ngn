@@ -11,7 +11,7 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository{
         rg,
         cpf,
         birthDate,
-        email,
+        email
     }: ICreateUsuarioDTO): Promise<Usuario> {
         const usuario = new Usuario();
         
@@ -21,7 +21,7 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository{
             rg,
             cpf,
             birthDate,
-            email,
+            email
         });
 
         this.usuarios.push(usuario);
@@ -29,11 +29,11 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository{
     }
 
     async findByName(name: string): Promise<Usuario> {
-        return this.usuarios.find((usuario) => usuario.name == name);
+        return this.usuarios.find((usuario) => usuario.name === name);
     }
 
     async findByCpf(cpf: string): Promise<Usuario> {
-        return this.usuarios.find((usuario) => usuario.cpf == cpf);
+        return this.usuarios.find((usuario) => usuario.cpf === cpf);
     }
 
 }

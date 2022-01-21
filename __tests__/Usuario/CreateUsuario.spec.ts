@@ -1,6 +1,6 @@
 import { UsuarioRepositoryInMemory } from "@modules/usuario/repositories/in-memory/UsuarioRepositoryInMemory";
 import { AppError } from "@shared/errors/AppError";
-import { CreateUsuarioUseCase } from "@modules/usuario/useCases/CreateUsuarioUseCase";
+import { CreateUsuarioUseCase } from "@modules/usuario/useCases/createUsuarioUseCase/CreateUsuarioUseCase";
 
 let usuarioRepositoryInMemory: UsuarioRepositoryInMemory;
 let createUsuarioUseCase: CreateUsuarioUseCase;
