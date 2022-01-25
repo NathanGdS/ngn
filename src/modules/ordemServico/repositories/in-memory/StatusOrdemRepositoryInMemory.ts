@@ -25,6 +25,10 @@ class StatusOrdemRepositoryInMemory implements IStatusOrdemRepository {
     async findByNumber(number: number): Promise<StatusOrdem> {
         return this.statusOrdem.find((statusOrdem) => statusOrdem.number === number);
     }
+
+    async findAll(): Promise<StatusOrdem[]> {
+        return this.statusOrdem;
+    }
 }
 
 export { StatusOrdemRepositoryInMemory };

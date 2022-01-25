@@ -10,10 +10,10 @@ class ListTipoAutomovelUseCase {
     async execute(): Promise<TipoAutomovel[]> {
         const tiposAutomovel = await this.tipoAutomovelRepository.findAll();
 
-        if (!tiposAutomovel) throw new AppError('No Tipo Automovel encountered!');
+        if (!tiposAutomovel) throw new AppError('No Tipo Automovel found!');
 
         return tiposAutomovel;
     }
 }
 
-export default { ListTipoAutomovelUseCase };
+export { ListTipoAutomovelUseCase };

@@ -6,6 +6,7 @@ interface IUsuarioRepository {
     findByName(name: string): Promise<Usuario>;
     findByCpf(cpf: string): Promise<Usuario>;
     findByRg(rg: string): Promise<Usuario>;
+    findAll(): Promise<Usuario[]>;
 }
 
 export { IUsuarioRepository };
