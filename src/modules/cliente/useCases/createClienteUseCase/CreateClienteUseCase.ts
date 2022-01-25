@@ -10,9 +10,10 @@ class CreateClienteUseCase {
     
     async execute({ name, rg, cpf, birthDate, email }: ICreateClienteDTO): Promise<Cliente> {
 
-        const clienteExists = await this.clienteRepository.findByCpf(cpf);
+        const clienteCPFExists = await this.clienteRepository.findByCpf(cpf);
+        const clienteRGExists = await this.clienteRepository.findByRg(rg);
 
-        if (clienteExists) throw new AppError('Cliente already exists!');
+        if (clienteCPFExists || clienteRGExists) throw new AppError('Cliente already exists!');
 
         const cliente = await this.clienteRepository.create({ name, rg, cpf, birthDate, email });
         

@@ -36,6 +36,10 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository{
         return this.usuarios.find((usuario) => usuario.cpf === cpf);
     }
 
+    async findByRg(rg: string): Promise<Usuario> {
+        return this.usuarios.find((usuario) => usuario.rg === rg);
+    }
+
 }
 
 export { UsuarioRepositoryInMemory }; 

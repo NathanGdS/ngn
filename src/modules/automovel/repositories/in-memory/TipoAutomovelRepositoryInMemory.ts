@@ -1,6 +1,6 @@
 import { ICreateTipoAutomovelDTO } from "@modules/automovel/dtos/ICreateTipoAutomovelDTO";
 import { TipoAutomovel } from "@modules/automovel/infra/typeorm/entities/TipoAutomovel";
-import { ITipoAutomovelRepository } from "../ITipoAutomovelRepository"
+import { ITipoAutomovelRepository } from "../ITipoAutomovelRepository";
 
 class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
     tipoAutomoveis: TipoAutomovel[] = [];
@@ -16,6 +16,10 @@ class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
 
         this.tipoAutomoveis.push(tipoAutomovel);
         return tipoAutomovel;
+    }
+
+    async findAll(): Promise<TipoAutomovel[]> {
+        return this.tipoAutomoveis;
     }
 
     async findByDescription(description: string): Promise<TipoAutomovel> {

@@ -5,6 +5,7 @@ interface IUsuarioRepository {
     create(data: ICreateUsuarioDTO): Promise<Usuario>;
     findByName(name: string): Promise<Usuario>;
     findByCpf(cpf: string): Promise<Usuario>;
+    findByRg(rg: string): Promise<Usuario>;
 }
 
 export { IUsuarioRepository };

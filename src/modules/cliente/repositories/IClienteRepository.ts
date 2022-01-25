@@ -5,6 +5,7 @@ interface IClienteRepository {
     create(data: ICreateClienteDTO): Promise<Cliente>;
     findByName(name: string): Promise<Cliente>;
     findByCpf(cpf: string): Promise<Cliente>;
+    findByRg(rg: string): Promise<Cliente>;
 }
 
 export { IClienteRepository };
