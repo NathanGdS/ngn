@@ -1,6 +1,6 @@
 import { Endereco } from "@modules/endereco/infra/typeorm/entities/Endereco";
 import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity()
@@ -32,8 +32,8 @@ class Usuario {
     @CreateDateColumn()
     created_at?: Date;
     
-    @OneToMany(() => Endereco, address => address.userId)
-    addresses: Endereco[];
+    @OneToOne(() => Endereco, address => address.userId)
+    addresses: Endereco;
     
     @OneToMany(() => Telefone, telephone => telephone.userId)
     telephones: Telefone[];    

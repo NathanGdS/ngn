@@ -1,5 +1,5 @@
-interface ICreateTelefone {
+interface ICreateTelefoneDTO {
     telNumber: string;
 }
 
-export { ICreateTelefone };
+export { ICreateTelefoneDTO };

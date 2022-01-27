@@ -1,7 +1,7 @@
 import { Automovel } from '@modules/automovel/infra/typeorm/entities/Automovel';
 import { Endereco } from '@modules/endereco/infra/typeorm/entities/Endereco';
 import { Telefone } from '@modules/telefone/infra/typeorm/entities/Telefone';
-import { Column, CreateDateColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
 class Cliente {
@@ -29,8 +29,8 @@ class Cliente {
     @OneToMany(() => Automovel, vehicle => vehicle.customerId)
     vehicles: Automovel[];
 
-    @OneToMany(() => Endereco, address => address.customerId)
-    addresses: Endereco[];
+    @OneToOne(() => Endereco, address => address.customerId)
+    addresses: Endereco;
 
     @OneToMany(() => Telefone, telephone => telephone.customerId)
     telephones: Telefone[];
