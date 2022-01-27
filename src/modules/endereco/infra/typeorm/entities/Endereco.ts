@@ -1,41 +1,44 @@
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
+import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
+import { Usuario } from "@modules/usuario/infra/typeorm/entities/Usuario";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
-import { TipoAutomovel } from "./TipoAutomovel";
+import { v4 as uuidV4 } from 'uuid';
 
 @Entity()
-class Automovel {
-
+class Endereco {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
-    autoPlate: string;
+    addCep: string;
     
     @Column()
-    autoModel: string;
+    addStreet: string;
 
     @Column()
-    autoBrand: string;
+    addNumber: number;
 
     @Column()
-    autoColor: string;
+    addSupplement: string;
 
     @Column()
-    autoYear: number;
+    addDistrict: string;
 
     @Column()
-    autoRenavam: string;
+    addTown: string;
+
+    @Column()
+    addFU: string;
 
     @CreateDateColumn()
-    created_at?: Date;
+    created_at: Date;
 
     @ManyToOne(() => Cliente)
     customerId: Cliente;
 
-    @ManyToOne(() => TipoAutomovel)
-    autoTypeId: TipoAutomovel;
-        
+    @ManyToOne(() => Usuario)
+    userId: Usuario;
+
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
@@ -44,4 +47,5 @@ class Automovel {
     }
 }
 
-export { Automovel };
+
+export { Endereco };
