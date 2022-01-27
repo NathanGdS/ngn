@@ -12,7 +12,7 @@ class Telefone {
     telNumber: string;
 
     @CreateDateColumn()
-    created_at: Date;
+    created_at?: Date;
 
     @ManyToOne(() => Cliente)
     customerId: string;

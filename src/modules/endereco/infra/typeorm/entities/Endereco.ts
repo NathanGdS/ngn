@@ -1,5 +1,4 @@
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
-import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
 import { Usuario } from "@modules/usuario/infra/typeorm/entities/Usuario";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from 'uuid';
@@ -31,7 +30,7 @@ class Endereco {
     addFU: string;
 
     @CreateDateColumn()
-    created_at: Date;
+    created_at?: Date;
 
     @ManyToOne(() => Cliente)
     customerId: Cliente;
