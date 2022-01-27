@@ -1,7 +1,7 @@
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
 import { Usuario } from "@modules/usuario/infra/typeorm/entities/Usuario";
 import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuidV4 } from 'uuid';
+import { v4 as uuidV4 } from "uuid";
 
 @Entity()
 class Telefone {
