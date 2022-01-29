@@ -25,7 +25,7 @@ class Automovel {
     autoYear: number;
 
     @Column()
-    autoRenavam: string;
+    autoRenavam: number;
 
     @CreateDateColumn()
     created_at?: Date;

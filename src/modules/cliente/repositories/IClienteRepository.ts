@@ -7,6 +7,7 @@ interface IClienteRepository {
     findByCpf(cpf: string): Promise<Cliente>;
     findByRg(rg: string): Promise<Cliente>;
     findAll(): Promise<Cliente[]>;
+    findById(id: string): Promise<Cliente>; 
 }
 
 export { IClienteRepository };
