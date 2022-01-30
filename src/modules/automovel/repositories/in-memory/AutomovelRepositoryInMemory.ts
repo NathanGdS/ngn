@@ -30,11 +30,6 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
         return this.automoveis;
     }
 
-    async findByClient(customerId: Cliente): Promise<Automovel> {
-        //implementar para mais de um registro retornado --> Automovel[]
-        return this.automoveis.find((automovel) => automovel.customerId === customerId);
-    }
-
     async findById(id: string): Promise<Automovel> {
         return this.automoveis.find((automovel) => automovel.id === id);
     }

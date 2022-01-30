@@ -31,10 +31,10 @@ class Automovel {
     created_at?: Date;
 
     @ManyToOne(() => Cliente)
-    customerId: Cliente;
+    customerId: string;
 
     @ManyToOne(() => TipoAutomovel)
-    autoTypeId: TipoAutomovel;
+    autoTypeId: string;
         
     constructor() {
         if (!this.id) {
