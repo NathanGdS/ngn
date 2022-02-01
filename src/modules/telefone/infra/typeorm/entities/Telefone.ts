@@ -18,7 +18,7 @@ class Telefone {
     customerId: string;
 
     @ManyToOne(() => Usuario)
-    userId: Usuario;
+    userId: string;
 
     constructor() {
         if (!this.id) {

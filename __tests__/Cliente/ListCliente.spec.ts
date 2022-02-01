@@ -5,7 +5,7 @@ import { AppError } from "@shared/errors/AppError";
 let clienteRepositoryInMemory: ClienteRepositoryInMemory;
 let listClienteUseCase: ListClienteUseCase;
 
-describe("List all Tipo Automovel", () => {
+describe("List all Cliente", () => {
 
     beforeEach(() => {
         clienteRepositoryInMemory = new ClienteRepositoryInMemory();

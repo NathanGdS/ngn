@@ -10,7 +10,7 @@ class ListTipoAutomovelUseCase {
     async execute(): Promise<TipoAutomovel[]> {
         const tiposAutomovel = await this.tipoAutomovelRepository.findAll();
 
-        if (!tiposAutomovel) throw new AppError('No Tipo Automovel found!');
+        if (!tiposAutomovel) throw new AppError('No Tipos de Automovel found!');
 
         return tiposAutomovel;
     }

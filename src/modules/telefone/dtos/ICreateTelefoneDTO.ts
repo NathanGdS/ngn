@@ -1,6 +1,7 @@
 interface ICreateTelefoneDTO {
     telNumber: string;
-    //interface deve receber um id?
+    customerId?: string;
+    userId?: string;
 }
 
 export { ICreateTelefoneDTO };
