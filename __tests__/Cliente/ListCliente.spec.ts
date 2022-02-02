@@ -13,15 +13,14 @@ describe("List all Cliente", () => {
     });
 
     it("Should be able to list all Cliente", async () => {
-        const cliente = await listClienteUseCase.execute();
+        const clientes = await listClienteUseCase.execute();
 
-        expect(cliente).toBeInstanceOf(Array);
-        
+        expect(clientes).toBeInstanceOf(Array);
     });
 
     it("Shouldn't able to list all Cliente", async () => {
         expect(async () => {
             await listClienteUseCase.execute();
         }).rejects.toBeInstanceOf(AppError);
-    })
-})
+    });
+});

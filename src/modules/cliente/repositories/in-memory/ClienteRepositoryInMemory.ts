@@ -45,7 +45,6 @@ class ClienteRepositoryInMemory implements IClienteRepository {
     async findById(id: string): Promise<Cliente> {
         return this.clientes.find((cliente) => cliente.id === id);
     }
-
 }
 
 export { ClienteRepositoryInMemory };

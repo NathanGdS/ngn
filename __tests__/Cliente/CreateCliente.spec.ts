@@ -13,7 +13,6 @@ describe("Create a new Cliente", () => {
         createClienteUseCase = new CreateClienteUseCase(clienteRepositoryInMemory);
     });
 
-
     it('Should be able to create a new Cliente', async () => {
         const cliente = await createClienteUseCase.execute({
             name: 'Nathan Felipe Guerlando', 
@@ -35,18 +34,18 @@ describe("Create a new Cliente", () => {
     it("Shouldn't be able to create a new Cliente if the CPF already exists", async() => {
         expect(async() => {
            await createClienteUseCase.execute({
-               name: 'Nathan Felipe Guerlando', 
-               cpf: '484.021.578-23',
-               rg: '55.697.979-5',
-               birthDate: new Date('2001 02 07'),
-               email: 'nathanfguerlando@gmail.com'
+                name: 'Nathan Felipe Guerlando', 
+                cpf: '484.021.578-23',
+                rg: '55.697.979-5',
+                birthDate: new Date('2001 02 07'),
+                email: 'nathanfguerlando@gmail.com'
             });
            await createClienteUseCase.execute({
                 name: 'Nathan Felipe Guerlando', 
-               cpf: '484.021.578-23',
-               rg: '55.697.979-5',
-               birthDate: new Date('2001-02-07'),
-               email: 'nathanfguerlando@gmail.com'
+                cpf: '484.021.578-23',
+                rg: '55.697.979-5',
+                birthDate: new Date('2001-02-07'),
+                email: 'nathanfguerlando@gmail.com'
             });
         }).rejects.toBeInstanceOf(AppError);
     });

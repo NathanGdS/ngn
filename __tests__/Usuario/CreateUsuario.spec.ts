@@ -51,4 +51,4 @@ describe("Create a new Usuario", () => {
             });
         }).rejects.toBeInstanceOf(AppError);
     });
-})
+});

@@ -14,9 +14,9 @@ describe("List all Tipo Automovel", () => {
     });
 
     it("Should be able to list all Tipo Automovel", async () => {
-        const tipoAutomovel = await listTipoAutomovelUseCase.execute();
+        const tiposAutomovel = await listTipoAutomovelUseCase.execute();
 
-        expect(tipoAutomovel).toBeInstanceOf(Array);
+        expect(tiposAutomovel).toBeInstanceOf(Array);
         
     });
 
