@@ -5,6 +5,8 @@ interface ICreateEnderecoDTO {
     addDistrict: string;
     addTown: string;
     addFU: string;
+    userId?: string;
+    customerId?: string;
 }
 
 export { ICreateEnderecoDTO };

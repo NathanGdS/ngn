@@ -33,10 +33,10 @@ class Endereco {
     created_at?: Date;
 
     @OneToOne(() => Cliente)
-    customerId: Cliente;
+    customerId: string;
 
     @OneToOne(() => Usuario)
-    userId: Usuario;
+    userId: string;
 
     constructor() {
         if (!this.id) {

@@ -33,5 +33,4 @@ describe("Create a new Tipo Automovel", () => {
             });
         }).rejects.toBeInstanceOf(AppError);
     });
-
 });
