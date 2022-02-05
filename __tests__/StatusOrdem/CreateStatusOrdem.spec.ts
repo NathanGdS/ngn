@@ -12,7 +12,7 @@ describe("Create a new Status Ordem", () => {
         createStatusOrdemUseCase = new CreateStatusOrdemUseCase(statusOrdemRepositoryInMemory);
     });
 
-    it('Should be able to create a new Status Ordem', async () => {
+    it("Should be able to create a new Status Ordem", async () => {
         const statusOrdem = await createStatusOrdemUseCase.execute({
             description: 'Aberta',
             number: 1

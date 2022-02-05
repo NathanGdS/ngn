@@ -11,6 +11,7 @@ class CreateEnderecoUseCase {
     async execute({
         addCep,
         addStreet,
+        addNumber,
         addSupplement,
         addDistrict,
         addTown,
@@ -25,6 +26,7 @@ class CreateEnderecoUseCase {
         const endereco = await this.enderecoRepository.create({
             addCep,
             addStreet,
+            addNumber,
             addSupplement,
             addDistrict,
             addTown,

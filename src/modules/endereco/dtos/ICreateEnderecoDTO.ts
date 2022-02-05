@@ -1,6 +1,7 @@
 interface ICreateEnderecoDTO {
     addCep: string;
     addStreet: string;
+    addNumber: number;
     addSupplement: string;
     addDistrict: string;
     addTown: string;

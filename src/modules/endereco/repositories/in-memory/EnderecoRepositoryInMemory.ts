@@ -8,6 +8,7 @@ class EnderecoRepositoryInMemory implements IEnderecoRepository{
     async create({
         addCep,
         addStreet,
+        addNumber,
         addSupplement,
         addDistrict,
         addTown,
@@ -20,6 +21,7 @@ class EnderecoRepositoryInMemory implements IEnderecoRepository{
         Object.assign(endereco, {
             addCep,
             addStreet,
+            addNumber,
             addSupplement,
             addDistrict,
             addTown,
