@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
+import { OrdemServico } from './OrdemServico';
 
 class StatusOrdem {
     @PrimaryGeneratedColumn('uuid')
@@ -13,6 +14,9 @@ class StatusOrdem {
 
     @CreateDateColumn()
     created_at?: Date;
+
+    @OneToOne(() => OrdemServico)
+    orderStatusId: string;
 
     constructor() {
         if (!this.id) {

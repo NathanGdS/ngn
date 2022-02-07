@@ -1,5 +1,6 @@
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { OrdemServico } from "@modules/ordemServico/infra/typeorm/entities/OrdemServico";
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 import { TipoAutomovel } from "./TipoAutomovel";
 
@@ -35,6 +36,9 @@ class Automovel {
 
     @ManyToOne(() => TipoAutomovel)
     autoTypeId: string;
+
+    @OneToMany(() => OrdemServico, order => order.autoId)
+    autoId: string;
         
     constructor() {
         if (!this.id) {

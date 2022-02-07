@@ -1,5 +1,6 @@
 import { Automovel } from '@modules/automovel/infra/typeorm/entities/Automovel';
 import { Endereco } from '@modules/endereco/infra/typeorm/entities/Endereco';
+import { OrdemServico } from '@modules/ordemServico/infra/typeorm/entities/OrdemServico';
 import { Telefone } from '@modules/telefone/infra/typeorm/entities/Telefone';
 import { Column, CreateDateColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
@@ -34,6 +35,9 @@ class Cliente {
 
     @OneToMany(() => Telefone, telephone => telephone.customerId)
     telephones: Telefone[];
+    
+    @OneToMany(() => OrdemServico, order => order.customer_id)
+    orders: OrdemServico[];
         
     constructor() {
         if (!this.id) {
