@@ -35,10 +35,10 @@ class OrdemServico {
     orderStatusId: string;
 
     @OneToMany(() => OrdemServicoPeca, peca => peca.orderId)
-    pieceOrderId: string;
+    pieceOrderId: OrdemServicoPeca[];
 
     @OneToMany(() => OrdemServicoProc, proc => proc.orderId)
-    procOrderId: string;
+    procOrderId: OrdemServicoProc[];
 
     constructor() {
         if (!this.id) {
