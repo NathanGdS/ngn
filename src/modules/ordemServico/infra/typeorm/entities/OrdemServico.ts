@@ -2,6 +2,8 @@ import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
 import { Column, CreateDateColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from 'uuid';
+import { OrdemServicoPeca } from "./OrdemServicoPeca";
+import { OrdemServicoProc } from "./OrdemServicoProc";
 import { StatusOrdem } from "./StatusOrdem";
 
 class OrdemServico {
@@ -31,6 +33,12 @@ class OrdemServico {
 
     @OneToOne(() => StatusOrdem, status => status.orderStatusId)
     orderStatusId: string;
+
+    @OneToMany(() => OrdemServicoPeca, peca => peca.orderId)
+    pieceOrderId: string;
+
+    @OneToMany(() => OrdemServicoProc, proc => proc.orderId)
+    procOrderId: string;
 
     constructor() {
         if (!this.id) {

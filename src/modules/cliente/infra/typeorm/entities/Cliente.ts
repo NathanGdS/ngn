@@ -36,7 +36,7 @@ class Cliente {
     @OneToMany(() => Telefone, telephone => telephone.customerId)
     telephones: Telefone[];
     
-    @OneToMany(() => OrdemServico, order => order.customer_id)
+    @OneToMany(() => OrdemServico, order => order.customerId)
     orders: OrdemServico[];
         
     constructor() {
