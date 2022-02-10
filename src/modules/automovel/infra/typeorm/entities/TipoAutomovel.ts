@@ -12,10 +12,7 @@ class TipoAutomovel {
 
     @CreateDateColumn()
     created_at?: Date;
-
-    @OneToMany(() => Automovel, automovel => automovel.autoTypeId)
-    automoveis: Automovel[];
-
+    
     constructor () {
         if(!this.id) {
             this.id = uuidV4();
