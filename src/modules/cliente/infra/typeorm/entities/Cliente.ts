@@ -26,18 +26,6 @@ class Cliente {
 
     @CreateDateColumn()
     created_at?: Date;
-
-    @OneToMany(() => Automovel, vehicle => vehicle.customerId)
-    vehicles: Automovel[];
-
-    @OneToOne(() => Endereco, address => address.customerId)
-    addresses: Endereco;
-
-    @OneToMany(() => Telefone, telephone => telephone.customerId)
-    telephones: Telefone[];
-    
-    @OneToMany(() => OrdemServico, order => order.customerId)
-    orders: OrdemServico[];
         
     constructor() {
         if (!this.id) {

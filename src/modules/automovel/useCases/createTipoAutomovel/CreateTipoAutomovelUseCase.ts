@@ -2,9 +2,12 @@ import { ICreateTipoAutomovelDTO } from "@modules/automovel/dtos/ICreateTipoAuto
 import { TipoAutomovel } from "@modules/automovel/infra/typeorm/entities/TipoAutomovel";
 import { ITipoAutomovelRepository } from "@modules/automovel/repositories/ITipoAutomovelRepository";
 import { AppError } from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class CreateTipoAutomovelUseCase {
     constructor(
+        @inject("TipoAutomovelRepository")
         private tipoAutomovelRepository: ITipoAutomovelRepository
     ) {}
 

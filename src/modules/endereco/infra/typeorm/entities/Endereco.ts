@@ -32,12 +32,6 @@ class Endereco {
     @CreateDateColumn()
     created_at?: Date;
 
-    @OneToOne(() => Cliente)
-    customerId: string;
-
-    @OneToOne(() => Usuario)
-    userId: string;
-
     constructor() {
         if (!this.id) {
             this.id = uuidV4();

@@ -32,12 +32,6 @@ class Usuario {
     @CreateDateColumn()
     created_at?: Date;
     
-    @OneToOne(() => Endereco, address => address.userId)
-    addresses: Endereco;
-    
-    @OneToMany(() => Telefone, telephone => telephone.userId)
-    telephones: Telefone[];    
-    
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
