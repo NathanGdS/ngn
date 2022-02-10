@@ -18,7 +18,7 @@ describe("List all Cliente", () => {
         expect(clientes).toBeInstanceOf(Array);
     });
 
-    it("Shouldn't able to list all Cliente", async () => {
+    it("Shouldn't be able to list all Cliente", async () => {
         expect(async () => {
             await listClienteUseCase.execute();
         }).rejects.toBeInstanceOf(AppError);

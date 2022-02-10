@@ -25,7 +25,6 @@ class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
     async findByDescription(description: string): Promise<TipoAutomovel> {
         return this.tipoAutomoveis.find( (tipoAutomovel) => tipoAutomovel.description === description);
     }
-
 }
 
 export { TipoAutomovelRepositoryInMemory };

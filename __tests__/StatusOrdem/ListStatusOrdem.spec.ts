@@ -18,7 +18,7 @@ describe("List all Status", () => {
         expect(statusOrdem).toBeInstanceOf(Array);
     });
 
-    it("Shouldn't able to list all Status", async () => {
+    it("Shouldn't be able to list all Status", async () => {
         expect(async () => {
             await listStatusOrdemUseCase.execute();
         }).rejects.toBeInstanceOf(AppError);

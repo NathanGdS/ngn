@@ -36,7 +36,7 @@ describe("Create a new Endereco", () => {
         expect(endereco).toHaveProperty("userId" || "customerId");
     });
 
-    it("Shouldn't be able to create a new Endereco", async () => {
+    it("Shouldn't be able to create a new Endereco if the user or customer already has an address", async () => {
         expect(async () => {
             await createEnderecoUseCase.execute({
                 addCep: "06083-090",

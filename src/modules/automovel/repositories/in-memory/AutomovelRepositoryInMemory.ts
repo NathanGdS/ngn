@@ -1,5 +1,4 @@
 import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
-import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
 import { IAutomovelRepository } from "../IAutomovelRepository";
 
 class AutomovelRepositoryInMemory implements IAutomovelRepository {
@@ -7,7 +6,7 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
     
     async create(
         { autoPlate, autoModel, autoBrand, autoColor, autoYear, autoRenavam, customerId, autoTypeId }
-    ): Promise<Automovel> {
+    ): Promise<Automovel> { 
         const automovel = new Automovel();
 
         Object.assign(automovel, {

@@ -7,6 +7,7 @@ interface IUsuarioRepository {
     findByCpf(cpf: string): Promise<Usuario>;
     findByRg(rg: string): Promise<Usuario>;
     findAll(): Promise<Usuario[]>;
+    verifyIsAdmin(userId: string): Promise<Boolean>;
 }
 
 export { IUsuarioRepository };

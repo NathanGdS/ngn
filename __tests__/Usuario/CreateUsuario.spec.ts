@@ -31,7 +31,7 @@ describe("Create a new Usuario", () => {
         expect(usuario).toHaveProperty("email");
     });
 
-    it("Shouldn't be able to create a new Usuario if the cpf already exists", async () => {
+    it("Shouldn't be able to create a new Usuario if the CPF already exists", async () => {
         expect(async () => {
             await createUsuarioUseCase.execute({
                 name: 'Nathan',

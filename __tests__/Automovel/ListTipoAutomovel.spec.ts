@@ -20,9 +20,9 @@ describe("List all Tipo Automovel", () => {
         
     });
 
-    it("Shouldn't able to list all Tipo Automovel", async () => {
+    it("Shouldn't be able to list all Tipo Automovel", async () => {
         expect(async () => {
             await listTipoAutomovelUseCase.execute();
         }).rejects.toBeInstanceOf(AppError);
-    })
-})
+    });
+});
