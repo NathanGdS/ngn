@@ -5,20 +5,11 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
     automoveis: Automovel[] = [];
     
     async create(
-        { autoPlate, autoModel, autoBrand, autoColor, autoYear, autoRenavam, customerId, autoTypeId }
+        { plate, model, brand, color, year, renavam, customerId, typeId}
     ): Promise<Automovel> { 
         const automovel = new Automovel();
 
-        Object.assign(automovel, {
-            autoPlate,
-            autoModel,
-            autoBrand,
-            autoColor,
-            autoYear,
-            autoRenavam,
-            customerId,
-            autoTypeId
-        });
+        Object.assign(automovel, { plate, model, brand, color, year, renavam, customerId, typeId});
 
         this.automoveis.push(automovel);
 

@@ -1,12 +1,12 @@
 interface ICreateAutomovelDTO {
-    autoPlate: string,
-    autoModel: string,
-    autoBrand: string,
-    autoColor: string,
-    autoYear: number,
-    autoRenavam: number,
+    plate: string,
+    model: string,
+    brand: string,
+    color: string,
+    year: number,
+    renavam: number,
     customerId: string,
-    autoTypeId: string,
+    typeId: string,
 }
 
 export { ICreateAutomovelDTO };

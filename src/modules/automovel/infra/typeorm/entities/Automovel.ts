@@ -1,6 +1,6 @@
 import { Cliente } from "../../../../cliente/infra/typeorm/entities/Cliente";
 import { OrdemServico } from "@modules/ordemServico/infra/typeorm/entities/OrdemServico";
-import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 import { TipoAutomovel } from "./TipoAutomovel";
 
@@ -30,6 +30,10 @@ class Automovel {
 
     @CreateDateColumn()
     created_at?: Date;
+
+    @ManyToOne(() => TipoAutomovel, { eager: true })
+    @JoinColumn()
+    tipoAutomovel: TipoAutomovel;
         
     constructor() {
         if (!this.id) {
