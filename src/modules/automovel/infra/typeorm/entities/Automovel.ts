@@ -1,6 +1,5 @@
 import { Cliente } from "../../../../cliente/infra/typeorm/entities/Cliente";
-import { OrdemServico } from "@modules/ordemServico/infra/typeorm/entities/OrdemServico";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 import { TipoAutomovel } from "./TipoAutomovel";
 
