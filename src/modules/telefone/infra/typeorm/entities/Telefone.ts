@@ -14,6 +14,14 @@ class Telefone {
     @CreateDateColumn()
     created_at?: Date;
 
+    @ManyToOne(() => Cliente, { eager: true })
+    @JoinColumn()
+    cliente: Cliente;
+
+    @ManyToOne(() => Usuario, { eager: true })
+    @JoinColumn()
+    usuario: Usuario;
+
     constructor() {
         if (!this.id) {
             this.id = uuidV4();

@@ -34,6 +34,10 @@ class Automovel {
     @ManyToOne(() => TipoAutomovel, { eager: true })
     @JoinColumn()
     tipoAutomovel: TipoAutomovel;
+
+    @ManyToOne(() => Cliente, { eager: true })
+    @JoinColumn()
+    cliente: Cliente;
         
     constructor() {
         if (!this.id) {
