@@ -1,10 +1,12 @@
-import { Automovel } from '@modules/automovel/infra/typeorm/entities/Automovel';
-import { Telefone } from '@modules/telefone/infra/typeorm/entities/Telefone';
-import { Column, CreateDateColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { v4 as uuidV4 } from 'uuid';
+import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
+import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
 
+
+@Entity("clientes")
 class Cliente {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()

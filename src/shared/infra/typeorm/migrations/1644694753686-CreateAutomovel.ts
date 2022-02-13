@@ -11,7 +11,7 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                         name: "id",
                         type: "uuid",
                         generationStrategy: "uuid",
-                        isPrimary: true,
+                        isPrimary: true
                     },
                     {
                         name: "plate",
@@ -63,16 +63,16 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                         referencedTableName: "tipos_automoveis",
                         referencedColumnNames: ["id"],
                         columnNames: ["auto_type_id"],
-                        onUpdate: "CASCADE",
-                        onDelete: "CASCADE"
+                        onUpdate: "RESTRICT",
+                        onDelete: "RESTRICT"
                     },
                     {
                         name: "customer",
                         referencedTableName: "clientes",
                         referencedColumnNames: ["id"],
                         columnNames: ["cliente_id"],
-                        onUpdate: "CASCADE",
-                        onDelete: "CASCADE"
+                        onUpdate: "RESTRICT",
+                        onDelete: "RESTRICT"
                     }
                 ]
             })

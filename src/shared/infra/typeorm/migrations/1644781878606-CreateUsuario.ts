@@ -1,11 +1,11 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class CreateCliente1644697615197 implements MigrationInterface {
+export class CreateUsuario1644781878606 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "clientes",
+                name: "usuarios",
                 columns: [
                     {
                         name: "id",
@@ -19,14 +19,19 @@ export class CreateCliente1644697615197 implements MigrationInterface {
                         isNullable: false
                     },
                     {
-                        name: "cpf",
-                        type: "varchar(14)",
-                        isNullable: false,
-                        isUnique: true
+                        name: "password",
+                        type: "varchar",
+                        isNullable: false
                     },
                     {
                         name: "rg",
                         type: "varchar(11)",
+                        isNullable: false,
+                        isUnique: true
+                    },
+                    {
+                        name: "cpf",
+                        type: "varchar(14)",
                         isNullable: false,
                         isUnique: true
                     },
@@ -38,21 +43,28 @@ export class CreateCliente1644697615197 implements MigrationInterface {
                     {
                         name: "email",
                         type: "varchar(60)",
-                        isNullable: true,
+                        isNullable: false,
                         isUnique: true
+                    },
+                    {
+                        name: "is_admin",
+                        type: "boolean",
+                        default: false,
+                        isNullable: false
                     },
                     {
                         name: "created_at",
                         type: "timestamp",
                         default: "now()"
-                    },
+                    }
+
                 ]
             })
         )
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("clientes");
+        await queryRunner.dropTable("usuarios");
     }
 
 }

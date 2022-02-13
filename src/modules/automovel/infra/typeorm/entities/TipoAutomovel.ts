@@ -2,9 +2,9 @@ import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } f
 import { v4 as uuidV4 } from "uuid";
 import { Automovel } from "./Automovel";
 
-@Entity()
+@Entity("tipo_automoveis")
 class TipoAutomovel {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()
