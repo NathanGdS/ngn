@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGenerat
 import { v4 as uuidV4 } from "uuid";
 import { TipoAutomovel } from "./TipoAutomovel";
 
-@Entity("automoveis")
+@Entity("automobiles")
 class Automovel {
 
     @PrimaryGeneratedColumn("uuid")
@@ -32,11 +32,11 @@ class Automovel {
 
     @ManyToOne(() => TipoAutomovel, { eager: true })
     @JoinColumn()
-    tipoAutomovel: TipoAutomovel;
+    automobileType: TipoAutomovel;
 
     @ManyToOne(() => Cliente, { eager: true })
     @JoinColumn()
-    cliente: Cliente;
+    customer: Cliente;
         
     constructor() {
         if (!this.id) {

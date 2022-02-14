@@ -36,11 +36,11 @@ class EnderecoRepositoryInMemory implements IEnderecoRepository{
     }
     
     async findByUser(userId: string): Promise<Endereco> {
-        return this.enderecos.find((endereco) => endereco.userId === userId);
+        return this.enderecos.find((endereco) => endereco.user.id === userId);
     }
 
     async findByCustomer(customerId: string): Promise<Endereco> {
-        return this.enderecos.find((endereco) => endereco.customerId === customerId);
+        return this.enderecos.find((endereco) => endereco.customer.id === customerId);
     }
 
     async findAll(): Promise<Endereco[]> {

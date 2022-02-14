@@ -5,13 +5,11 @@ import { IStatusOrdemRepository } from "../IStatusOrdemRepository";
 class StatusOrdemRepositoryInMemory implements IStatusOrdemRepository {
     statusOrdem: StatusOrdem[] = [];
 
-    async create({ description, number,
-    }: ICreateStatusOrdemDTO): Promise<StatusOrdem> {
+    async create({ description }: ICreateStatusOrdemDTO): Promise<StatusOrdem> {
         const statusOrdem = new StatusOrdem();
 
         Object.assign(statusOrdem, {
-            description,
-            number,
+            description
         });
 
         this.statusOrdem.push(statusOrdem);
@@ -23,7 +21,7 @@ class StatusOrdemRepositoryInMemory implements IStatusOrdemRepository {
     }
 
     async findByNumber(number: number): Promise<StatusOrdem> {
-        return this.statusOrdem.find((statusOrdem) => statusOrdem.number === number);
+        return this.statusOrdem.find((statusOrdem) => statusOrdem.statusNumber === number);
     }
 
     async findAll(): Promise<StatusOrdem[]> {

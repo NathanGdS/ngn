@@ -1,9 +1,11 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuidV4 } from 'uuid';
+import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
+import { Usuario } from "@modules/usuario/infra/typeorm/entities/Usuario";
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
 
-@Entity()
+@Entity("adresses")
 class Endereco {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()
@@ -29,6 +31,14 @@ class Endereco {
 
     @CreateDateColumn()
     created_at?: Date;
+
+    @OneToOne(() => Usuario, { eager: true })
+    @JoinColumn()
+    user?: Usuario;
+
+    @OneToOne(() => Cliente, { eager: true })
+    @JoinColumn()
+    customer?: Cliente;
 
     constructor() {
         if (!this.id) {

@@ -1,6 +1,5 @@
 interface ICreateStatusOrdemDTO {
-    description: string,
-    number: number,
+    description: string
 }
 
 export { ICreateStatusOrdemDTO };

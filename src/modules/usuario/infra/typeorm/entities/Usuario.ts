@@ -1,8 +1,9 @@
+import { Endereco } from "@modules/endereco/infra/typeorm/entities/Endereco";
 import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("usuarios")
+@Entity("users")
 class Usuario {
     @PrimaryGeneratedColumn("uuid")
     id: string;
@@ -33,6 +34,9 @@ class Usuario {
 
     @OneToMany(() => Telefone, telefone => telefone.usuario, { eager: true })
     telefones: Telefone[];
+
+    @OneToOne(() => Endereco, endereco => endereco.usuario, { eager: true })
+    endereco: Endereco;
     
     constructor() {
         if (!this.id) {

@@ -8,12 +8,12 @@ class CreateStatusOrdemUseCase {
         private statusOrdemRepository: IStatusOrdemRepository
     ) { }
     
-    async execute({ description, number }: ICreateStatusOrdemDTO): Promise<StatusOrdem> {
+    async execute({ description }: ICreateStatusOrdemDTO): Promise<StatusOrdem> {
         const statusOrdemExists = await this.statusOrdemRepository.findByDescription(description);
 
         if (statusOrdemExists) throw new AppError('Status Ordem already exists!');
 
-        const statusOrdem = await this.statusOrdemRepository.create({ description, number });
+        const statusOrdem = await this.statusOrdemRepository.create({ description });
 
         return statusOrdem;
     }

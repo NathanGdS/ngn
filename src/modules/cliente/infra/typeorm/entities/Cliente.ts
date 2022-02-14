@@ -1,10 +1,11 @@
 import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
+import { Endereco } from "@modules/endereco/infra/typeorm/entities/Endereco";
 import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 
-@Entity("clientes")
+@Entity("customers")
 class Cliente {
     @PrimaryGeneratedColumn("uuid")
     id: string;
@@ -29,6 +30,9 @@ class Cliente {
 
     @OneToMany(() => Telefone, telefone => telefone.cliente, { eager: true })
     telefones: Telefone[];
+
+    @OneToOne(() => Endereco, endereco => endereco.cliente, { eager: true })
+    endereco: Endereco;
 
     @OneToMany(() => Automovel, automovel => automovel.cliente, { eager: true })
     automovel: Automovel[];

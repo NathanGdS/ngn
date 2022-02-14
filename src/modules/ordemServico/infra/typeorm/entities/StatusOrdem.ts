@@ -1,13 +1,14 @@
-import { Column, CreateDateColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { v4 as uuidV4 } from 'uuid';
-import { OrdemServico } from './OrdemServico';
+import { Column, CreateDateColumn, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
+import { OrdemServico } from "./OrdemServico";
 
+@Entity("order_status")
 class StatusOrdem {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()
-    number: number;
+    statusNumber: number;
     
     @Column()
     description: string;

@@ -5,7 +5,7 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "automoveis",
+                name: "automobiles",
                 columns: [
                     {
                         name: "id",
@@ -53,14 +53,14 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                         type: "uuid"
                     },
                     {
-                        name: "cliente_id",
+                        name: "customer_id",
                         type: "uuid"
                     }
                 ],
                 foreignKeys: [
                     {
                         name: "autoType",
-                        referencedTableName: "tipos_automoveis",
+                        referencedTableName: "automobile_types",
                         referencedColumnNames: ["id"],
                         columnNames: ["auto_type_id"],
                         onUpdate: "RESTRICT",
@@ -68,9 +68,9 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                     },
                     {
                         name: "customer",
-                        referencedTableName: "clientes",
+                        referencedTableName: "customers",
                         referencedColumnNames: ["id"],
-                        columnNames: ["cliente_id"],
+                        columnNames: ["customer_id"],
                         onUpdate: "RESTRICT",
                         onDelete: "RESTRICT"
                     }
@@ -80,7 +80,7 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("automoveis");
+        await queryRunner.dropTable("automobiles");
     }
 
 }
