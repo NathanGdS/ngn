@@ -10,7 +10,6 @@ export class StatusOrdem1644802948453 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
-                        generationStrategy: "uuid",
                         isPrimary: true
                     },
                     {

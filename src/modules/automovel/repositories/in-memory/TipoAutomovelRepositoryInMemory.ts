@@ -11,7 +11,7 @@ class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
         const tipoAutomovel = new TipoAutomovel();
 
         Object.assign(tipoAutomovel, {
-            description,
+            description
         });
 
         this.tipoAutomoveis.push(tipoAutomovel);

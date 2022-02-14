@@ -1,5 +1,5 @@
 interface ICreateTipoAutomovelDTO {
-    description: string,
+    description: string
 }
 
 export { ICreateTipoAutomovelDTO };

@@ -10,7 +10,6 @@ export class CreateCliente1644697615197 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
-                        generationStrategy: "uuid",
                         isPrimary: true
                     },
                     {

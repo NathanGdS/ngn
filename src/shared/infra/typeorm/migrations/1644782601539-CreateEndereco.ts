@@ -10,7 +10,6 @@ export class CreateEndereco1644782601539 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
-                        generationStrategy: "uuid",
                         isPrimary: true
                     },
                     {

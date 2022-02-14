@@ -10,7 +10,6 @@ export class CreateTelefone1644782595704 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
-                        generationStrategy: "uuid",
                         isPrimary: true
                     },
                     {

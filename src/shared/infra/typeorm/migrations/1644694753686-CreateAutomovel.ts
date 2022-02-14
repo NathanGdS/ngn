@@ -10,7 +10,6 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                     {
                         name: "id",
                         type: "uuid",
-                        generationStrategy: "uuid",
                         isPrimary: true
                     },
                     {
