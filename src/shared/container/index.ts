@@ -9,6 +9,15 @@ import { IAutomovelRepository } from "@modules/automovel/repositories/IAutomovel
 import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
 import { ClienteRepositoryInMemory } from "@modules/cliente/repositories/in-memory/ClienteRepositoryInMemory";
 
+import { IUsuarioRepository } from "@modules/usuario/repositories/IUsuarioRepository";
+import { UsuarioRepositoryInMemory } from "@modules/usuario/repositories/in-memory/UsuarioRepositoryInMemory";
+
+import { IEnderecoRepository } from "@modules/endereco/repositories/IEnderecoRepository";
+import { EnderecoRepositoryInMemory } from "@modules/endereco/repositories/in-memory/EnderecoRepositoryInMemory";
+
+import { ITelefoneRepository } from "@modules/telefone/repositories/ITelefoneRepository";
+import { TelefoneRepositoryInMemory } from "@modules/telefone/repositories/in-memory/TelefoneRepositoryInMemory";
+
 
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
@@ -23,4 +32,19 @@ container.registerSingleton<IAutomovelRepository>(
 container.registerSingleton<IClienteRepository>(
     "ClienteRepository",
     ClienteRepositoryInMemory
+);
+
+container.registerSingleton<IUsuarioRepository>(
+    "UsuarioRepository",
+    UsuarioRepositoryInMemory
+);
+
+container.registerSingleton<IEnderecoRepository>(
+    "EnderecoRepository",
+    EnderecoRepositoryInMemory
+);
+
+container.registerSingleton<ITelefoneRepository>(
+    "TelefoneRepository",
+    TelefoneRepositoryInMemory
 );

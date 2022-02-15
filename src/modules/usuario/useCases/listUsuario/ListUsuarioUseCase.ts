@@ -1,9 +1,12 @@
 import { Usuario } from "@modules/usuario/infra/typeorm/entities/Usuario";
 import { IUsuarioRepository } from "@modules/usuario/repositories/IUsuarioRepository";
 import { AppError } from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class ListUsuarioUseCase {
     constructor(
+        @inject("UsuarioRepository")
         private usuarioRepository: IUsuarioRepository
     ) { }
     

@@ -2,9 +2,12 @@ import { ICreateEnderecoDTO } from "@modules/endereco/dtos/ICreateEnderecoDTO";
 import { Endereco } from "@modules/endereco/infra/typeorm/entities/Endereco";
 import { IEnderecoRepository } from "@modules/endereco/repositories/IEnderecoRepository";
 import { AppError } from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class CreateEnderecoUseCase {
     constructor(
+        @inject("EnderecoRepository")
         private enderecoRepository: IEnderecoRepository
     ) { }
     

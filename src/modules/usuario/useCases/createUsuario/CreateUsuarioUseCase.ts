@@ -2,9 +2,12 @@ import { IUsuarioRepository } from "../../repositories/IUsuarioRepository";
 import { Usuario } from "../../infra/typeorm/entities/Usuario";
 import { AppError } from "@shared/errors/AppError";
 import { ICreateUsuarioDTO } from "../../dtos/ICreateUsuarioDTO";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class CreateUsuarioUseCase {
     constructor(
+        @inject("UsuarioRepository")
         private usuarioRepository: IUsuarioRepository
     ) {}
     

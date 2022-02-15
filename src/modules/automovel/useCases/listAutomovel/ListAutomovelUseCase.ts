@@ -1,9 +1,12 @@
 import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
 import { AutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/AutomovelRepositoryInMemory";
 import { AppError } from "@shared/errors/AppError";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class ListAutomovelUseCase {
     constructor(
+        @inject("TipoAutomovelRepository")
         private automovelRepositoryInMemory: AutomovelRepositoryInMemory
     ) { } 
     
