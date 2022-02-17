@@ -1,4 +1,5 @@
 import { ICreateTipoAutomovelDTO } from "@modules/automovel/dtos/ICreateTipoAutomovelDTO";
+import { IUpdateTipoAutomovelDTO } from "@modules/automovel/dtos/IUpdateTipoAutomovelDTO";
 import { TipoAutomovel } from "@modules/automovel/infra/typeorm/entities/TipoAutomovel";
 import { ITipoAutomovelRepository } from "../ITipoAutomovelRepository";
 
@@ -24,6 +25,22 @@ class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
 
     async findByDescription(description: string): Promise<TipoAutomovel> {
         return this.tipoAutomoveis.find( (tipoAutomovel) => tipoAutomovel.description === description);
+    }
+
+    async findById(id: string): Promise<TipoAutomovel> {
+        return this.tipoAutomoveis.find((tipoAutomovel) => tipoAutomovel.id === id);
+    }
+
+    async update({id, description}: IUpdateTipoAutomovelDTO): Promise<TipoAutomovel> {
+        const tipoAutomovel = await this.findById(id);
+
+        Object.assign(tipoAutomovel, {
+            description
+        });
+
+        this.tipoAutomoveis.push(tipoAutomovel);
+
+        return tipoAutomovel;
     }
 }
 

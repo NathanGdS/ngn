@@ -1,3 +1,4 @@
+import { IUpdateAutomovelDTO } from "@modules/automovel/dtos/IUpdateAutomovelDTO";
 import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
 import { IAutomovelRepository } from "../IAutomovelRepository";
 
@@ -22,6 +23,24 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
 
     async findById(id: string): Promise<Automovel> {
         return this.automoveis.find((automovel) => automovel.id === id);
+    }
+
+    async update({ id, plate, model, brand, color, year, renavam, typeId }: IUpdateAutomovelDTO): Promise<Automovel> {
+        const automovel = await this.findById(id);
+
+        Object.assign(automovel, {
+            plate,
+            model,
+            brand,
+            color,
+            year,
+            renavam,
+            typeId
+        });
+
+        this.automoveis.push(automovel);
+
+        return automovel;
     }
 }
 
