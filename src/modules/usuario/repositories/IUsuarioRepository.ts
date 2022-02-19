@@ -4,6 +4,7 @@ import { Usuario } from "../infra/typeorm/entities/Usuario";
 
 interface IUsuarioRepository {
     create(data: ICreateUsuarioDTO): Promise<Usuario>;
+    findById(id: string): Promise<Usuario>;
     findByName(name: string): Promise<Usuario>;
     findByCpf(cpf: string): Promise<Usuario>;
     findByRg(rg: string): Promise<Usuario>;

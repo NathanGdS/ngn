@@ -15,8 +15,13 @@ class CreateClienteUseCase {
 
         const clienteCPFExists = await this.clienteRepository.findByCpf(cpf);
         const clienteRGExists = await this.clienteRepository.findByRg(rg);
+        const clienteEmailExists = await this.clienteRepository.findByEmail(email);
 
-        if (clienteCPFExists || clienteRGExists) throw new AppError('Cliente already exists!');
+        if (clienteCPFExists) throw new AppError('There is already another Cliente with this CPF!');
+
+        if (clienteRGExists) throw new AppError('There is already another Cliente with this RG!');
+
+        if (clienteEmailExists) throw new AppError('There is already another Cliente with this Email!');
 
         const cliente = await this.clienteRepository.create({ name, rg, cpf, birthDate, email });
         

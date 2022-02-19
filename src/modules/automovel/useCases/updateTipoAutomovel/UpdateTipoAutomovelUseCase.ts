@@ -17,6 +17,11 @@ class UpdateTipoAutomovelUseCase {
 
         if (!tipoAutomovelExists) throw new AppError("Tipo Automovel not exists!");
 
+        const descriptionExists = await this.tipoAutomovelRepository.findByDescription(description);
+
+        if (descriptionExists && (description != tipoAutomovelExists.description))
+            throw new AppError('There is already another Tipo Automovel with this Description!');
+        
         const tipoAutomovel = await this.tipoAutomovelRepository.update({ id, description });
         
         return tipoAutomovel;

@@ -1,4 +1,5 @@
 interface IUpdateUsuarioDTO {
+    id: string,
     name: string,
     rg: string,
     cpf: string,

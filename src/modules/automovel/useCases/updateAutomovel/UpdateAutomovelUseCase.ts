@@ -12,9 +12,15 @@ class UpdateAutomovelUseCase {
     ) { }
 
     async execute({ id, plate, model, brand, color, year, renavam, typeId }: IUpdateAutomovelDTO): Promise<Automovel> {
+        
         const automovelExists = await this.automovelRepository.findById(id);
 
         if (!automovelExists) throw new AppError('Automovel not exists!');
+
+        const automovelRenavamExists = await this.automovelRepository.findByRenavam(renavam);
+
+        if (automovelRenavamExists && (renavam != automovelExists.autoRenavam))
+            throw new AppError('There is already another Automovel with this Renavam!');
         
         const automovel = await this.automovelRepository.update({ id, plate, model, brand, color, year, renavam, typeId });
 

@@ -27,14 +27,6 @@ class TelefoneRepositoryInMemory implements ITelefoneRepository {
         return this.telefones.find((telefone) => telefone.telNumber === telNumber);
     }
 
-    async findByUser(userId: string): Promise<Telefone> {
-        return this.telefones.find((telefone) => telefone.userId === userId);
-    }
-
-    async findByCustomer(customerId: string): Promise<Telefone> {
-        return this.telefones.find((telefone) => telefone.customerId === customerId);
-    }
-
     async findAll(): Promise<Telefone[]> {
         return this.telefones;
     }

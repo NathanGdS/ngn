@@ -6,6 +6,7 @@ interface IClienteRepository {
     findByName(name: string): Promise<Cliente>;
     findByCpf(cpf: string): Promise<Cliente>;
     findByRg(rg: string): Promise<Cliente>;
+    findByEmail(email: string): Promise<Cliente>;
     findAll(): Promise<Cliente[]>;
     findById(id: string): Promise<Cliente>; 
 }
