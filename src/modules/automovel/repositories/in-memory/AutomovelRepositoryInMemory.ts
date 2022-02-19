@@ -42,6 +42,12 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
 
         return automovel;
     }
+
+    async delete(id: string): Promise<void> {
+        const automovelIndex = this.automoveis.findIndex((automovel) => automovel.id === id);
+
+        this.automoveis.splice(automovelIndex, 1);
+    }
 }
 
 export { AutomovelRepositoryInMemory };

@@ -8,6 +8,7 @@ interface ITipoAutomovelRepository {
     findByDescription(description: string): Promise<TipoAutomovel>;
     findById(id: string): Promise<TipoAutomovel>;
     update(data: IUpdateTipoAutomovelDTO): Promise<TipoAutomovel>;
+    delete(id: string): Promise<void>;
 }
 
 export { ITipoAutomovelRepository };

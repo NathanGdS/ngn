@@ -42,6 +42,12 @@ class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
 
         return tipoAutomovel;
     }
+
+    async delete(id: string): Promise<void> {
+        const tipoAutomovel = this.tipoAutomoveis.findIndex((tipoAutomovel) => tipoAutomovel.id === id);
+
+        this.tipoAutomoveis.splice(tipoAutomovel, 1);
+    }
 }
 
 export { TipoAutomovelRepositoryInMemory };

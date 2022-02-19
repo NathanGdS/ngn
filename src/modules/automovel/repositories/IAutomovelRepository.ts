@@ -7,6 +7,7 @@ interface IAutomovelRepository {
     findAll(): Promise<Automovel[]>;
     findById(id: string): Promise<Automovel>;
     update(data: IUpdateAutomovelDTO): Promise<Automovel>;
+    delete(id: string): Promise<void>;
 }
 
 export { IAutomovelRepository };
