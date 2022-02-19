@@ -28,13 +28,13 @@ class Cliente {
     @CreateDateColumn()
     created_at?: Date;
 
-    @OneToMany(() => Telefone, telefone => telefone.cliente, { eager: true })
+    @OneToMany(() => Telefone, telefone => telefone.customer, { eager: true })
     telefones: Telefone[];
 
-    @OneToOne(() => Endereco, endereco => endereco.cliente, { eager: true })
+    @OneToOne(() => Endereco, endereco => endereco.customer, { eager: true })
     endereco: Endereco;
 
-    @OneToMany(() => Automovel, automovel => automovel.cliente, { eager: true })
+    @OneToMany(() => Automovel, automovel => automovel.customer, { eager: true })
     automovel: Automovel[];
         
     constructor() {

@@ -32,10 +32,10 @@ class Usuario {
     @CreateDateColumn()
     created_at?: Date;
 
-    @OneToMany(() => Telefone, telefone => telefone.usuario, { eager: true })
+    @OneToMany(() => Telefone, telefone => telefone.user, { eager: true })
     telefones: Telefone[];
 
-    @OneToOne(() => Endereco, endereco => endereco.usuario, { eager: true })
+    @OneToOne(() => Endereco, endereco => endereco.user, { eager: true })
     endereco: Endereco;
     
     constructor() {

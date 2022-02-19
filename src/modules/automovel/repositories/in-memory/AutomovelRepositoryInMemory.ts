@@ -25,6 +25,10 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
         return this.automoveis.find((automovel) => automovel.id === id);
     }
 
+    async findByRenavam(renavam: number): Promise<Automovel> {
+        return this.automoveis.find((automovel) => automovel.autoRenavam === renavam);
+    }
+
     async update({ id, plate, model, brand, color, year, renavam, typeId }: IUpdateAutomovelDTO): Promise<Automovel> {
         const automovel = await this.findById(id);
 

@@ -1,4 +1,5 @@
 import { ICreateUsuarioDTO } from "../dtos/ICreateUsuarioDTO";
+import { IUpdateUsuarioDTO } from "../dtos/IUpdateUsuarioDTO";
 import { Usuario } from "../infra/typeorm/entities/Usuario";
 
 interface IUsuarioRepository {
@@ -8,6 +9,7 @@ interface IUsuarioRepository {
     findByRg(rg: string): Promise<Usuario>;
     findAll(): Promise<Usuario[]>;
     verifyIsAdmin(userId: string): Promise<Boolean>;
+    update(data: IUpdateUsuarioDTO): Promise<Usuario>;
 }
 
 export { IUsuarioRepository };

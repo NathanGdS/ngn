@@ -15,7 +15,7 @@ class CreateUsuarioUseCase {
         const usuarioCpfExists = await this.usuarioRepository.findByCpf(cpf);
         const usuarioRgExists = await this.usuarioRepository.findByRg(rg);
 
-        if (usuarioCpfExists || usuarioRgExists) throw new AppError('Usuário already exists!');
+        if (usuarioCpfExists || usuarioRgExists) throw new AppError('Usuario already exists!');
 
         const usuario = await this.usuarioRepository.create({ name, password, rg, cpf, birthDate, email });
 

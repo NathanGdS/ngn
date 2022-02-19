@@ -6,6 +6,7 @@ interface IAutomovelRepository {
     create(data: ICreateAutomovelDTO): Promise<Automovel>;
     findAll(): Promise<Automovel[]>;
     findById(id: string): Promise<Automovel>;
+    findByRenavam(renavam: number): Promise<Automovel>;
     update(data: IUpdateAutomovelDTO): Promise<Automovel>;
     delete(id: string): Promise<void>;
 }

@@ -1,5 +1,7 @@
 import { ICreateUsuarioDTO } from "@modules/usuario/dtos/ICreateUsuarioDTO";
+import { IUpdateUsuarioDTO } from "@modules/usuario/dtos/IUpdateUsuarioDTO";
 import { Usuario } from "@modules/usuario/infra/typeorm/entities/Usuario";
+import { AppError } from "@shared/errors/AppError";
 import { IUsuarioRepository } from "../IUsuarioRepository";
 
 class UsuarioRepositoryInMemory implements IUsuarioRepository{
@@ -45,8 +47,25 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository{
     }
 
     async verifyIsAdmin(userId: string): Promise<Boolean> {
-        const usuario = await this.usuarios.find((usuario) => usuario.id === userId);
+        const usuario = this.usuarios.find((usuario) => usuario.id === userId);
         if (usuario.isAdmin == true) return true;
+    }
+
+    async update({name, rg, cpf, birthDate, email, isAdmin}: IUpdateUsuarioDTO): Promise<Usuario> {
+        const usuario = await this.findByCpf(cpf);
+        
+        Object.assign(usuario, {
+            name,
+            rg,
+            cpf,
+            birthDate,
+            email,
+            isAdmin
+        });
+
+        this.usuarios.push(usuario);
+
+        return usuario;
     }
 }
 

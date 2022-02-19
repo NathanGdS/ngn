@@ -16,11 +16,11 @@ class Telefone {
 
     @ManyToOne(() => Cliente, { eager: true })
     @JoinColumn()
-    cliente: Cliente;
+    customer: Cliente;
 
     @ManyToOne(() => Usuario, { eager: true })
     @JoinColumn()
-    usuario: Usuario;
+    user: Usuario;
 
     constructor() {
         if (!this.id) {
