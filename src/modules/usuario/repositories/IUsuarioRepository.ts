@@ -11,6 +11,7 @@ interface IUsuarioRepository {
     findAll(): Promise<Usuario[]>;
     verifyIsAdmin(userId: string): Promise<Boolean>;
     update(data: IUpdateUsuarioDTO): Promise<Usuario>;
+    delete(id: string): Promise<void>;
 }
 
 export { IUsuarioRepository };

@@ -70,6 +70,12 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository{
 
         return usuario;
     }
+
+    async delete(id: string): Promise<void> {
+        const usuarioIndex = this.usuarios.findIndex((usuario) => usuario.id === id);
+
+        this.usuarios.splice(usuarioIndex, 1);
+    }
 }
 
 export { UsuarioRepositoryInMemory }; 
