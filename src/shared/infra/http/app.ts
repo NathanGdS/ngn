@@ -5,11 +5,11 @@ import "express-async-errors";
 
 import "@shared/container";
 
-import createConnection from "@shared/infra/typeorm";
+// import createConnection from "@shared/infra/typeorm";
 
 import { router } from "./routes";
 
-createConnection()
+// createConnection()
 const app = express();
 
 app.use(express.json());

@@ -13,7 +13,7 @@ class TipoAutomovel {
     @CreateDateColumn()
     created_at?: Date;
     
-    @OneToMany(() => Automovel, automovel => automovel.tipoAutomovel, { eager: true })
+    @OneToMany(() => Automovel, automovel => automovel.tipoAutomovel)
     automoveis: Automovel[];
 
     constructor () {
