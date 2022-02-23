@@ -8,6 +8,7 @@ interface IClienteRepository {
     findByRg(rg: string): Promise<Cliente>;
     findAll(): Promise<Cliente[]>;
     findById(id: string): Promise<Cliente>; 
+    delete(id: string): void;
 }
 
 export { IClienteRepository };
