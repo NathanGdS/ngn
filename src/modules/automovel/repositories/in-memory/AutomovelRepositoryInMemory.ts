@@ -23,6 +23,8 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
     async findById(id: string): Promise<Automovel> {
         return this.automoveis.find((automovel) => automovel.id === id);
     }
+
+    
 }
 
 export { AutomovelRepositoryInMemory };

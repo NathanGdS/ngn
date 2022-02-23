@@ -11,20 +11,20 @@ class UpdateTipoAutomovelUseCase {
         private tipoAutomovelRepository: ITipoAutomovelRepository
     ) { }
     
-    async execute({ id, description }: IUpdateTipoAutomovelDTO): Promise<TipoAutomovel> {
+    async execute({ id, description }: IUpdateTipoAutomovelDTO): Promise<void> {
         
-        const tipoAutomovelExists = await this.tipoAutomovelRepository.findById(id);
+        // const tipoAutomovelExists = await this.tipoAutomovelRepository.findById(id);
 
-        if (!tipoAutomovelExists) throw new AppError('Tipo Automovel not exists!');
+        // if (!tipoAutomovelExists) throw new AppError('Tipo Automovel not exists!');
 
-        const descriptionExists = await this.tipoAutomovelRepository.findByDescription(description);
+        // const descriptionExists = await this.tipoAutomovelRepository.findByDescription(description);
 
-        if (descriptionExists && (description != tipoAutomovelExists.description))
-            throw new AppError('There is already another Tipo Automovel with this Description!');
+        // if (descriptionExists && (description != tipoAutomovelExists.description))
+        //     throw new AppError('There is already another Tipo Automovel with this Description!');
         
-        const tipoAutomovel = await this.tipoAutomovelRepository.update({ id, description });
+        // const tipoAutomovel = await this.tipoAutomovelRepository.update(id, description);
         
-        return tipoAutomovel;
+        // return tipoAutomovel;
     }
 }
 

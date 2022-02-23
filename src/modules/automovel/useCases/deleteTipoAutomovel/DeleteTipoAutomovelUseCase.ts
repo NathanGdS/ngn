@@ -10,11 +10,7 @@ class DeleteTipoAutomovelUseCase {
     ) {}
     
     async execute(id: string): Promise<void> {
-        const tipoAutomovelExists = await this.tipoAutomovelRepository.findById(id);
-
-        if (!tipoAutomovelExists) throw new AppError('Tipo Automovel not exists!');
-
-        await this.tipoAutomovelRepository.delete(id);
+        this.tipoAutomovelRepository.delete(id);
     }
 
 }

@@ -25,6 +25,21 @@ class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
     async findByDescription(description: string): Promise<TipoAutomovel> {
         return this.tipoAutomoveis.find( (tipoAutomovel) => tipoAutomovel.description === description);
     }
+
+    async findById(id: string): Promise<TipoAutomovel> {
+        return this.tipoAutomoveis.find( (tipoAutomovel) => tipoAutomovel.id === id);
+    }
+
+    async update(id: string, description:string): Promise<TipoAutomovel> {
+        const findIndex = this.tipoAutomoveis.findIndex(tipoAutomovel => tipoAutomovel.id === id);
+        this.tipoAutomoveis[findIndex].description = description;
+        return this.tipoAutomoveis[findIndex];
+    }
+
+    delete(id:string):void {
+        this.tipoAutomoveis = this.tipoAutomoveis.filter(tipoAutomovel => tipoAutomovel.id != id);
+    }
+
 }
 
 export { TipoAutomovelRepositoryInMemory };
