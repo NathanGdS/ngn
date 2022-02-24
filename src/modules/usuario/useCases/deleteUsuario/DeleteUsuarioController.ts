@@ -11,9 +11,9 @@ class DeleteUsuarioController {
                 DeleteUsuarioUseCase
             );
 
-            const usuario = await deleteUsuarioUseCase.execute(id);
+            await deleteUsuarioUseCase.execute(id);
 
-            return response.status(200).json(usuario);
+            return response.status(200).json({ message: "deleted" });
         } catch (e) {
             return response.status(400).json({ error: e.message });
         }

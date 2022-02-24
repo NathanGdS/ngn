@@ -1,7 +1,8 @@
 import { IUsuarioRepository } from "@modules/usuario/repositories/IUsuarioRepository";
 import { AppError } from "@shared/errors/AppError";
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class DeleteUsuarioUseCase {
     constructor(
         @inject("UsuarioRepository")
@@ -9,11 +10,7 @@ class DeleteUsuarioUseCase {
     ) { }
     
     async execute(id: string): Promise<void> {
-        const usuarioExists = await this.usuarioRepository.findById(id);
-
-        if (!usuarioExists) throw new AppError('Usuario not exists!');
-
-        await this.usuarioRepository.delete(id);
+        this.usuarioRepository.delete(id);
     }
 }
 

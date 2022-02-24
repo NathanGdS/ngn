@@ -45,8 +45,12 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository{
     }
 
     async verifyIsAdmin(userId: string): Promise<Boolean> {
-        const usuario = await this.usuarios.find((usuario) => usuario.id === userId);
+        const usuario = this.usuarios.find((usuario) => usuario.id === userId);
         if (usuario.isAdmin == true) return true;
+    }
+
+    delete(id: string): void {
+        this.usuarios = this.usuarios.filter(usuario => usuario.id != id);
     }
 }
 

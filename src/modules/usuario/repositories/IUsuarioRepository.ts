@@ -8,6 +8,7 @@ interface IUsuarioRepository {
     findByRg(rg: string): Promise<Usuario>;
     findAll(): Promise<Usuario[]>;
     verifyIsAdmin(userId: string): Promise<Boolean>;
+    delete(id: string): void;
 }
 
 export { IUsuarioRepository };
