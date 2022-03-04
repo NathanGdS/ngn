@@ -1,8 +1,8 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "RentalX Documentation",
-        "description": "This is an API Rent",
+        "title": "NGN API Documentation",
+        "description": "Work Order API for Machine Shops",
         "version": "1.0.0",
         "contact": {
             "email":"nathangarsantos@gmail.com"
