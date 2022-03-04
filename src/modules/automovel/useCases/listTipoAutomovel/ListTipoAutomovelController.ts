@@ -1,7 +1,8 @@
-import { Request, Response } from "express";
+import { Request, Response, Router } from "express";
 import { container } from "tsyringe";
 
 import { ListTipoAutomovelUseCase } from "./ListTipoAutomovelUseCase";
+import { TipoAutomovel } from "@modules/automovel/infra/typeorm/entities/TipoAutomovel";
 
 class ListTipoAutomovelController {
     async handle(request: Request, response: Response): Promise<Response> {

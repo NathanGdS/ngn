@@ -13,7 +13,7 @@ class DeleteTipoAutomovelController {
 
             await deleteTipoAutomovelUseCase.execute(id);
 
-            return response.status(200).json({ message: "delete"});
+            return response.status(200).send();
         } catch (e) {
             return response.status(400).json({ error: e.message });
         }

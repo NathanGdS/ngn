@@ -6,8 +6,8 @@ import { ITipoAutomovelRepository } from "@modules/automovel/repositories/ITipoA
 import { AutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/AutomovelRepositoryInMemory";
 import { IAutomovelRepository } from "@modules/automovel/repositories/IAutomovelRepository";
 
-import { ClienteRepositoryInMemory } from "@modules/cliente/repositories/in-memory/ClienteRepositoryInMemory";
-import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
+// import { ClienteRepositoryInMemory } from "@modules/cliente/repositories/in-memory/ClienteRepositoryInMemory";
+// import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
 
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
@@ -19,8 +19,8 @@ container.registerSingleton<IAutomovelRepository>(
     AutomovelRepositoryInMemory
 );
 
-container.registerSingleton<IClienteRepository>(
-    "ClienteRepository",
-    ClienteRepositoryInMemory
-);
+// container.registerSingleton<IClienteRepository>(
+//     "ClienteRepository",
+//     ClienteRepositoryInMemory
+// );
 
