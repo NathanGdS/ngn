@@ -43,7 +43,7 @@ export class CreateEndereco1644782601539 implements MigrationInterface {
                     },
                     {
                         name: "add_fu",
-                        type: "char",
+                        type: "varchar",
                         isNullable: false
                     },
                     {

@@ -24,7 +24,7 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                     },
                     {
                         name: "brand",
-                        type: "varchar(20)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
