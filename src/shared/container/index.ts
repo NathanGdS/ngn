@@ -1,9 +1,11 @@
 import { container } from "tsyringe";
 
-import { TipoAutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/TipoAutomovelRepositoryInMemory";
+// import { TipoAutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/TipoAutomovelRepositoryInMemory";
+import { TipoAutomovelRepository } from "@modules/automovel/infra/typeorm/repositories/TipoAutomovelRepository";
 import { ITipoAutomovelRepository } from "@modules/automovel/repositories/ITipoAutomovelRepository";
 
-import { AutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/AutomovelRepositoryInMemory";
+// import { AutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/AutomovelRepositoryInMemory";
+import { AutomovelRepository } from "@modules/automovel/infra/typeorm/repositories/AutomovelRepository";
 import { IAutomovelRepository } from "@modules/automovel/repositories/IAutomovelRepository";
 
 // import { ClienteRepositoryInMemory } from "@modules/cliente/repositories/in-memory/ClienteRepositoryInMemory";
@@ -11,12 +13,12 @@ import { IAutomovelRepository } from "@modules/automovel/repositories/IAutomovel
 
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
-    TipoAutomovelRepositoryInMemory
+    TipoAutomovelRepository
 );
 
 container.registerSingleton<IAutomovelRepository>(
     "AutomovelRepository",
-    AutomovelRepositoryInMemory
+    AutomovelRepository
 );
 
 // container.registerSingleton<IClienteRepository>(

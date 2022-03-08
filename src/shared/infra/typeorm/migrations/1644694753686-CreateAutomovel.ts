@@ -5,7 +5,7 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "automobiles",
+                name: "automoveis",
                 columns: [
                     {
                         name: "id",
@@ -14,33 +14,31 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                     },
                     {
                         name: "plate",
-                        type: "char(7)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "model",
-                        type: "varchar(30)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "brand",
-                        type: "varchar(20)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "color",
-                        type: "varchar(20)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "year",
-                        type: "int(4)",
-                        unsigned: true
+                        type: "numeric"
                     },
                     {
                         name: "renavam",
-                        type: "int(11)",
-                        unsigned: true
+                        type: "varchar"
                     },
                     {
                         name: "created_at",
@@ -48,38 +46,27 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                         default: "now()"
                     },
                     {
-                        name: "auto_type_id",
-                        type: "uuid"
-                    },
-                    {
-                        name: "customer_id",
-                        type: "uuid"
+                        name: "typeId",
+                        type: "uuid",
+                        isNullable: false
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "autoType",
-                        referencedTableName: "automobile_types",
+                        name: "typeIdFK",
+                        referencedTableName: "tipo_automoveis",
                         referencedColumnNames: ["id"],
-                        columnNames: ["auto_type_id"],
-                        onUpdate: "RESTRICT",
-                        onDelete: "RESTRICT"
-                    },
-                    {
-                        name: "customer",
-                        referencedTableName: "customers",
-                        referencedColumnNames: ["id"],
-                        columnNames: ["customer_id"],
+                        columnNames: ["typeId"],
                         onUpdate: "RESTRICT",
                         onDelete: "RESTRICT"
                     }
                 ]
             })
-        )
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("automobiles");
+        await queryRunner.dropTable("automoveis");
     }
 
 }

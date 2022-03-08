@@ -3,7 +3,7 @@
     "info": {
         "title": "NGN API Documentation",
         "description": "Work Order API for Machine Shops",
-        "version": "1.0.0",
+        "version": "0.1.0",
         "contact": {
             "email":"nathangarsantos@gmail.com"
         }
@@ -13,7 +13,7 @@
     "paths": {
         "/automovel/tipo": {
             "get": {
-                "tags": ["Automovel"],
+                "tags": ["TipoAutomovel"],
                 "summary": "List all Tipo Automovel",
                 "responses": {
                     "200": {
@@ -43,7 +43,7 @@
                 }
             },
             "post": {
-                "tags": ["Automovel"],
+                "tags": ["TipoAutomovel"],
                 "summary": "Create a new Tipo Automovel",
                 "requestBody": {
                     "content": {
@@ -111,7 +111,7 @@
         },
         "/automovel/tipo/{tipo_id}": {
             "patch": {
-                "tags": ["Automovel"],
+                "tags": ["TipoAutomovel"],
                 "summary": "Update Description of Tipo Automovel",
                 "parameters": [
                     {
@@ -168,7 +168,7 @@
                 }
             },
             "delete": {
-                "tags": ["Automovel"],
+                "tags": ["TipoAutomovel"],
                 "summary": "Delete an Tipo Automovel",
                 "parameters": [
                     {
@@ -183,6 +183,172 @@
                 "responses": {
                     "200": {
                         "description": "Success"
+                    }
+                }
+            }
+        },
+        "/automovel": {
+            "get": {
+                "tags": ["Automovel"],
+                "summary": "List all Automoveis",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type":"string"
+                                            },
+                                            "plate":{
+                                                "type":"string"
+                                            },
+                                            "model":{
+                                                "type":"string"
+                                            },
+                                            "brand":{
+                                                "type":"string"
+                                            },
+                                            "color":{
+                                                "type":"string"
+                                            },
+                                            "year":{
+                                                "type":"string"
+                                            },
+                                            "renavam":{
+                                                "type":"string"
+                                            },
+                                            "customerId":{
+                                                "type":"string"
+                                            },
+                                            "typeId":{
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "plate": "ABC1234",
+                                    "model": "Toyota V120",
+                                    "brand": "Toyota",
+                                    "color": "blue",
+                                    "year": "2012",
+                                    "renavam": "ASDCS",
+                                    "customerId": "e21ca6df-8194-4374-822e-24fb2e550b4a",
+                                    "typeId": "a45474ba-55cb-4b84-beb0-462f2b7c2700"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Automovel"],
+                "summary": "Create a new Automovel",
+                "requestBody": {
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties": {
+                                    "id":{
+                                        "type":"string"
+                                    },
+                                    "created_at":{
+                                        "type":"string"
+                                    },
+                                    "plate":{
+                                        "type":"string"
+                                    },
+                                    "model":{
+                                        "type":"string"
+                                    },
+                                    "brand":{
+                                        "type":"string"
+                                    },
+                                    "color":{
+                                        "type":"string"
+                                    },
+                                    "year":{
+                                        "type":"string"
+                                    },
+                                    "renavam":{
+                                        "type":"string"
+                                    },
+                                    "customerId":{
+                                        "type":"string"
+                                    },
+                                    "typeId":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema":{
+                            "type":"object",
+                            "properties": {
+                                "id":{
+                                    "type":"string"
+                                },
+                                "created_at":{
+                                    "type":"string"
+                                },
+                                "plate":{
+                                    "type":"string"
+                                },
+                                "model":{
+                                    "type":"string"
+                                },
+                                "brand":{
+                                    "type":"string"
+                                },
+                                "color":{
+                                    "type":"string"
+                                },
+                                "year":{
+                                    "type":"string"
+                                },
+                                "renavam":{
+                                    "type":"string"
+                                },
+                                "customerId":{
+                                    "type":"string"
+                                },
+                                "typeId":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
