@@ -14,12 +14,12 @@ export class CreateEndereco1644782601539 implements MigrationInterface {
                     },
                     {
                         name: "add_cep",
-                        type: "varchar(9)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "add_street",
-                        type: "varchar(100)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
@@ -29,21 +29,21 @@ export class CreateEndereco1644782601539 implements MigrationInterface {
                     },
                     {
                         name: "add_supplement",
-                        type: "varchar(30)"
+                        type: "varchar"
                     },
                     {
                         name: "add_district",
-                        type: "varchar(40)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "add_town",
-                        type: "varchar(40)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "add_fu",
-                        type: "char(2)",
+                        type: "char",
                         isNullable: false
                     },
                     {

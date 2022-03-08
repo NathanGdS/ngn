@@ -14,12 +14,12 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                     },
                     {
                         name: "plate",
-                        type: "char(7)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "model",
-                        type: "varchar(30)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
@@ -29,18 +29,16 @@ export class CreateAutomovel1644694753686 implements MigrationInterface {
                     },
                     {
                         name: "color",
-                        type: "varchar(20)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "year",
-                        type: "int(4)",
-                        unsigned: true
+                        type: "int",
                     },
                     {
                         name: "renavam",
-                        type: "int(11)",
-                        unsigned: true
+                        type: "int",
                     },
                     {
                         name: "created_at",

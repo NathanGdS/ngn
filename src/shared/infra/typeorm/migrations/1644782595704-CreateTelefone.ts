@@ -14,7 +14,7 @@ export class CreateTelefone1644782595704 implements MigrationInterface {
                     },
                     {
                         name: "tel_number",
-                        type: "varchar(14)",
+                        type: "varchar",
                         isNullable: false,
                         isUnique: true
                     }, 

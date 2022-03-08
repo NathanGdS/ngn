@@ -14,18 +14,18 @@ export class CreateCliente1644697615197 implements MigrationInterface {
                     },
                     {
                         name: "name",
-                        type: "varchar(100)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
                         name: "cpf",
-                        type: "varchar(14)",
+                        type: "varchar",
                         isNullable: false,
                         isUnique: true
                     },
                     {
                         name: "rg",
-                        type: "varchar(11)",
+                        type: "varchar",
                         isNullable: false,
                         isUnique: true
                     },
@@ -36,7 +36,7 @@ export class CreateCliente1644697615197 implements MigrationInterface {
                     },
                     {
                         name: "email",
-                        type: "varchar(60)",
+                        type: "varchar",
                         isNullable: true,
                         isUnique: true
                     },

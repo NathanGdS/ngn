@@ -20,7 +20,7 @@ export class StatusOrdem1644802948453 implements MigrationInterface {
                     },
                     {
                         name: "description",
-                        type: "varchar(20)",
+                        type: "varchar",
                         isUnique: true
                     },
                     {

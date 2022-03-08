@@ -14,7 +14,7 @@ export class CreateUsuario1644781878606 implements MigrationInterface {
                     },
                     {
                         name: "name",
-                        type: "varchar(100)",
+                        type: "varchar",
                         isNullable: false
                     },
                     {
@@ -24,13 +24,13 @@ export class CreateUsuario1644781878606 implements MigrationInterface {
                     },
                     {
                         name: "rg",
-                        type: "varchar(11)",
+                        type: "varchar",
                         isNullable: false,
                         isUnique: true
                     },
                     {
                         name: "cpf",
-                        type: "varchar(14)",
+                        type: "varchar",
                         isNullable: false,
                         isUnique: true
                     },
@@ -41,7 +41,7 @@ export class CreateUsuario1644781878606 implements MigrationInterface {
                     },
                     {
                         name: "email",
-                        type: "varchar(60)",
+                        type: "varchar",
                         isNullable: false,
                         isUnique: true
                     },
