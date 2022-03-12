@@ -1,6 +1,6 @@
 import { AutomovelRepositoryInMemory } from "@modules/automovel/repositories/in-memory/AutomovelRepositoryInMemory";
 import { CreateAutomovelUseCase } from "@modules/automovel/useCases/createAutomovel/CreateAutomovelUseCase";
-import { ClienteRepositoryInMemory } from "@modules/cliente/repositories/in-memory/ClienteRepositoryInMemory";
+import { ClienteRepositoryInMemory } from "@modules/cliente/repositories/in-memory/ClientesRepositoryInMemory";
 import { UsuarioRepositoryInMemory } from "@modules/usuario/repositories/in-memory/UsuarioRepositoryInMemory";
 import { AppError } from "@shared/errors/AppError";
 
