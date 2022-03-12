@@ -10,13 +10,13 @@ class CreateAutomovelUseCase {
         private automovelRepository: IAutomovelRepository
     ) { }
     
-    async execute({ plate, model, brand, color, year, renavam, customerId, typeId}: ICreateAutomovelDTO): Promise<Automovel> {
+    async execute({ plate, model, brand, color, year, renavam, typeId}: ICreateAutomovelDTO): Promise<Automovel> {
 
         // const clienteExists = await this.clienteRepository.findById(customerId);
 
         // if (!clienteExists) throw new AppError('Client not found!');
 
-        const automovel = await this.automovelRepository.create({ plate, model, brand, color, year, renavam, customerId, typeId});
+        const automovel = await this.automovelRepository.create({ plate, model, brand, color, year, renavam, typeId});
         
         return automovel;
     }

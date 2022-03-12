@@ -37,7 +37,8 @@ class TipoAutomovelRepositoryInMemory implements ITipoAutomovelRepository {
     }
 
     delete(id:string):void {
-        this.tipoAutomoveis = this.tipoAutomoveis.filter(tipoAutomovel => tipoAutomovel.id != id);
+        const findIndex = this.tipoAutomoveis.findIndex(tipoAutomovel => tipoAutomovel.id === id);
+        this.tipoAutomoveis.splice(findIndex, 1);
     }
 
 }

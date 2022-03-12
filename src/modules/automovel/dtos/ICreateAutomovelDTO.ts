@@ -5,7 +5,7 @@ interface ICreateAutomovelDTO {
     color: string,
     year: number,
     renavam: number,
-    customerId: string,
+    // customerId: string,
     typeId: string,
 }
 
