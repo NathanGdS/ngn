@@ -1,11 +1,12 @@
 import { Router } from "express";
 
 import { automovelRoutes } from "./automovel.routes";
-// import { clienteRoutes } from "./clientes.routes";
+import { usuarioRoutes } from "./usuarios.routes";
 
 const router = Router();
 
 router.use("/automovel", automovelRoutes);
+router.use("/usuarios", usuarioRoutes);
 // router.use("/cliente", clienteRoutes);
 // import { ListTipoAutomovelController } from "@modules/automovel/useCases/listTipoAutomovel/ListTipoAutomovelController";
 // const listTipoAutomovelController = new ListTipoAutomovelController();
