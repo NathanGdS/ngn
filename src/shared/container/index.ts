@@ -13,7 +13,8 @@ import { UsuarioRepository } from "@modules/accounts/infra/typeorm/repositories/
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
 
 // import { ClienteRepositoryInMemory } from "@modules/cliente/repositories/in-memory/ClienteRepositoryInMemory";
-// import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
+import { ClienteRepository } from "@modules/cliente/infra/typeorm/repositories/ClienteRepository";
+import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
 
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
@@ -30,8 +31,8 @@ container.registerSingleton<IUsuarioRepository>(
     UsuarioRepository
 );
 
-// container.registerSingleton<IClienteRepository>(
-//     "ClienteRepository",
-//     ClienteRepositoryInMemory
-// );
+container.registerSingleton<IClienteRepository>(
+    "ClienteRepository",
+    ClienteRepository
+);
 

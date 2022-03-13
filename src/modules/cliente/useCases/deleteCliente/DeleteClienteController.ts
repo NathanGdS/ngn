@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { DeleteTipoAutomovelUseCase } from "./DeleteTipoAutomovelUseCase";
+import { DeleteClienteUseCase } from "./DeleteClienteUseCase";
 
-class DeleteTipoAutomovelController {
+class DeleteClienteController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
             const { id } = request.params;
 
-            const deleteTipoAutomovelUseCase = container.resolve(
-                DeleteTipoAutomovelUseCase
+            const deleteClienteUseCase = container.resolve(
+                DeleteClienteUseCase
             );
 
-            await deleteTipoAutomovelUseCase.execute(id);
+            await deleteClienteUseCase.execute(id);
 
             return response.status(200).send();
         } catch (e) {
@@ -20,4 +20,4 @@ class DeleteTipoAutomovelController {
     }
 }
 
-export { DeleteTipoAutomovelController };
+export { DeleteClienteController };

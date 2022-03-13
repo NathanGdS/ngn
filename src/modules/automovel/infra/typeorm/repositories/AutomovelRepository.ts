@@ -23,7 +23,13 @@ class AutomovelRepository implements IAutomovelRepository {
         year
     }: ICreateAutomovelDTO): Promise<Automovel> {
         const automovel = this.repository.create({
-            
+            brand,
+            color,
+            model,
+            plate,
+            renavam,
+            typeId,
+            year
         });
 
         await this.repository.save(automovel);
