@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
+import { Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity('usuarios')
@@ -25,13 +26,15 @@ class Usuario {
     @CreateDateColumn({name: 'created_at'})
     createdAt?: Date;
 
+    @OneToMany(() => Telefone, telefone => telefone.user)
+    phones: Telefone[];
+
     constructor () {
         if(!this.id){
             this.id = uuidV4();
             this.createdAt = new Date();
             this.isAdmin = false;
         }
-
     }
 }
 

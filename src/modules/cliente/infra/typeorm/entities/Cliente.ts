@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
 @Entity('clientes')
@@ -25,7 +26,9 @@ class Cliente {
     @CreateDateColumn({ name: 'created_at' })
     createdAt?: Date;
 
-
+    @OneToMany(() => Telefone, telefone => telefone.customer)
+    phones: Telefone[]
+        
     constructor() {
         if (!this.id) {
             this.id = uuidV4();

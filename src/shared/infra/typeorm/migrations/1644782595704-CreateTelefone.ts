@@ -5,7 +5,7 @@ export class CreateTelefone1644782595704 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "telephones",
+                name: "telefones",
                 columns: [
                     {
                         name: "id",
@@ -35,7 +35,7 @@ export class CreateTelefone1644782595704 implements MigrationInterface {
                 foreignKeys: [
                     {
                         name: "customer",
-                        referencedTableName: "customers",
+                        referencedTableName: "clientes",
                         referencedColumnNames: ["id"],
                         columnNames: ["customer_id"],
                         onUpdate: "RESTRICT",
@@ -43,7 +43,7 @@ export class CreateTelefone1644782595704 implements MigrationInterface {
                     },
                     {
                         name: "user",
-                        referencedTableName: "users",
+                        referencedTableName: "usuarios",
                         referencedColumnNames: ["id"],
                         columnNames: ["user_id"],
                         onUpdate: "RESTRICT",
