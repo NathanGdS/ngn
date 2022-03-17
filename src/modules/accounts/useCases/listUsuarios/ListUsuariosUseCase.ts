@@ -1,8 +1,6 @@
-import { ICreateUsuarioDTO } from "@modules/accounts/dtos/ICreateUsuarioDTO";
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
 import { Usuario } from "@modules/accounts/infra/typeorm/entities/Usuario";
 import { inject, injectable } from "tsyringe";
-
 
 @injectable()
 class ListUsuariosUseCase {
@@ -16,7 +14,6 @@ class ListUsuariosUseCase {
         const usuarios = this.usuarioRepository.findAll();
 
         return usuarios;
-
     }
 }
 

@@ -1,7 +1,7 @@
 interface ICreateTelefoneDTO {
     number: string;
-    customer?: string;
-    user?: string; 
+    customerId?: string;
+    userId?: string; 
 }
 
 export { ICreateTelefoneDTO };

@@ -4,6 +4,7 @@ import { ICreateUsuarioDTO } from "@modules/accounts/dtos/ICreateUsuarioDTO";
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
 
 import { Usuario } from "../entities/Usuario";
+import { IUpdateUsuarioDTO } from "@modules/accounts/dtos/IUpdateUsuarioDTO";
 
 class UsuarioRepository implements IUsuarioRepository {
     private repository: Repository<Usuario>;
@@ -42,6 +43,27 @@ class UsuarioRepository implements IUsuarioRepository {
 
     async findByCPF(cpf: string): Promise<Usuario> {
         return this.repository.findOne({cpf});
+    }
+
+    async update({id, name, password, cpf, email, isAdmin}: IUpdateUsuarioDTO): Promise<Usuario> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({
+                name,
+                password,
+                cpf,
+                email,
+                isAdmin
+            })
+            .where("id = :id")
+            .setParameters({ id })
+            .execute()
+        return this.repository.findOne({ id });
+    }
+    
+    delete(id: string): void {
+        this.repository.delete({ id });
     }
   
 }

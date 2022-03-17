@@ -9,9 +9,11 @@ class TelefoneRepository implements ITelefoneRepository {
     constructor() {
         this.repository = getRepository(Telefone);
     }
-    async create({ number, customer, user }: ICreateTelefoneDTO): Promise<Telefone> {
+    async create({ number, customerId, userId }: ICreateTelefoneDTO): Promise<Telefone> {
         const telefone = this.repository.create({
-            
+            number,
+            customerId,
+            userId
         });
 
         await this.repository.save(telefone);
@@ -20,29 +22,38 @@ class TelefoneRepository implements ITelefoneRepository {
     }
 
     findAll(): Promise<Telefone[]> {
-        throw new Error("Method not implemented.");
+        return this.repository.find();
     }
 
     findById(id: string): Promise<Telefone> {
-        throw new Error("Method not implemented.");
+        return this.repository.findOne({ id });
     }
 
     findByUser(userId: string): Promise<Telefone[]> {
-        throw new Error("Method not implemented.");
+        return this.repository.find({ userId });
     }
 
     findByCustomer(customerId: string): Promise<Telefone[]> {
-        throw new Error("Method not implemented.");
+        return this.repository.find({ customerId });
     }
 
-    update(id: string, number: string): Promise<Telefone> {
-        throw new Error("Method not implemented.");
+    async update(id: string, number: string): Promise<Telefone> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({
+                number
+            })
+            .where("id = :id")
+            .setParameters({ id })
+            .execute()
+        
+        return this.repository.findOne({ id });
     }
 
     delete(id: string): void {
-        throw new Error("Method not implemented.");
+        this.repository.delete({id})
     }
-
 }
 
 export { TelefoneRepository };

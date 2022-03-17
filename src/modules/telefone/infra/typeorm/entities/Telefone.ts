@@ -15,10 +15,10 @@ class Telefone {
     createdAt: Date;
 
     @ManyToOne(() => Cliente, cliente => cliente.phones, { eager: true })
-    customer?: Cliente;
+    customerId?: string;
 
     @ManyToOne(() => Usuario, usuario => usuario.phones, { eager: true })
-    user?: Usuario;
+    userId?: string;
 
     constructor() {
         if (!this.id) {

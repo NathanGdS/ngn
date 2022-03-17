@@ -16,6 +16,9 @@ import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepos
 import { ClienteRepository } from "@modules/cliente/infra/typeorm/repositories/ClienteRepository";
 import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
 
+import { ITelefoneRepository } from "@modules/telefone/repositories/ITelefoneRepository";
+import { TelefoneRepository } from "@modules/telefone/infra/typeorm/repositories/TelefoneRepository";
+
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
     TipoAutomovelRepository
@@ -36,3 +39,7 @@ container.registerSingleton<IClienteRepository>(
     ClienteRepository
 );
 
+container.registerSingleton<ITelefoneRepository>(
+    "TelefoneRepository",
+    TelefoneRepository
+)
