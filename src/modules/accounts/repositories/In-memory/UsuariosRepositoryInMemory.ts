@@ -4,7 +4,7 @@ import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepos
 import { IUpdateUsuarioDTO } from "@modules/accounts/dtos/IUpdateUsuarioDTO";
 
 
-class UsuariosRepositoryInMemory implements IUsuarioRepository {
+class UsuarioRepositoryInMemory implements IUsuarioRepository {
     usuarios: Usuario[] = [];
 
     async create({
@@ -61,4 +61,4 @@ class UsuariosRepositoryInMemory implements IUsuarioRepository {
 
 }
 
-export { UsuariosRepositoryInMemory };
+export { UsuarioRepositoryInMemory };

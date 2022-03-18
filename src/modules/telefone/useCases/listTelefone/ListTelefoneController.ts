@@ -5,11 +5,11 @@ import { ListTelefoneUseCase } from "./ListTelefoneUseCase";
 class ListTelefoneController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const lisTelefoneUseCase = container.resolve(
+            const listTelefoneUseCase = container.resolve(
                 ListTelefoneUseCase
             );
 
-            const telefones = await lisTelefoneUseCase.execute();
+            const telefones = await listTelefoneUseCase.execute();
 
             return response.status(200).json(telefones);
         } catch (e) {

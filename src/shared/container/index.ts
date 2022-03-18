@@ -8,7 +8,7 @@ import { ITipoAutomovelRepository } from "@modules/automovel/repositories/ITipoA
 import { AutomovelRepository } from "@modules/automovel/infra/typeorm/repositories/AutomovelRepository";
 import { IAutomovelRepository } from "@modules/automovel/repositories/IAutomovelRepository";
 
-// import { UsuariosRepositoryInMemory } from "@modules/accounts/repositories/In-memory/UsuariosRepositoryInMemory";
+// import { UsuarioRepositoryInMemory } from "@modules/accounts/repositories/In-memory/UsuariosRepositoryInMemory";
 import { UsuarioRepository } from "@modules/accounts/infra/typeorm/repositories/UsuarioRepository";
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
 
@@ -16,6 +16,7 @@ import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepos
 import { ClienteRepository } from "@modules/cliente/infra/typeorm/repositories/ClienteRepository";
 import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
 
+// import { TelefoneRepositoryInMemory } from "@modules/telefone/repositories/In-Memory/TelefoneRepositoryInMemory";
 import { ITelefoneRepository } from "@modules/telefone/repositories/ITelefoneRepository";
 import { TelefoneRepository } from "@modules/telefone/infra/typeorm/repositories/TelefoneRepository";
 
@@ -42,4 +43,4 @@ container.registerSingleton<IClienteRepository>(
 container.registerSingleton<ITelefoneRepository>(
     "TelefoneRepository",
     TelefoneRepository
-)
+);
