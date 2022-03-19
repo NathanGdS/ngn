@@ -1,8 +1,10 @@
+import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
+import { Endereco } from "@modules/endereco/infra/typeorm/entities/Endereco";
 import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity('clientes')
+@Entity("clientes")
 class Cliente {
 
     @PrimaryGeneratedColumn('uuid')
@@ -26,8 +28,14 @@ class Cliente {
     @CreateDateColumn({ name: 'created_at' })
     createdAt?: Date;
 
-    @OneToMany(() => Telefone, telefone => telefone.customer)
-    phones: Telefone[]
+    @OneToMany(() => Automovel, automovel => automovel.customerId)
+    automobiles: Automovel[];
+
+    @OneToMany(() => Telefone, telefone => telefone.customerId)
+    phones: Telefone[];
+
+    @OneToOne(() => Endereco, endereco => endereco.customerId)
+    addresses: Endereco;
         
     constructor() {
         if (!this.id) {

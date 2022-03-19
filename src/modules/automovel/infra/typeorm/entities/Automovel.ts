@@ -1,3 +1,4 @@
+import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 import { TipoAutomovel } from "./TipoAutomovel";
@@ -35,6 +36,13 @@ class Automovel {
 
     @Column()
     typeId: string;
+
+    @ManyToOne(() => Cliente, { eager: true })
+    @JoinColumn({ name: "customerId" })
+    cliente: Cliente;
+
+    @Column()
+    customerId: string;
         
     constructor() {
         if (!this.id) {

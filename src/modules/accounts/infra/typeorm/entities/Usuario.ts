@@ -26,7 +26,7 @@ class Usuario {
     @CreateDateColumn({name: 'created_at'})
     createdAt?: Date;
 
-    @OneToMany(() => Telefone, telefone => telefone.user)
+    @OneToMany(() => Telefone, telefone => telefone.userId)
     phones: Telefone[];
 
     constructor () {

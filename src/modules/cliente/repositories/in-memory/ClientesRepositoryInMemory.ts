@@ -60,3 +60,5 @@ class ClientesRepositoryInMemory implements IClienteRepository {
         this.clientes.splice(findIndex, 1);
     }
 }
+
+export { ClientesRepositoryInMemory };

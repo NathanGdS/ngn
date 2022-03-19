@@ -20,6 +20,10 @@ import { IClienteRepository } from "@modules/cliente/repositories/IClienteReposi
 import { ITelefoneRepository } from "@modules/telefone/repositories/ITelefoneRepository";
 import { TelefoneRepository } from "@modules/telefone/infra/typeorm/repositories/TelefoneRepository";
 
+// import { EnderecoRepositoryInMemory } from "@modules/endereco/repositories/In-memory/EnderecoRepositoryInMemory";
+import { IEnderecoRepository } from "@modules/endereco/repositories/IEnderecoRepository";
+import { EnderecoRepository } from "@modules/endereco/infra/typeorm/repositories/EnderecoRepository";
+
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
     TipoAutomovelRepository
@@ -43,4 +47,9 @@ container.registerSingleton<IClienteRepository>(
 container.registerSingleton<ITelefoneRepository>(
     "TelefoneRepository",
     TelefoneRepository
+);
+
+container.registerSingleton<IEnderecoRepository>(
+    "EnderecoRepository",
+    EnderecoRepository
 );
