@@ -11,7 +11,7 @@
       "@shared/*": ["shared/*"],
       "@errors/*": ["./shared/errors/*"],
       "@utils/*": ["utils/*"],
-      "@middlewares/*": ["middlewares/*"]
+      "@middlewares/*": ["./shared/infra/http/middlewares/*"]
   },
     "esModuleInterop": true,
     "experimentalDecorators": true,
