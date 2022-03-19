@@ -11,6 +11,51 @@
     "host": "localhost:8080",
     "basePath": "/",
     "paths": {
+        "/login": {
+            "post": {
+                "tags": ["Autenticação"],
+                "summary": "Make the authentication",
+                "description": "Get the bearer token for authentication",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example":{
+                                "email": "ngnapi@corp.ngn.com",
+                                "password": "strongpassword"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type":"object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/automovel/tipo": {
             "get": {
                 "tags": ["TipoAutomovel"],
