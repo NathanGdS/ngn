@@ -8,6 +8,8 @@ import { DeleteTipoAutomovelController } from "@modules/automovel/useCases/delet
 import { CreateAutomovelController } from "@modules/automovel/useCases/createAutomovel/CreateAutomovelController";
 import { ListAutomovelController } from "@modules/automovel/useCases/listAutomovel/ListAutomovelController";
 
+import { ensureAuthenticated } from "@middlewares/ensureAuthentication";
+
 const automovelRoutes = Router();
 
 const createTipoAutomovelController = new CreateTipoAutomovelController();
@@ -18,46 +20,14 @@ const deleteTipoAutomovelController = new DeleteTipoAutomovelController();
 const createAutomovelController = new CreateAutomovelController();
 const listAutomovelController = new ListAutomovelController();
 
-automovelRoutes.post("/", createAutomovelController.handle);
+automovelRoutes.post("/", ensureAuthenticated, createAutomovelController.handle);
 automovelRoutes.get("/", listAutomovelController.handle);
 
 
-/**
- * @swagger
- * /automovel/tipo:
- *  post:
- *   summary: Create a new Tipo Automovel
- *   requestBody:
- *    content:
- *     application/json:
- *      schema:
- *       type: object
- *       properties:
- *        description:
- *         type: string
- *         description: The Tipo Usuario's description.
- *         example: SUV
- *   description: Create a new Tipo Automovel
- *   responses:
- *     201:
- *       description: Created.
- */
-automovelRoutes.post("/tipo", createTipoAutomovelController.handle);
-/**
- *  @swagger
- *  /automovel/tipo:
- *      get:
- *          summary: Get Tipo Automoveis
- *          description: Get all Tipo Automoveis
- *          responses:
- *              200:
- *                  description: Returns a mysterious string.
- */
+automovelRoutes.post("/tipo", ensureAuthenticated, createTipoAutomovelController.handle);
 automovelRoutes.get("/tipo", listTipoAutomovelController.handle);
-automovelRoutes.patch("/tipo/:id", updateTipoAutomovelController.handle)
-automovelRoutes.delete("/tipo/:id", deleteTipoAutomovelController.handle);
-
-
+automovelRoutes.patch("/tipo/:id", ensureAuthenticated, updateTipoAutomovelController.handle)
+automovelRoutes.delete("/tipo/:id", ensureAuthenticated, deleteTipoAutomovelController.handle);
 
 
 export { automovelRoutes }; 
