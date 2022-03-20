@@ -42,7 +42,7 @@ export class CreateEndereco1644782601539 implements MigrationInterface {
                         isNullable: false
                     },
                     {
-                        name: "add_fu",
+                        name: "add_uf",
                         type: "varchar",
                         isNullable: false
                     },
@@ -85,7 +85,7 @@ export class CreateEndereco1644782601539 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("adresses");
+        await queryRunner.dropTable("enderecos");
     }
 
 }
