@@ -10,12 +10,12 @@ class UpdateTelefoneUseCase {
         private telefoneRepository: ITelefoneRepository
     ) { }
     
-    async execute({number, id}): Promise<Telefone> {
+    async execute({id, number}): Promise<Telefone> {
         const telefoneExists = await this.telefoneRepository.findById(id);
 
         if (!telefoneExists) throw new AppError('Telefone não existe!')
 
-        const telefone = await this.telefoneRepository.update(number, id);
+        const telefone = await this.telefoneRepository.update(id, number);
 
         return telefone;
     }

@@ -24,28 +24,28 @@ export class CreateTelefone1644782595704 implements MigrationInterface {
                         default: "now()"
                     },
                     {
-                        name: "customer_id",
+                        name: "customerId",
                         type: "uuid"
                     },
                     {
-                        name: "user_id",
+                        name: "userId",
                         type: "uuid"
                     }
                 ],
                 foreignKeys: [
                     {
-                        name: "customer",
+                        name: "customerIdFK",
                         referencedTableName: "clientes",
                         referencedColumnNames: ["id"],
-                        columnNames: ["customer_id"],
+                        columnNames: ["customerId"],
                         onUpdate: "RESTRICT",
                         onDelete: "RESTRICT"
                     },
                     {
-                        name: "user",
+                        name: "userIdFK",
                         referencedTableName: "usuarios",
                         referencedColumnNames: ["id"],
-                        columnNames: ["user_id"],
+                        columnNames: ["userId"],
                         onUpdate: "RESTRICT",
                         onDelete: "RESTRICT"
                     }
@@ -55,7 +55,7 @@ export class CreateTelefone1644782595704 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("telephones");
+        await queryRunner.dropTable("telefones");
     }
 
 }

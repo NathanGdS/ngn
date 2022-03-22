@@ -27,10 +27,7 @@ class CreateTelefoneUseCase {
             if (telefoneExists.find(customer => customer.number === number)) {
                 throw new AppError('Telefone já existe!')
             }
-            telefone = await this.telefoneRepository.create({ number, customerId });
-            
-        } else {
-            throw new AppError('Cliente não existe!')
+            telefone = await this.telefoneRepository.create({ number, customerId });   
         }
 
         if (verifyUserId) {
@@ -39,8 +36,6 @@ class CreateTelefoneUseCase {
                 throw new AppError('Telefone já existe!')
             }
             telefone = await this.telefoneRepository.create({ number, userId });
-        } else {
-            throw new AppError('Usuário não existe!')
         }
 
         return telefone;
