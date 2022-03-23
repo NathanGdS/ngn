@@ -1,5 +1,6 @@
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
 import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
+import { ICreateEnderecoDTO } from "@modules/endereco/dtos/ICreateEnderecoDTO";
 import { Endereco } from "@modules/endereco/infra/typeorm/entities/Endereco";
 import { IEnderecoRepository } from "@modules/endereco/repositories/IEnderecoRepository";
 import { AppError } from "@shared/errors/AppError";
@@ -28,7 +29,7 @@ class CreateEnderecoUseCase {
         town,
         uf,
         customerId,
-        userId }): Promise<Endereco> {
+        userId }: ICreateEnderecoDTO): Promise<Endereco> {
         let endereco: Endereco;
         
         const clienteExists = await this.clienteRepository.findById(customerId);

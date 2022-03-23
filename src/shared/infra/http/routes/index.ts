@@ -3,13 +3,14 @@ import { Router } from "express";
 import { automovelRoutes } from "./automovel.routes";
 import { usuarioRoutes } from "./usuarios.routes";
 import { authenticateRoutes } from "./authenticate.routes";
+import { clienteRoutes } from "./clientes.routes";
 
 const router = Router();
 
 router.use("/automovel", automovelRoutes);
 router.use("/usuarios", usuarioRoutes);
 router.use("/login", authenticateRoutes);
-// router.use("/cliente", clienteRoutes);
+router.use("/cliente", clienteRoutes);
 // import { ListTipoAutomovelController } from "@modules/automovel/useCases/listTipoAutomovel/ListTipoAutomovelController";
 // const listTipoAutomovelController = new ListTipoAutomovelController();
 
@@ -37,3 +38,7 @@ router.use("/login", authenticateRoutes);
 // });
 
 export { router };
+
+// function clienteRoutes(arg0: string, clienteRoutes: any) {
+//     throw new Error("Function not implemented.");
+// }
