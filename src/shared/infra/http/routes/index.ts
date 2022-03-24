@@ -10,7 +10,7 @@ const router = Router();
 router.use("/automovel", automovelRoutes);
 router.use("/usuarios", usuarioRoutes);
 router.use("/login", authenticateRoutes);
-router.use("/cliente", clienteRoutes);
+router.use("/clientes", clienteRoutes);
 // import { ListTipoAutomovelController } from "@modules/automovel/useCases/listTipoAutomovel/ListTipoAutomovelController";
 // const listTipoAutomovelController = new ListTipoAutomovelController();
 

@@ -13,8 +13,6 @@ class ListClienteUseCase {
     async execute(): Promise<Cliente[]> {
         const clientes = await this.clienteRepository.findAll();
 
-        if (!clientes) throw new AppError('No Clientes found!');
-
         return clientes;
     }
 }

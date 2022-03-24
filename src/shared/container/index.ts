@@ -24,6 +24,10 @@ import { TelefoneRepository } from "@modules/telefone/infra/typeorm/repositories
 // import { IEnderecoRepository } from "@modules/endereco/repositories/IEnderecoRepository";
 // import { EnderecoRepository } from "@modules/endereco/infra/typeorm/repositories/EnderecoRepository";
 
+// import { StatusOrdemRepositoryInMemory } from "@modules/ordemServico/repositories/In-memory/StatusOrdemRepositoryInMemory";
+import { IStatusOrdemRepository } from "@modules/ordemServico/repositories/IStatusOrdemRepository";
+import { StatusOrdemRepository } from "@modules/ordemServico/infra/typeorm/repositories/StatusOrdemRepository";
+
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
     TipoAutomovelRepository
@@ -39,10 +43,10 @@ container.registerSingleton<IUsuarioRepository>(
     UsuarioRepository
 );
 
-// container.registerSingleton<IClienteRepository>(
-//     "ClienteRepository",
-//     ClienteRepository
-// );
+container.registerSingleton<IClienteRepository>(
+    "ClienteRepository",
+    ClienteRepository
+);
 
 // container.registerSingleton<ITelefoneRepository>(
 //     "TelefoneRepository",
@@ -53,3 +57,8 @@ container.registerSingleton<IUsuarioRepository>(
 //     "EnderecoRepository",
 //     EnderecoRepository
 // );
+
+container.registerSingleton<IStatusOrdemRepository>(
+    "StatusOrdemRepository",
+    StatusOrdemRepository
+);
