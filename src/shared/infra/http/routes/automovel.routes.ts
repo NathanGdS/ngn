@@ -21,11 +21,11 @@ const createAutomovelController = new CreateAutomovelController();
 const listAutomovelController = new ListAutomovelController();
 
 automovelRoutes.post("/", ensureAuthenticated, createAutomovelController.handle);
-automovelRoutes.get("/", listAutomovelController.handle);
+automovelRoutes.get("/", ensureAuthenticated, listAutomovelController.handle);
 
 
 automovelRoutes.post("/tipo", ensureAuthenticated, createTipoAutomovelController.handle);
-automovelRoutes.get("/tipo", listTipoAutomovelController.handle);
+automovelRoutes.get("/tipo", ensureAuthenticated, listTipoAutomovelController.handle);
 automovelRoutes.patch("/tipo/:id", ensureAuthenticated, updateTipoAutomovelController.handle)
 automovelRoutes.delete("/tipo/:id", ensureAuthenticated, deleteTipoAutomovelController.handle);
 

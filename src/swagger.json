@@ -10,6 +10,15 @@
     },
     "host": "localhost:8080",
     "basePath": "/",
+    "components": {        
+        "securitySchemes": {
+          "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+          }
+        }
+      },
     "paths": {
         "/login": {
             "post": {
@@ -58,6 +67,11 @@
         },
         "/automovel/tipo": {
             "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
                 "tags": ["TipoAutomovel"],
                 "summary": "List all Tipo Automovel",
                 "responses": {
@@ -88,6 +102,11 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
                 "tags": ["TipoAutomovel"],
                 "summary": "Create a new Tipo Automovel",
                 "requestBody": {
@@ -156,6 +175,11 @@
         },
         "/automovel/tipo/{tipo_id}": {
             "patch": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
                 "tags": ["TipoAutomovel"],
                 "summary": "Update Description of Tipo Automovel",
                 "parameters": [
@@ -213,6 +237,11 @@
                 }
             },
             "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
                 "tags": ["TipoAutomovel"],
                 "summary": "Delete an Tipo Automovel",
                 "parameters": [
@@ -234,6 +263,11 @@
         },
         "/automovel": {
             "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
                 "tags": ["Automovel"],
                 "summary": "List all Automoveis",
                 "responses": {
@@ -295,6 +329,11 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
                 "tags": ["Automovel"],
                 "summary": "Create a new Automovel",
                 "requestBody": {
