@@ -6,13 +6,13 @@ import { CreateAutomovelUseCase } from "./CreateAutomovelUseCase";
 class CreateAutomovelController {
     async handle(request: Request, response: Response): Promise<Response> {
         try{
-            const { plate, model, brand, color, year, renavam, typeId } = request.body;
+            const { plate, model, brand, color, year, renavam, typeId, customerId } = request.body;
 
             const createAutomovelUseCase = container.resolve(
                 CreateAutomovelUseCase
             );
 
-            const automovel = await createAutomovelUseCase.execute({ plate, model, brand, color, year, renavam, typeId });
+            const automovel = await createAutomovelUseCase.execute({ plate, model, brand, color, year, renavam, typeId, customerId });
 
             return response.status(201).json(automovel);
             // return response.status(200).json({message: "automovel controller"});

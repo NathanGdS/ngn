@@ -16,8 +16,8 @@ class CreateClienteUseCase {
         const emailExists = await this.clienteRepository.findByEmail(email);
         const cpfExists = await this.clienteRepository.findByCPF(cpf);
         
-        if (emailExists) throw new AppError('Email already in use!');
-        if (cpfExists) throw new AppError('CPF already in use!');
+        if (emailExists) throw new AppError('Email já cadastrado!');
+        if (cpfExists) throw new AppError('CPF já cadastrado!');
 
         const cliente = await this.clienteRepository.create({ name, email, cpf, rg, birthDate });
 

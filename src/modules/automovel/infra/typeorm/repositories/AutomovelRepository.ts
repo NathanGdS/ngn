@@ -13,23 +13,24 @@ class AutomovelRepository implements IAutomovelRepository {
     }
 
     async create({
+        plate,
+        model,
         brand,
         color,
-        // customerId,
-        model,
-        plate,
+        year,
         renavam,
         typeId,
-        year
+        customerId
     }: ICreateAutomovelDTO): Promise<Automovel> {
         const automovel = this.repository.create({
+            plate,
+            model,
             brand,
             color,
-            model,
-            plate,
+            year,
             renavam,
             typeId,
-            year
+            customerId
         });
 
         await this.repository.save(automovel);
@@ -46,7 +47,9 @@ class AutomovelRepository implements IAutomovelRepository {
         return this.repository.findOne({id});
     }
 
-  
+    async findByRenavam(renavam: number): Promise<Automovel> {
+        return this.repository.findOne({ renavam });
+    }
 }
 
 export { AutomovelRepository };

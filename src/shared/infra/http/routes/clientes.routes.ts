@@ -8,6 +8,7 @@ import { DeleteClienteController } from "@modules/cliente/useCases/deleteCliente
 
 import { CreateTelefoneController } from "@modules/telefone/useCases/createTelefone/CreateTelefoneController";
 import { ListTelefoneController } from "@modules/telefone/useCases/listTelefone/ListTelefoneController";
+import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
 
 // import { CreateEnderecoController } from "@modules/endereco/useCases/createEndereco/CreateEnderecoController";
 // import { ListEnderecoController } from "@modules/endereco/useCases/listEndereco/ListEnderecoController";
@@ -25,10 +26,10 @@ const deleteClienteController = new DeleteClienteController();
 // const createEnderecoController = new CreateEnderecoController();
 // const listEnderecoController = new ListEnderecoController();
 
-clienteRoutes.post("/", createClienteController.handle);
-clienteRoutes.get("/", listClienteController.handle);
-clienteRoutes.put("/:id", updateClienteController.handle);
-clienteRoutes.delete("/:id", deleteClienteController.handle);
+clienteRoutes.post("/", ensureAuthenticated, createClienteController.handle);
+clienteRoutes.get("/", ensureAuthenticated, listClienteController.handle);
+clienteRoutes.put("/:id", ensureAuthenticated, updateClienteController.handle);
+clienteRoutes.delete("/:id", ensureAuthenticated, deleteClienteController.handle);
 
 // clienteRoutes.post("/telefone", createTelefoneController.handle);
 // clienteRoutes.get("/telefone", listTelefoneController.handle);
