@@ -15,7 +15,7 @@ class UpdateAutomovelController {
             
             const automovel = await updateAutomovelUseCase.execute({ id, plate, model, brand, color, year, renavam, typeId })
 
-            return response.status(200).json(automovel);
+            return response.status(200).json(automovel)
         } catch (e) {
             return response.status(400).json({ error: e.message })
         }

@@ -75,9 +75,13 @@ class AutomovelRepository implements IAutomovelRepository {
             })
             .where("id = :id")
             .setParameters({ id })
-            .execute();
+            .execute()
         
-        return this.repository.findOne({ id });
+        return this.repository.findOne({ id })
+    }
+
+    delete(id: string): void {
+        this.repository.delete({ id })
     }
 }
 
