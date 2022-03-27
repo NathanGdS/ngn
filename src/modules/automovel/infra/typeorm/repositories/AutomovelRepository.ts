@@ -4,6 +4,7 @@ import { ICreateAutomovelDTO } from "@modules/automovel/dtos/ICreateAutomovelDTO
 import { IAutomovelRepository } from "@modules/automovel/repositories/IAutomovelRepository";
 
 import { Automovel } from "../entities/Automovel";
+import { IUpdateAutomovelDTO } from "@modules/automovel/dtos/IUpdateAutomovelDTO";
 
 class AutomovelRepository implements IAutomovelRepository {
     private repository: Repository<Automovel>;
@@ -49,6 +50,34 @@ class AutomovelRepository implements IAutomovelRepository {
 
     async findByRenavam(renavam: number): Promise<Automovel> {
         return this.repository.findOne({ renavam });
+    }
+
+    async update({
+        id,
+        plate,
+        model,
+        brand,
+        color,
+        year,
+        renavam,
+        typeId}: IUpdateAutomovelDTO): Promise<Automovel> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({
+                plate,
+                model,
+                brand,
+                color,
+                year,
+                renavam,
+                typeId
+            })
+            .where("id = :id")
+            .setParameters({ id })
+            .execute();
+        
+        return this.repository.findOne({ id });
     }
 }
 
