@@ -16,29 +16,36 @@ class CreateTelefoneUseCase {
         @inject("ClienteRepository")
         private clienteRepository: IClienteRepository
     ) { }
-
+    
     async execute({ number, customerId, userId }: ICreateTelefoneDTO): Promise<Telefone> {
-        const verifyCustomerId = this.clienteRepository.findById(customerId);
-        const verifyUserId = this.usuarioRepository.findById(userId);
-        let telefone: Telefone;
+        /** SE TIVER CUSTOMER ID */
+        if (customerId) {
+            const verifyCustomerId = this.clienteRepository.findById(customerId)
+            if (verifyCustomerId) {
+                console.log("entrou aqui");
+                const telefoneExists = await this.telefoneRepository.findByCustomer(customerId)
+                if (telefoneExists.find(customer => customer.number === number)) {
+                    throw new AppError('Telefone já cadastrado!')
+                }
+                const telefone = await this.telefoneRepository.create({ number, customerId })
 
-        if (verifyCustomerId) {
-            const telefoneExists = await this.telefoneRepository.findByCustomer(customerId)
-            if (telefoneExists.find(customer => customer.number === number)) {
-                throw new AppError('Telefone já existe!')
+                return telefone
             }
-            telefone = await this.telefoneRepository.create({ number, customerId });   
         }
-
-        if (verifyUserId) {
-            const telefoneExists = await this.telefoneRepository.findByUser(userId)
-            if (telefoneExists.find(user => user.number === number)) {
-                throw new AppError('Telefone já existe!')
+        /** SE TIVER USER ID */
+        if (userId) {
+            const verifyUserId = this.usuarioRepository.findById(userId)
+            if (verifyUserId) {
+                console.log("entrou acá");
+                const telefoneExists = await this.telefoneRepository.findByUser(userId)
+                if (telefoneExists.find(user => user.number === number)) {
+                    console.log("entrou acá 2");
+                    throw new AppError('Telefone já cadastrado!')
+                }
+                const telefone = await this.telefoneRepository.create({ number, userId })
+                return telefone
             }
-            telefone = await this.telefoneRepository.create({ number, userId });
         }
-
-        return telefone;
     }
 }
 
