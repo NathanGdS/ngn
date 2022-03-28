@@ -48,10 +48,10 @@ container.registerSingleton<IClienteRepository>(
     ClienteRepository
 );
 
-// container.registerSingleton<ITelefoneRepository>(
-//     "TelefoneRepository",
-//     TelefoneRepository
-// );
+ container.registerSingleton<ITelefoneRepository>(
+     "TelefoneRepository",
+     TelefoneRepository
+ );
 
 // container.registerSingleton<IEnderecoRepository>(
 //     "EnderecoRepository",

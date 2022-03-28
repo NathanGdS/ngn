@@ -35,10 +35,10 @@ clienteRoutes.get("/", ensureAuthenticated, listClienteController.handle);
 clienteRoutes.put("/:id", ensureAuthenticated, updateClienteController.handle);
 clienteRoutes.delete("/:id", ensureAuthenticated, deleteClienteController.handle);
 
-clienteRoutes.post("/telefone", createTelefoneController.handle);
-clienteRoutes.get("/telefone", listTelefoneController.handle);
-clienteRoutes.put("/:id", ensureAuthenticated, updateTelefoneController.handle);
-clienteRoutes.delete("/:id", ensureAuthenticated, deleteTelefoneController.handle);
+clienteRoutes.post("/telefone", ensureAuthenticated, createTelefoneController.handle);
+clienteRoutes.get("/telefone", ensureAuthenticated, listTelefoneController.handle);
+clienteRoutes.put("/telefone/:id", ensureAuthenticated, updateTelefoneController.handle);
+clienteRoutes.delete("/telefone/:id", ensureAuthenticated, deleteTelefoneController.handle);
 
 // clienteRoutes.post("/endereco", createEnderecoController.handle);
 // clienteRoutes.get("/endereco", listEnderecoController.handle);

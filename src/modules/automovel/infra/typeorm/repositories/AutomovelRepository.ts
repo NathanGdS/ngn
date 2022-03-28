@@ -49,7 +49,7 @@ class AutomovelRepository implements IAutomovelRepository {
     }
 
     async findByRenavam(renavam: number): Promise<Automovel> {
-        return this.repository.findOne({ renavam });
+        return this.repository.findOne({renavam});
     }
 
     async update({

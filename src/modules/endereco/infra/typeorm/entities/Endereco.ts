@@ -8,25 +8,25 @@ class Endereco {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({ name: 'add_cep' })
+    @Column({ name: 'cep' })
     cep: string;
 
-    @Column({ name: 'add_street' })
+    @Column({ name: 'street' })
     street: string;
 
-    @Column({ name: 'add_number' })
+    @Column({ name: 'number' })
     number: number;
 
-    @Column({ name: 'add_supplement' })
+    @Column({ name: 'supplement' })
     supplement: string;
 
-    @Column({ name: 'add_district' })
+    @Column({ name: 'district' })
     district: string;
 
-    @Column({ name: 'add_town' })
+    @Column({ name: 'town' })
     town: string;
 
-    @Column({ name: 'add_uf' })
+    @Column({ name: 'uf' })
     uf: string;
 
     @CreateDateColumn({ name: 'created_at' })

@@ -29,11 +29,11 @@ class UpdateAutomovelUseCase {
         if (!automovelExists) throw new AppError('Automóvel não existe!')
 
         const renavamExists = await this.automovelRepository.findByRenavam(renavam)
-        const tipoAutomovelExists = await this.tipoAutomovelRepository.findById(id)
-
+        const tipoAutomovelExists = await this.tipoAutomovelRepository.findById(typeId)
+        
         if (renavamExists && (renavam != automovelExists.renavam))
             throw new AppError('Este número de Renavam já foi cadastrado!')
-        
+            
         if (!tipoAutomovelExists) throw new AppError('Tipo Automóvel não existe!')
 
         const automovel = await this.automovelRepository.update({

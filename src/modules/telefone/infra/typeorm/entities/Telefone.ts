@@ -8,7 +8,7 @@ class Telefone {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({ name: 'tel_number' })
+    @Column({ name: 'number' })
     number: string;
 
     @CreateDateColumn({ name: 'created_at' })
