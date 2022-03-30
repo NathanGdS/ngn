@@ -9,6 +9,7 @@ class TelefoneRepository implements ITelefoneRepository {
     constructor() {
         this.repository = getRepository(Telefone);
     }
+    
     async create({ number, customerId, userId }: ICreateTelefoneDTO): Promise<Telefone> {
         const telefone = this.repository.create({
             number,
@@ -21,20 +22,24 @@ class TelefoneRepository implements ITelefoneRepository {
         return telefone;
     }
 
-    findAll(): Promise<Telefone[]> {
+    async findAll(): Promise<Telefone[]> {
         return this.repository.find();
     }
 
-    findById(id: string): Promise<Telefone> {
+    async findById(id: string): Promise<Telefone> {
         return this.repository.findOne({ id });
     }
 
-    findByUser(userId: string): Promise<Telefone[]> {
+    async findByUser(userId: string): Promise<Telefone[]> {
         return this.repository.find({ userId });
     }
 
-    findByCustomer(customerId: string): Promise<Telefone[]> {
+    async findByCustomer(customerId: string): Promise<Telefone[]> {
         return this.repository.find({ customerId });
+    }
+
+    async findByNumber(number: string): Promise<Telefone> {
+        return this.repository.findOne({ number });
     }
 
     async update(id: string, number: string): Promise<Telefone> {

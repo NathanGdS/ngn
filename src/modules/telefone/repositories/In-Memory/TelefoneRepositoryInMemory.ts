@@ -35,6 +35,10 @@ class TelefoneRepositoryInMemory implements ITelefoneRepository{
         return this.telefones.filter(telefone => telefone.customerId === customerId);
     }
 
+    async findByNumber(number: string): Promise<Telefone> {
+        return this.telefones.find(telefone => telefone.number === number);
+    }
+
     async update(id: string, number: string): Promise<Telefone> {
         const findIndex = this.telefones.findIndex(telefone => telefone.id === id);
         this.telefones[findIndex].number == number;

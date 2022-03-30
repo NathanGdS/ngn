@@ -52,7 +52,6 @@ class Endereco {
             this.createdAt = new Date();
         }
     }
-    
 }
 
 export { Endereco };

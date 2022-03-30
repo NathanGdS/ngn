@@ -11,8 +11,10 @@ class CreateTelefoneUseCase {
     constructor(
         @inject("TelefoneRepository")
         private telefoneRepository: ITelefoneRepository,
+
         @inject("UsuarioRepository")
         private usuarioRepository: IUsuarioRepository,
+
         @inject("ClienteRepository")
         private clienteRepository: IClienteRepository
     ) { }
@@ -22,7 +24,6 @@ class CreateTelefoneUseCase {
         if (customerId) {
             const verifyCustomerId = this.clienteRepository.findById(customerId)
             if (verifyCustomerId) {
-                console.log("entrou aqui");
                 const telefoneExists = await this.telefoneRepository.findByCustomer(customerId)
                 if (telefoneExists.find(customer => customer.number === number)) {
                     throw new AppError('Telefone já cadastrado!')

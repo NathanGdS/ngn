@@ -30,17 +30,15 @@ class CreateEnderecoUseCase {
         uf,
         customerId,
         userId }: ICreateEnderecoDTO): Promise<Endereco> {
-        let endereco: Endereco;
         
-        const clienteExists = await this.clienteRepository.findById(customerId);
-        const usuarioExists = await this.usuarioRepository.findById(userId);
-
-        if (clienteExists) {
-            const enderecoExists = await this.enderecoRepository.findByCustomer(customerId);
+        if (customerId) {
+            const verifyCustomerId = await this.clienteRepository.findById(customerId)
+            if(!verifyCustomerId) throw new AppError('Cliente não existe!')
+            const enderecoExists = await this.enderecoRepository.findByCustomer(customerId)
             if (enderecoExists) {
-                throw new AppError('Cliente pode ter apenas um endereço!');
+                throw new AppError('Cliente pode ter apenas um endereço!')
             }
-            endereco = await this.enderecoRepository.create({
+            const endereco = await this.enderecoRepository.create({
                 cep,
                 street,
                 number,
@@ -50,14 +48,18 @@ class CreateEnderecoUseCase {
                 uf,
                 customerId
             });
+
+            return endereco
         }
 
-        if (usuarioExists) {
-            const enderecoExists = await this.enderecoRepository.findByUser(userId);
+        if (userId) {
+            const verifyUserId = await this.usuarioRepository.findById(userId)
+            if (!verifyUserId) throw new AppError('Usuário não existe!')
+            const enderecoExists = await this.enderecoRepository.findByUser(userId)
             if (enderecoExists) {
-                throw new AppError('Usuário pode ter apenas um endereço!');
+                throw new AppError('Usuário pode ter apenas um endereço!')
             }
-            endereco = await this.enderecoRepository.create({
+            const endereco = await this.enderecoRepository.create({
                 cep,
                 street,
                 number,
@@ -67,9 +69,9 @@ class CreateEnderecoUseCase {
                 uf,
                 userId
             });
-        }
 
-        return endereco;
+            return endereco
+        }
     }
 }
 
