@@ -56,6 +56,10 @@ class AutomovelRepository implements IAutomovelRepository {
         return this.repository.find({ customerId });   
     }
 
+    async findByType(typeId: string): Promise<Automovel[]> {
+        return this.repository.find({ typeId });
+    }
+
     async update({
         id,
         plate,
