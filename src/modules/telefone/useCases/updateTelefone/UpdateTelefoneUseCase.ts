@@ -12,12 +12,11 @@ class UpdateTelefoneUseCase {
     
     async execute({id, number}): Promise<Telefone> {
         const telefoneIdExists = await this.telefoneRepository.findById(id)
-
         if (!telefoneIdExists) throw new AppError('Telefone não existe!')
 
         const telefoneNumberExists = await this.telefoneRepository.findByNumber(number)
+        if (telefoneNumberExists) throw new AppError('Telefone já está cadastrado!')
 
-        if (telefoneNumberExists && number != telefoneIdExists.number) throw new AppError('Telefone já está cadastrado!')
         const telefone = await this.telefoneRepository.update(id, number)
 
         return telefone;

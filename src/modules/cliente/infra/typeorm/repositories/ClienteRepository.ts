@@ -67,7 +67,7 @@ class ClienteRepository implements IClienteRepository {
     }
 
     delete(id: string): void {
-        this.repository.delete({id})
+        this.repository.delete(id)
     }
 }
 

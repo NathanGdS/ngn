@@ -29,6 +29,10 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
         return this.automoveis.find(automovel => automovel.renavam === renavam);
     }
 
+    async findByCustomer(customerId: string): Promise<Automovel[]> {
+        return this.automoveis.filter(automoveis => automoveis.customerId === customerId);
+    } 
+
     async update(data: IUpdateAutomovelDTO): Promise<Automovel> {
         const findIndex = this.automoveis.findIndex(automovel => automovel.id === data.id);
         this.automoveis[findIndex].plate = data.plate;
@@ -42,7 +46,11 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
         return this.automoveis[findIndex];
     }
 
-    
+    delete(id: string): void {
+        const findIndex = this.automoveis.findIndex(automovel => automovel.id === id);
+        this.automoveis.splice(findIndex, 1)
+    }
+
 }
 
 export { AutomovelRepositoryInMemory };
