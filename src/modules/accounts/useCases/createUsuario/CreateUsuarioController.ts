@@ -18,8 +18,7 @@ class CreateUsuarioController {
             return response.status(201).json(usuario);
 
         } catch (e) {
-            // STATUS 500 ? // EU MANDO 409
-            return response.status(500).json({ error: e.message });
+            return response.status(400).json({ error: e.message });
         }
     }
 }

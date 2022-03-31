@@ -13,7 +13,7 @@ class CreateTelefoneController {
 
             const telefone = await createTelefoneUseCase.execute({ number, customerId, userId });
 
-            return response.status(200).json(telefone);
+            return response.status(201).json(telefone);
         } catch (e) {
             return response.status(400).json({ error: e.message });
         }

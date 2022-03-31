@@ -15,7 +15,6 @@ class CreateAutomovelController {
             const automovel = await createAutomovelUseCase.execute({ plate, model, brand, color, year, renavam, typeId, customerId });
 
             return response.status(201).json(automovel);
-            // return response.status(200).json({message: "automovel controller"});
         } catch (e) {
             return response.status(400).json({ error: e.message });
         }

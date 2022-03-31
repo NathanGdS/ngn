@@ -24,7 +24,7 @@ class CreateEnderecoController {
                 userId
             });
 
-            return response.status(200).json(endereco);
+            return response.status(201).json(endereco);
         } catch (e) {
             return response.status(400).json({ error: e.message });
         }

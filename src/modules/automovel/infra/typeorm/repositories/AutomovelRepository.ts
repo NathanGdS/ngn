@@ -53,8 +53,7 @@ class AutomovelRepository implements IAutomovelRepository {
     }
 
     async findByCustomer(customerId: string): Promise<Automovel[]> {
-        return this.repository.find({ customerId });
-        
+        return this.repository.find({ customerId });   
     }
 
     async update({
