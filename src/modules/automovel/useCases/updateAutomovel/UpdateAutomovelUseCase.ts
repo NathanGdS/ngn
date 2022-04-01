@@ -14,39 +14,21 @@ class UpdateAutomovelUseCase {
         private tipoAutomovelRepository: ITipoAutomovelRepository
     ) { }
     
-    async execute({
-        id,
-        plate,
-        model,
-        brand,
-        color,
-        year,
-        renavam,
-        typeId }: IUpdateAutomovelDTO): Promise<Automovel> {
-        
+    async execute(id: string, data: IUpdateAutomovelDTO): Promise<Automovel> {
+
         const automovelExists = await this.automovelRepository.findById(id)
 
         if (!automovelExists) throw new AppError('Automóvel não existe!')
 
-        const renavamExists = await this.automovelRepository.findByRenavam(renavam)
-        const tipoAutomovelExists = await this.tipoAutomovelRepository.findById(typeId)
-        
-        if (renavamExists && (renavam != automovelExists.renavam))
-            throw new AppError('Este número de Renavam já foi cadastrado!')
-            
-        if (!tipoAutomovelExists) throw new AppError('Tipo Automóvel não existe!')
 
-        const automovel = await this.automovelRepository.update({
-            id,
-            plate,
-            model,
-            brand,
-            color,
-            year,
-            renavam,
-            typeId
-        })
-        
+        // if (data.renavam){
+        //     const renavamExists = await this.automovelRepository.findByRenavam(data.renavam)
+        //     if (renavamExists && (data.renavam != automovelExists.renavam))
+        //     throw new AppError('Este número de Renavam já foi cadastrado!')
+        // }
+
+        const automovel = await this.automovelRepository.update(id, data)
+
         return automovel
     }
 }

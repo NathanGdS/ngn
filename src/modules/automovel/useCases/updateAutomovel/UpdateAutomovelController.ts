@@ -13,7 +13,7 @@ class UpdateAutomovelController {
                 UpdateAutomovelUseCase
             )
             
-            const automovel = await updateAutomovelUseCase.execute({ id, plate, model, brand, color, year, renavam, typeId })
+            const automovel = await updateAutomovelUseCase.execute(id, { plate, model, brand, color, year, renavam, typeId })
 
             return response.status(200).json(automovel)
         } catch (e) {
