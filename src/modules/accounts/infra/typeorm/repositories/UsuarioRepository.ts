@@ -5,6 +5,7 @@ import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepos
 
 import { Usuario } from "../entities/Usuario";
 import { IUpdateUsuarioDTO } from "@modules/accounts/dtos/IUpdateUsuarioDTO";
+import { IChangePassword } from "@modules/accounts/dtos/IChangePassword";
 
 class UsuarioRepository implements IUsuarioRepository {
     private repository: Repository<Usuario>;
@@ -12,6 +13,7 @@ class UsuarioRepository implements IUsuarioRepository {
     constructor() {
         this.repository = getRepository(Usuario);
     }
+
     async create({
         cpf,
         email,
@@ -30,28 +32,29 @@ class UsuarioRepository implements IUsuarioRepository {
         return usuario;
 
     }
+
     async findAll(): Promise<Usuario[]> {
         return this.repository.find();
     }
+
     async findById(id: string): Promise<Usuario> {
         return this.repository.findOne(id);
     }
 
     async findByEmail(email: string): Promise<Usuario> {
-        return this.repository.findOne({email});
+        return this.repository.findOne({ email });
     }
 
     async findByCPF(cpf: string): Promise<Usuario> {
-        return this.repository.findOne({cpf});
+        return this.repository.findOne({ cpf });
     }
 
-    async update({id, name, password, cpf, email, isAdmin}: IUpdateUsuarioDTO): Promise<Usuario> {
+    async update({ id, name, cpf, email, isAdmin }: IUpdateUsuarioDTO): Promise<Usuario> {
         await this.repository
             .createQueryBuilder()
             .update()
             .set({
                 name,
-                password,
                 cpf,
                 email,
                 isAdmin
@@ -64,6 +67,16 @@ class UsuarioRepository implements IUsuarioRepository {
     
     delete(id: string): void {
         this.repository.delete({ id });
+    }
+
+    changePassword({id, newPassword}: IChangePassword): void {
+        this.repository
+            .createQueryBuilder()
+            .update()
+            .set({ password: newPassword })
+            .where("id = :id")
+            .setParameters({ id })
+            .execute()
     }
   
 }

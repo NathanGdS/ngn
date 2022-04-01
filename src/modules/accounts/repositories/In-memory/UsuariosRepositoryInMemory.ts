@@ -46,7 +46,6 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository {
     async update(data: IUpdateUsuarioDTO): Promise<Usuario> {
         const findIndex = this.usuarios.findIndex(usuario => usuario.id === data.id);
         this.usuarios[findIndex].name = data.name;
-        this.usuarios[findIndex].password = data.password;
         this.usuarios[findIndex].cpf = data.cpf;
         this.usuarios[findIndex].email = data.email;
         this.usuarios[findIndex].isAdmin = data.isAdmin;
@@ -57,6 +56,11 @@ class UsuarioRepositoryInMemory implements IUsuarioRepository {
     delete(id: string):void {
         const findIndex = this.usuarios.findIndex(usuario => usuario.id === id);
         this.usuarios.splice(findIndex, 1);
+    }
+
+    changePassword(id: string, newPassword: string): void {
+        const findIndex = this.usuarios.findIndex(usuario => usuario.id === id);
+        this.usuarios[findIndex].password = newPassword
     }
 
 }

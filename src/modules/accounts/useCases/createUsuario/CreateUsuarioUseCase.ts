@@ -24,7 +24,7 @@ class CreateUsuarioUseCase {
         const verifyCPF = await this.usuarioRepository.findByCPF(cpf);
 
         if (verifyEmail || verifyCPF ) {
-            throw new AppError('Usuario já existe!');
+            throw new AppError('Já existe um usuário com este Email ou CPF!');
         }
 
         const hash = hashSync(password, 8);
