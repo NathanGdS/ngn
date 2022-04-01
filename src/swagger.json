@@ -436,6 +436,32 @@
                     }
                 }
             }
+        },
+        "/automovel/{id}": {
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Automovel"],
+                "summary": "Delete an Automovel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
         }
     }
 }

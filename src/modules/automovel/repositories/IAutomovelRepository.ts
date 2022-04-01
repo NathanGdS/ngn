@@ -8,7 +8,7 @@ interface IAutomovelRepository {
     findById(id: string): Promise<Automovel>;
     findByRenavam(renavam: number): Promise<Automovel>;
     findByCustomer(customerId: string): Promise<Automovel[]>;
-    update(data: IUpdateAutomovelDTO): Promise<Automovel>;
+    update(id: string, data: IUpdateAutomovelDTO): Promise<Automovel>;
     delete(id: string): void;
 }
 

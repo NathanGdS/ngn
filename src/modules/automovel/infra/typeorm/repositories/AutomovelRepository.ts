@@ -57,27 +57,13 @@ class AutomovelRepository implements IAutomovelRepository {
         
     }
 
-    async update({
-        id,
-        plate,
-        model,
-        brand,
-        color,
-        year,
-        renavam,
-        typeId}: IUpdateAutomovelDTO): Promise<Automovel> {
+    async update(id:string, data: IUpdateAutomovelDTO): Promise<Automovel> {
         await this.repository
             .createQueryBuilder()
             .update()
-            .set({
-                plate,
-                model,
-                brand,
-                color,
-                year,
-                renavam,
-                typeId
-            })
+            .set(
+                data
+            )
             .where("id = :id")
             .setParameters({ id })
             .execute()

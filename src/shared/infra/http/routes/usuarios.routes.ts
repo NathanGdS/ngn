@@ -10,7 +10,7 @@ const usuarioRoutes = Router();
 const createUsuarioController = new CreateUsuarioController();
 const listUsuariosController = new ListUsuariosController();
 
-usuarioRoutes.post('/', ensureAuthenticated, createUsuarioController.handle);
+usuarioRoutes.post('/', createUsuarioController.handle);
 usuarioRoutes.get('/', ensureAuthenticated, listUsuariosController.handle);
 
 export { usuarioRoutes };
