@@ -3,7 +3,7 @@
     "info": {
         "title": "NGN API Documentation",
         "description": "Work Order API for Machine Shops",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "contact": {
             "email":"nathangarsantos@gmail.com"
         }
@@ -56,6 +56,55 @@
                                     "properties": {
                                         "token": {
                                             "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/usuarios": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Usuarios"],
+                "summary": "List all Usuarios",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "isAdmin": {
+                                                "type": "boolean"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "cpf": {
+                                                "type": "string"
+                                            }
                                         }
                                     }
                                 }
@@ -438,6 +487,118 @@
             }
         },
         "/automovel/{id}": {
+            "put": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Automovel"],
+                "summary": "Update a Automovel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties": {
+                                    "plate":{
+                                        "type":"string"
+                                    },
+                                    "model":{
+                                        "type":"string"
+                                    },
+                                    "brand":{
+                                        "type":"string"
+                                    },
+                                    "color":{
+                                        "type":"string"
+                                    },
+                                    "year":{
+                                        "type":"string"
+                                    },
+                                    "renavam":{
+                                        "type":"string"
+                                    },
+                                    "customerId":{
+                                        "type":"string"
+                                    },
+                                    "typeId":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Updated",
+                        "schema":{
+                            "type":"object",
+                            "properties": {
+                                "id":{
+                                    "type":"string"
+                                },
+                                "created_at":{
+                                    "type":"string"
+                                },
+                                "plate":{
+                                    "type":"string"
+                                },
+                                "model":{
+                                    "type":"string"
+                                },
+                                "brand":{
+                                    "type":"string"
+                                },
+                                "color":{
+                                    "type":"string"
+                                },
+                                "year":{
+                                    "type":"string"
+                                },
+                                "renavam":{
+                                    "type":"string"
+                                },
+                                "customerId":{
+                                    "type":"string"
+                                },
+                                "typeId":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "delete": {
                 "security": [
                     {
