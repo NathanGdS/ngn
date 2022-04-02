@@ -1,7 +1,6 @@
 import { Usuario } from "@modules/accounts/infra/typeorm/entities/Usuario";
 import { ICreateUsuarioDTO } from "@modules/accounts/dtos/ICreateUsuarioDTO";
 import { IUpdateUsuarioDTO } from "../dtos/IUpdateUsuarioDTO";
-import { IChangePassword } from "../dtos/IChangePassword";
 
 interface IUsuarioRepository {
     create(data: ICreateUsuarioDTO): Promise<Usuario>;
@@ -11,7 +10,7 @@ interface IUsuarioRepository {
     findByCPF(cpf: string): Promise<Usuario>;
     update(data: IUpdateUsuarioDTO): Promise<Usuario>;
     delete(id: string): void;
-    changePassword({ id, newPassword }: IChangePassword): void;
+    changePassword(id: string, newPassword: string): void;
 }
 
 export { IUsuarioRepository };

@@ -12,18 +12,18 @@ class ChangePasswordUseCase {
     
     async execute({ id, currentPassword, newPassword }): Promise<void>{
         const userExists = await this.usuarioRepository.findById(id)
+        if (!userExists) throw new AppError('Usuário não existe!')
         const passMatch = await compare(currentPassword, userExists.password)
-
-        if (!userExists) {
-            throw new AppError('Usuário não existe!')
-        } else if(!passMatch) {
+        
+        if (!passMatch) {
             throw new AppError('Senha Atual incorreta!')
         } else {
-            const hash = hashSync(newPassword, 8);
-            this.usuarioRepository.changePassword({
+            if (newPassword === currentPassword) throw new AppError('Nova senha não pode ser a mesma que a senha atual!')
+            const hash = hashSync(newPassword, 8);            
+            this.usuarioRepository.changePassword(
                 id,
-                newPassword: hash
-            })
+                hash
+            )
         } 
     }
 }

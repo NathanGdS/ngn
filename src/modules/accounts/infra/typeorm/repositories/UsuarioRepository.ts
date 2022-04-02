@@ -1,11 +1,8 @@
 import { getRepository, Repository } from "typeorm";
-
 import { ICreateUsuarioDTO } from "@modules/accounts/dtos/ICreateUsuarioDTO";
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
-
 import { Usuario } from "../entities/Usuario";
 import { IUpdateUsuarioDTO } from "@modules/accounts/dtos/IUpdateUsuarioDTO";
-import { IChangePassword } from "@modules/accounts/dtos/IChangePassword";
 
 class UsuarioRepository implements IUsuarioRepository {
     private repository: Repository<Usuario>;
@@ -69,7 +66,7 @@ class UsuarioRepository implements IUsuarioRepository {
         this.repository.delete({ id });
     }
 
-    changePassword({id, newPassword}: IChangePassword): void {
+    changePassword(id: string, newPassword: string): void {
         this.repository
             .createQueryBuilder()
             .update()

@@ -37,8 +37,8 @@ class AutomovelRepositoryInMemory implements IAutomovelRepository {
         return this.automoveis.filter(automoveis => automoveis.typeId === typeId);    
     }
 
-    async update(data: IUpdateAutomovelDTO): Promise<Automovel> {
-        const findIndex = this.automoveis.findIndex(automovel => automovel.id === data.id);
+    async update(id: string, data: IUpdateAutomovelDTO): Promise<Automovel> {
+        const findIndex = this.automoveis.findIndex(automovel => automovel.id === id);
         this.automoveis[findIndex].plate = data.plate;
         this.automoveis[findIndex].model = data.model;
         this.automoveis[findIndex].brand = data.brand;
