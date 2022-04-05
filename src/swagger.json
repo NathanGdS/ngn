@@ -112,6 +112,239 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": ["Usuarios"],
+                "summary": "Create a new Usuario",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type":"string"
+                                    },
+                                    "password": {
+                                        "type":"string"
+                                    },
+                                    "email": {
+                                        "type":"string"
+                                    },
+                                    "cpf": {
+                                        "type":"string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "name": "teste",
+                                "password": "teste",
+                                "email": "teste@teste.com",
+                                "cpf": "12345678909"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "isAdmin": {
+                                                "type": "boolean"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "cpf": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clientes": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Clientes"],
+                "summary": "List all Clientes",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "cpf": {
+                                                "type": "string"
+                                            },
+                                            "rg": {
+                                                "type": "string"
+                                            },
+                                            "birthDate": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Clientes"],
+                "summary": "Create a new Cliente",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type":"string"
+                                    },
+                                    "cpf": {
+                                        "type":"string"
+                                    },
+                                    "rg": {
+                                        "type":"string"
+                                    },
+                                    "birthDate": {
+                                        "type":"string"
+                                    },
+                                    "email": {
+                                        "type":"string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "name": "cliente",
+                                "cpf": "12345678909",
+                                "rg": "1233456650",
+                                "birthDate": "12345678909",
+                                "email": "cliente@cliente.com"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "cpf": {
+                                                "type":"string"
+                                            },
+                                            "rg": {
+                                                "type":"string"
+                                            },
+                                            "birthDate": {
+                                                "type":"string"
+                                            },
+                                            "email": {
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/automovel/tipo": {
