@@ -28,6 +28,11 @@ import { StatusOrdemRepository } from "@modules/ordemServico/infra/typeorm/repos
 import { EnderecoRepository } from "@modules/endereco/infra/typeorm/repositories/EnderecoRepository";
 import { IEnderecoRepository } from "@modules/endereco/repositories/IEnderecoRepository";
 
+// Ordem Procedimentos
+import { OrdemProcedimentosRepository } from "@modules/ordemServico/infra/typeorm/repositories/OrdemProcedimentosRepository";
+import { IOrdemProcedimentosRepository } from "@modules/ordemServico/repositories/IOrdemProcedimentosRepository";
+
+
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
     TipoAutomovelRepository
@@ -61,4 +66,9 @@ container.registerSingleton<IClienteRepository>(
 container.registerSingleton<IStatusOrdemRepository>(
     "StatusOrdemRepository",
     StatusOrdemRepository
+);
+
+container.registerSingleton<IOrdemProcedimentosRepository>(
+    "OrdemProcedimentoRepository",
+    OrdemProcedimentosRepository
 );
