@@ -33,6 +33,11 @@ export class CreateOrdemProcedimentos1649198273603 implements MigrationInterface
                     {
                         name: "valor_total",
                         type: "numeric"
+                    },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "now()"
                     }
                 ]
             })
