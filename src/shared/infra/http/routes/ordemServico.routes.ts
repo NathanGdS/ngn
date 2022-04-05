@@ -2,12 +2,14 @@ import { Router } from "express";
 
 import { ListOrdemProcedimentosController } from "@modules/ordemServico/useCases/listOrdemProcedimentos/ListOrdemProcedimentosController";
 
+import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+
 const ordemServicoRoutes = Router();
 
 //Ordem Procedimentos
 const listOrdemProcedimentosController = new ListOrdemProcedimentosController();
 
-ordemServicoRoutes.get("/", listOrdemProcedimentosController.handle);
+ordemServicoRoutes.get("/", ensureAuthenticated, listOrdemProcedimentosController.handle);
 
 
 
