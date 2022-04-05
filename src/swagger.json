@@ -253,6 +253,11 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
                 "tags": ["Clientes"],
                 "summary": "Create a new Cliente",
                 "requestBody": {
