@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeor
 import { v4 as uuidV4 } from "uuid";
 
 @Entity('ordem_procedimentos')
-class StatusOrdem {
+class OrdemProcedimentos {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
@@ -32,5 +32,5 @@ class StatusOrdem {
     }
 }
 
-export { StatusOrdem };
+export { OrdemProcedimentos };
 
