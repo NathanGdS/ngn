@@ -19,7 +19,7 @@ const updateUsuarioController = new UpdateUsuarioController();
 const deleteUsuarioController = new DeleteUsuarioController();
 const changePasswordController = new ChangePasswordController();
 
-usuarioRoutes.post('/', ensureAuthenticated, createUsuarioController.handle)
+usuarioRoutes.post('/', createUsuarioController.handle)
 usuarioRoutes.get('/', ensureAuthenticated, listUsuariosController.handle)
 usuarioRoutes.get("/:id", ensureAuthenticated, listByIdUsuarioController.handle)
 usuarioRoutes.put("/:id", ensureAuthenticated, updateUsuarioController.handle)

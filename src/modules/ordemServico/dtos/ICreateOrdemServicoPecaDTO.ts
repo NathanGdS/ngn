@@ -1,0 +1,5 @@
+interface ICreateOrdemServicoPecaDTO {
+    
+}
+
+export { ICreateOrdemServicoPecaDTO };

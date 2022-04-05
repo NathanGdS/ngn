@@ -18,14 +18,13 @@ class UpdateAutomovelUseCase {
 
         const automovelExists = await this.automovelRepository.findById(id)
 
-        if (!automovelExists) throw new AppError('Automóvel não existe!')
+        if (!automovelExists) throw new AppError('Este Automóvel não existe!')
 
-
-        // if (data.renavam){
-        //     const renavamExists = await this.automovelRepository.findByRenavam(data.renavam)
-        //     if (renavamExists && (data.renavam != automovelExists.renavam))
-        //     throw new AppError('Este número de Renavam já foi cadastrado!')
-        // }
+        if (data.renavam){
+            const renavamExists = await this.automovelRepository.findByRenavam(data.renavam)
+            if (renavamExists && (data.renavam != automovelExists.renavam))
+            throw new AppError('Este número de Renavam já foi cadastrado!')
+        }
 
         const automovel = await this.automovelRepository.update(id, data)
 
