@@ -13,15 +13,18 @@ class CreateClienteUseCase {
     ){}
 
     async execute({ name, email, cpf, rg, birthDate }: ICreateClienteDTO): Promise<Cliente> {
-        const emailExists = await this.clienteRepository.findByEmail(email);
-        const cpfExists = await this.clienteRepository.findByCPF(cpf);
-        
-        if (emailExists) throw new AppError('Email já cadastrado!');
-        if (cpfExists) throw new AppError('CPF já cadastrado!');
+        const emailExists = await this.clienteRepository.findByEmail(email)
+        if (emailExists) throw new AppError('Email já cadastrado!')
 
-        const cliente = await this.clienteRepository.create({ name, email, cpf, rg, birthDate });
+        const cpfExists = await this.clienteRepository.findByCPF(cpf)
+        if (cpfExists) throw new AppError('CPF já cadastrado!')
 
-        return cliente;
+        const rgExists = await this.clienteRepository.findByRG(rg)
+        if (rgExists) throw new AppError('RG já cadastrado!')
+
+        const cliente = await this.clienteRepository.create({ name, email, cpf, rg, birthDate })
+
+        return cliente
     }
 }
 

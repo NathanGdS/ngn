@@ -8,6 +8,7 @@ interface IClienteRepository {
     findById(id: string): Promise<Cliente>;
     findByEmail(email: string): Promise<Cliente>;
     findByCPF(cpf: string): Promise<Cliente>;
+    findByRG(rg: string): Promise<Cliente>;
     update(data: IUpdateClienteDTO): Promise<Cliente>;
     delete(id: string): void;
 }

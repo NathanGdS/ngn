@@ -12,20 +12,23 @@ class UpdateClienteUseCase {
     ) { }
     
     async execute({ id, name, email, cpf, rg, birthDate }: IUpdateClienteDTO): Promise<Cliente> {
-        const clienteExists = await this.clienteRepository.findById(id);
+        const clienteExists = await this.clienteRepository.findById(id)
 
-        if (!clienteExists) throw new AppError('Cliente não existe!');
+        if (!clienteExists) throw new AppError('Cliente não existe!')
 
-        const emailExists = await this.clienteRepository.findByEmail(email);
-        const cpfExists = await this.clienteRepository.findByCPF(cpf);
-
+        const emailExists = await this.clienteRepository.findByEmail(email)
         if (emailExists && (email != clienteExists.email))
             throw new AppError('Já existe outro Cliente com este Email!')
         
+        const cpfExists = await this.clienteRepository.findByCPF(cpf)
         if (cpfExists && (cpf != clienteExists.cpf))
             throw new AppError('Já existe outro Cliente com este CPF!')
         
-        const cliente = await this.clienteRepository.update({ id, name, email, cpf, rg, birthDate });
+        const rgExists = await this.clienteRepository.findByRG(rg)
+        if (rgExists && (rg != clienteExists.rg))
+            throw new AppError('Já existe outro Cliente com este RG!')
+        
+        const cliente = await this.clienteRepository.update({ id, name, email, cpf, rg, birthDate })
 
         return cliente;
     }

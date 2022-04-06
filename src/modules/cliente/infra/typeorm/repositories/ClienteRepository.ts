@@ -45,6 +45,10 @@ class ClienteRepository implements IClienteRepository {
         return this.repository.findOne({ cpf });
     }
 
+    async findByRG(rg: string): Promise<Cliente> {
+        return this.repository.findOne({ rg });
+    }
+
     async findAll(): Promise<Cliente[]> {
         return this.repository.find();
     }
