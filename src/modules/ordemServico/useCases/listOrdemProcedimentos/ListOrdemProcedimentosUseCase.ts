@@ -5,12 +5,12 @@ import { inject, injectable } from "tsyringe";
 @injectable()
 class ListOrdemProcedimentosUseCase {
     constructor(
-        @inject("OrdemProcedimentoRepository")
-        private ordemProcedimentoRepository: IOrdemProcedimentosRepository
+        @inject("OrdemProcedimentosRepository")
+        private ordemProcedimentosRepository: IOrdemProcedimentosRepository
     ) { }
 
     async execute(): Promise<OrdemProcedimentos[]> {
-        const statusOrdem = await this.ordemProcedimentoRepository.findAll();
+        const statusOrdem = await this.ordemProcedimentosRepository.findAll();
 
         return statusOrdem;
     }

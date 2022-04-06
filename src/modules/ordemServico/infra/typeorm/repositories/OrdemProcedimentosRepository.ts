@@ -11,18 +11,18 @@ class OrdemProcedimentosRepository implements IOrdemProcedimentosRepository {
     }
     
     async create({
-        descricao,
-        quantidade,
-        sequencia,
-        valor_total,
-        valor_unitario
+        sequence,
+        description,
+        unit_value,
+        amount,
+        total_value
     }: ICreateOrdemProcedimentosDTO): Promise<OrdemProcedimentos> {
         const ordemProcedimento = this.repository.create({
-            descricao,
-            quantidade,
-            sequencia,
-            valor_total,
-            valor_unitario
+            sequence,
+            description,
+            unit_value,
+            amount,
+            total_value
         });
 
         await this.repository.save(ordemProcedimento);

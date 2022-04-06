@@ -7,19 +7,19 @@ class OrdemPecas {
     id: string;
 
     @Column()
-    sequencia: number;
+    sequence: number;
 
     @Column()
-    descricao: string;
+    description: string;
 
     @Column()
-    valor_unitario: number;
+    unit_value: number;
 
     @Column()
-    quantidade: number;
+    amount: number;
 
     @Column()
-    valor_total: number;
+    total_value: number;
 
     @CreateDateColumn({ name: 'created_at' })
     createdAt?: Date;

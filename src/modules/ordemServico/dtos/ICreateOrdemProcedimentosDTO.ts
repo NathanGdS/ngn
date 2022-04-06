@@ -1,9 +1,9 @@
 interface ICreateOrdemProcedimentosDTO {
-    sequencia: number,
-    descricao: string,
-    valor_unitario: number,
-    quantidade: number,
-    valor_total: number
+    sequence: number,
+    description: string,
+    unit_value: number,
+    amount: number,
+    total_value: number
 }
 
 export { ICreateOrdemProcedimentosDTO };
