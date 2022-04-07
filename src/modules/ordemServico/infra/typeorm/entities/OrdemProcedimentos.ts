@@ -6,9 +6,6 @@ class OrdemProcedimentos {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({ name: "sequencia" })
-    sequence: number;
-
     @Column({ name: "descricao" })
     description: string;
 
