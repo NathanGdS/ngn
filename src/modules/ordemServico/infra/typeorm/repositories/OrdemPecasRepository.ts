@@ -11,18 +11,15 @@ class OrdemPecasRepository implements IOrdemPecasRepository {
     }
 
     async create({
-        sequence,
         description,
         unit_value,
-        amount,
-        total_value
+        amount
     }: ICreateOrdemPecasDTO): Promise<OrdemPecas> {
         const peca = this.repository.create({
-            sequence,
             description,
             unit_value,
             amount,
-            total_value
+            total_value: unit_value * amount
         })
 
         await this.repository.save(peca)
@@ -32,6 +29,10 @@ class OrdemPecasRepository implements IOrdemPecasRepository {
 
     async findAll(): Promise<OrdemPecas[]> {
         return this.repository.find()
+    }
+
+    delete(id: string): void {
+        this.repository.delete({id});
     }
 }
 

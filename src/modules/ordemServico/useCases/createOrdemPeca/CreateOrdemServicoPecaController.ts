@@ -5,18 +5,16 @@ import { CreateOrdemPecaUseCase } from "./CreateOrdemServicoPecaUseCase";
 class CreateOrdemPecaController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const { sequence, description, unit_value, amount, total_value } = request.body
+            const { description, unit_value, amount } = request.body
 
             const createOrdemPecaUseCase = container.resolve(
                 CreateOrdemPecaUseCase
             )
 
             const ordemPeca = await createOrdemPecaUseCase.execute({
-                sequence,
                 description,
                 unit_value,
-                amount,
-                total_value
+                amount
             })
 
             return response.status(201).json(ordemPeca)

@@ -6,19 +6,16 @@ class OrdemPecas {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column()
-    sequence: number;
-
-    @Column()
+    @Column({ name: "descricao" })
     description: string;
 
-    @Column()
+    @Column({ name: "valor_unitario" })
     unit_value: number;
 
-    @Column()
+    @Column({ name: "quantidade" })
     amount: number;
 
-    @Column()
+    @Column({ name: "valor_total" })
     total_value: number;
 
     @CreateDateColumn({ name: 'created_at' })

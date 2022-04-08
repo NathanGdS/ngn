@@ -1,0 +1,5 @@
+class UpdateOrdemPecaUseCase {
+
+}
+
+export { UpdateOrdemPecaUseCase };

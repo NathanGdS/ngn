@@ -6,20 +6,17 @@ class OrdemPecasRepositoryInMemory implements IOrdemPecasRepository {
     pecas: OrdemPecas[] = []
 
     async create({
-        sequence,
         description,
         unit_value,
-        amount,
-        total_value
+        amount
     }: ICreateOrdemPecasDTO): Promise<OrdemPecas> {
         const peca = new OrdemPecas();
 
         Object.assign(peca, {
-            sequence,
             description,
             unit_value,
             amount,
-            total_value
+            total_value: unit_value * amount
         })
 
         this.pecas.push(peca)
@@ -29,6 +26,11 @@ class OrdemPecasRepositoryInMemory implements IOrdemPecasRepository {
 
     async findAll(): Promise<OrdemPecas[]> {
         return this.pecas;
+    }
+
+    delete(id: string): void {
+        const findIndex = this.pecas.findIndex(peca => peca.id === id)
+        this.pecas.splice(findIndex, 1)
     }
 
 }

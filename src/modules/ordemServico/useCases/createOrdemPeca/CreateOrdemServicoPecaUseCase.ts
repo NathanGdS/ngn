@@ -10,24 +10,19 @@ class CreateOrdemPecaUseCase {
         private ordemPecasRepository: IOrdemPecasRepository
     ) { }
 
-    async execute({
-        sequence,
+    async execute({        
         description,
         unit_value,
-        amount,
-        total_value
+        amount
     }: ICreateOrdemPecasDTO): Promise<OrdemPecas> {
         const ordemPeca = await this.ordemPecasRepository.create({
-            sequence,
             description,
             unit_value,
-            amount,
-            total_value
+            amount
         })
 
         return ordemPeca
     }
-    
 }
 
 export { CreateOrdemPecaUseCase };
