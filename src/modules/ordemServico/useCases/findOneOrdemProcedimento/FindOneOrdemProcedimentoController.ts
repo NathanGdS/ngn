@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { FindOneOrdemProcedimentosUseCase } from "./FindOneOrdemProcedimentosUseCase";
+import { FindOneOrdemProcedimentoUseCase } from "./FindOneOrdemProcedimentoUseCase";
 
 class FindOneOrdemProcedimentoController {
 
@@ -9,7 +9,7 @@ class FindOneOrdemProcedimentoController {
             const { id } = request.params;
 
             const findOneOrdemProcedimentoUseCase = container.resolve(
-                FindOneOrdemProcedimentosUseCase
+                FindOneOrdemProcedimentoUseCase
             );
 
             const ordemProcedimento = await findOneOrdemProcedimentoUseCase.execute(id);

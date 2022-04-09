@@ -5,7 +5,6 @@ import { OrdemProcedimentos } from "../infra/typeorm/entities/OrdemProcedimentos
 interface IOrdemProcedimentosRepository {
     findAll(): Promise<OrdemProcedimentos[]>;
     findById(id: string): Promise<OrdemProcedimentos>;
-    // findByDescription(description: string): Promise<StatusOrdem>;
     create(data: ICreateOrdemProcedimentosDTO): Promise<OrdemProcedimentos>;
     update(id:string, data: IUpdateOrdemProcedimentoDTO): Promise<OrdemProcedimentos>;
     delete(id: string): void;

@@ -5,7 +5,7 @@ import { inject, injectable } from "tsyringe";
 
 
 @injectable()
-class FindOneOrdemProcedimentosUseCase {
+class FindOneOrdemProcedimentoUseCase {
 
     constructor (
         @inject("OrdemProcedimentosRepository")
@@ -14,11 +14,11 @@ class FindOneOrdemProcedimentosUseCase {
  
     async execute (id:string): Promise<OrdemProcedimentos> {
         const ordemProcedimento = await this.ordemProcedimentosRepository.findById(id);
-        if (!ordemProcedimento) throw new AppError('Ordem não encontrada!');
+        if (!ordemProcedimento) throw new AppError('Procedimento não encontrado!');
 
         return ordemProcedimento;
     }
 
 }
 
-export { FindOneOrdemProcedimentosUseCase };
+export { FindOneOrdemProcedimentoUseCase };

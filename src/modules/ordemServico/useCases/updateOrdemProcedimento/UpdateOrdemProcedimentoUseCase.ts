@@ -16,7 +16,7 @@ class UpdateOrdemProcedimentoUseCase {
 
     async execute(id:string, data: IUpdateOrdemProcedimentoDTO): Promise<OrdemProcedimentos> {
         const found = await this.ordemProcedimentosRepository.findById(id);
-        if(!found) throw new AppError('Ordem não encontrada!');
+        if(!found) throw new AppError('Procedimento não encontrado!');
 
         return await this.ordemProcedimentosRepository.update(id, data);
     }

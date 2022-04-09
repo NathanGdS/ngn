@@ -1,22 +1,22 @@
-import { IUpdateOrdemPecaDTO } from "@modules/ordemServico/dtos/IUpdateOrdemPecaDTO";
 import { OrdemPecas } from "@modules/ordemServico/infra/typeorm/entities/OrdemPecas";
 import { IOrdemPecasRepository } from "@modules/ordemServico/repositories/IOrdemPecasRepository";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
-class UpdateOrdemPecaUseCase {
+class FindOneOrdemPecaUseCase {
     constructor(
         @inject("OrdemPecasRepository")
         private ordemPecaRepository: IOrdemPecasRepository
     ) { }
     
-    async execute(id: string, data: IUpdateOrdemPecaDTO): Promise<OrdemPecas> {
-        const found = await this.ordemPecaRepository.findById(id)
-        if (!found) throw new AppError('Peça não encontrada!')
+    async execute(id: string): Promise<OrdemPecas> {
+        const ordemPeca = await this.ordemPecaRepository.findById(id)
 
-        return await this.ordemPecaRepository.update(id, data)
+        if (!ordemPeca) throw new AppError('Peça não encontrada!')
+
+        return ordemPeca
     }
 }
 
-export { UpdateOrdemPecaUseCase };
+export { FindOneOrdemPecaUseCase };

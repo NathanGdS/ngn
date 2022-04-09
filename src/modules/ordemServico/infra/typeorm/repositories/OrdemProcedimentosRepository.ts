@@ -36,7 +36,7 @@ class OrdemProcedimentosRepository implements IOrdemProcedimentosRepository {
         return this.repository.findOne({id});
     }
 
-    async update(id:string, {amount, description, unit_value}: IUpdateOrdemProcedimentoDTO): Promise<OrdemProcedimentos> {
+    async update(id:string, { amount, description, unit_value }: IUpdateOrdemProcedimentoDTO): Promise<OrdemProcedimentos> {
         const values: IUpdateOrdemProcedimentoDTO = {
             amount,
             description,
@@ -51,7 +51,7 @@ class OrdemProcedimentosRepository implements IOrdemProcedimentosRepository {
                 values
             )
             .where("id =:id")
-            .setParameters({id})
+            .setParameters({ id })
             .execute()
 
         return await this.findById(id);
