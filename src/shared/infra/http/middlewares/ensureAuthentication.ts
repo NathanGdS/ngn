@@ -38,7 +38,7 @@ export async function ensureAuthenticated(
             id: user_id,
         };
 
-        console.log(request.usuario);
+        // console.log(request.usuario);
 
         next();
     } catch (e) {

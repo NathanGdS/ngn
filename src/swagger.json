@@ -861,6 +861,64 @@
                     }
                 }
             }
+        },
+        "/os/procedimentos": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["OrdemServiço"],
+                "summary": "List all Ordem Procedimentos",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type":"string"
+                                            },
+                                            "sequence":{
+                                                "type":"integer"
+                                            },
+                                            "description":{
+                                                "type":"string"
+                                            },
+                                            "unit_value":{
+                                                "type":"string"
+                                            },
+                                            "amount":{
+                                                "type":"integer"
+                                            },
+                                            "total_value":{
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "id": "430da97c-4eff-43ae-85e4-cdb1b6574d67",
+                                    "createdAt": "2022-04-07T23:15:13.882Z",
+                                    "sequence": 1,
+                                    "description": "completar óleo",
+                                    "unit_value": "100.95",
+                                    "amount": 5,
+                                    "total_value": "504.5"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
