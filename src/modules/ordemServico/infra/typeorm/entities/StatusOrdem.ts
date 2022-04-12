@@ -6,10 +6,10 @@ class StatusOrdem {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column({ name: 'status_number' })
+    @Column({ name: 'status_numero' })
     statusNumber: number;
 
-    @Column({ name: 'description' })
+    @Column({ name: 'descricao' })
     description: string;
 
     @CreateDateColumn({ name: 'created_at' })
