@@ -17,6 +17,7 @@ import { UpdateEnderecoController } from "@modules/endereco/useCases/updateEnder
 import { DeleteEnderecoController } from "@modules/endereco/useCases/deleteEndereco/DeleteEnderecoController";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 
 const clienteRoutes = Router();
 
@@ -40,7 +41,7 @@ clienteRoutes.post("/", ensureAuthenticated, createClienteController.handle);
 clienteRoutes.get("/", ensureAuthenticated, listClienteController.handle);
 clienteRoutes.get("/:id", ensureAuthenticated, listByIdClienteController.handle)
 clienteRoutes.put("/:id", ensureAuthenticated, updateClienteController.handle);
-clienteRoutes.delete("/:id", ensureAuthenticated, deleteClienteController.handle);
+clienteRoutes.delete("/:id", ensureAuthenticated, ensureAdmin, deleteClienteController.handle);
 
 clienteRoutes.post("/telefone", ensureAuthenticated, createTelefoneController.handle);
 clienteRoutes.get("/telefone", ensureAuthenticated, listTelefoneController.handle);

@@ -9,6 +9,7 @@ import { DeleteUsuarioController } from "@modules/accounts/useCases/deleteUsuari
 import { ChangePasswordController } from "@modules/accounts/useCases/changePassword/ChangePasswordController";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 
 const usuarioRoutes = Router();
 
@@ -23,8 +24,8 @@ usuarioRoutes.post('/', createUsuarioController.handle)
 usuarioRoutes.get('/', ensureAuthenticated, listUsuariosController.handle)
 usuarioRoutes.get("/:id", ensureAuthenticated, listByIdUsuarioController.handle)
 usuarioRoutes.put("/:id", ensureAuthenticated, updateUsuarioController.handle)
-usuarioRoutes.delete("/:id", ensureAuthenticated, deleteUsuarioController.handle)
+usuarioRoutes.delete("/:id", ensureAuthenticated, ensureAdmin, deleteUsuarioController.handle)
 
-usuarioRoutes.patch("/senha/:id", ensureAuthenticated, changePasswordController.handle)
+usuarioRoutes.patch("/senha/:id", ensureAuthenticated, ensureAdmin, changePasswordController.handle)
 
 export { usuarioRoutes };

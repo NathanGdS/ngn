@@ -33,13 +33,13 @@ automovelRoutes.post("/", ensureAuthenticated, createAutomovelController.handle)
 automovelRoutes.get("/", ensureAuthenticated, listAutomovelController.handle)
 automovelRoutes.get("/:id", ensureAuthenticated, listByIdAutomovelController.handle)
 automovelRoutes.put("/:id", ensureAuthenticated, updateAutomovelController.handle)
-automovelRoutes.delete("/:id", ensureAuthenticated, deleteAutomovelController.handle)
+automovelRoutes.delete("/:id", ensureAuthenticated, ensureAdmin, deleteAutomovelController.handle)
 
 automovelRoutes.post("/tipo", ensureAuthenticated, ensureAdmin, createTipoAutomovelController.handle)
 automovelRoutes.get("/tipo/list", ensureAuthenticated, ensureAdmin, listTipoAutomovelController.handle)
-automovelRoutes.get("/tipo/:id", ensureAuthenticated, listByIdTipoAutomovelController.handle)
-automovelRoutes.patch("/tipo/:id", ensureAuthenticated, updateTipoAutomovelController.handle)
-automovelRoutes.delete("/tipo/:id", ensureAuthenticated, deleteTipoAutomovelController.handle)
+automovelRoutes.get("/tipo/:id", ensureAuthenticated, ensureAdmin, listByIdTipoAutomovelController.handle)
+automovelRoutes.patch("/tipo/:id", ensureAuthenticated, ensureAdmin, updateTipoAutomovelController.handle)
+automovelRoutes.delete("/tipo/:id", ensureAuthenticated, ensureAdmin, deleteTipoAutomovelController.handle)
 
 
 export { automovelRoutes }; 
