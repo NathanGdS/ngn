@@ -13,6 +13,7 @@ import { UpdateAutomovelController } from "@modules/automovel/useCases/updateAut
 import { DeleteAutomovelController } from "@modules/automovel/useCases/deleteAutomovel/DeleteAutomovelController";
 
 import { ensureAuthenticated } from "@middlewares/ensureAuthentication";
+import { ensureAdmin } from "@middlewares/ensureAdmin";
 
 const automovelRoutes = Router();
 
@@ -34,8 +35,8 @@ automovelRoutes.get("/:id", ensureAuthenticated, listByIdAutomovelController.han
 automovelRoutes.put("/:id", ensureAuthenticated, updateAutomovelController.handle)
 automovelRoutes.delete("/:id", ensureAuthenticated, deleteAutomovelController.handle)
 
-automovelRoutes.post("/tipo", ensureAuthenticated, createTipoAutomovelController.handle)
-automovelRoutes.get("/tipo", ensureAuthenticated, listTipoAutomovelController.handle)
+automovelRoutes.post("/tipo", ensureAuthenticated, ensureAdmin, createTipoAutomovelController.handle)
+automovelRoutes.get("/tipo/list", ensureAuthenticated, ensureAdmin, listTipoAutomovelController.handle)
 automovelRoutes.get("/tipo/:id", ensureAuthenticated, listByIdTipoAutomovelController.handle)
 automovelRoutes.patch("/tipo/:id", ensureAuthenticated, updateTipoAutomovelController.handle)
 automovelRoutes.delete("/tipo/:id", ensureAuthenticated, deleteTipoAutomovelController.handle)

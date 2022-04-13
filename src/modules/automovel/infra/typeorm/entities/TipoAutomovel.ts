@@ -4,8 +4,9 @@ import { Automovel } from "./Automovel";
 
 @Entity("tipo_automoveis")
 class TipoAutomovel {
+    
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id?: string;
 
     @Column()
     description: string;
@@ -14,7 +15,7 @@ class TipoAutomovel {
     created_at?: Date;
     
     @OneToMany(() => Automovel, automovel => automovel.typeId)
-    automoveis: Automovel[];
+    automoveis?: Automovel[];
 
     constructor () {
         if(!this.id) {
