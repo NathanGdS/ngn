@@ -18,6 +18,8 @@ import { DeleteOrdemPecaController } from "@modules/ordemServico/useCases/delete
 import { ListStatusOrdemController } from "@modules/ordemServico/useCases/listStatusOrdem/ListStatusOrdemController";
 
 import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+import { ListOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOrdemServico/ListOrdemServicoController";
+import { CreateOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/createOrdemServico/CreateOrdemServicoController";
 
 
 const ordemServicoRoutes = Router();
@@ -53,6 +55,14 @@ ordemServicoRoutes.delete("/pecas/:id", ensureAuthenticated, deleteOrdemPecaCont
 //Status Ordem
 const listStatusOrdemController = new ListStatusOrdemController();
 
-ordemServicoRoutes.get("/status/:id", ensureAuthenticated, listStatusOrdemController.handle)
+ordemServicoRoutes.get("/status", ensureAuthenticated, listStatusOrdemController.handle)
+
+
+// Ordem Servico
+const listOrdemServicoController = new ListOrdemServicoController();
+const createOrdemServicoController = new CreateOrdemServicoController();
+
+ordemServicoRoutes.get('/', ensureAuthenticated, listOrdemServicoController.handle)
+ordemServicoRoutes.post('/', ensureAuthenticated, createOrdemServicoController.handle)
 
 export { ordemServicoRoutes };

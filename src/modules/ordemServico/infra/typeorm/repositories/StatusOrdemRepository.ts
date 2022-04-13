@@ -26,6 +26,7 @@ class StatusOrdemRepository implements IStatusOrdemRepository {
     async findByDescription(description: string): Promise<StatusOrdem> {
         return this.repository.findOne({ description });
     }
+
 }
 
 export { StatusOrdemRepository };

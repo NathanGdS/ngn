@@ -1,4 +1,5 @@
 import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
+import { OrdemServico } from "@modules/ordemServico/infra/typeorm/entities/OrdemServico";
 // import { Endereco } from "@modules/endereco/infra/typeorm/entities/Endereco";
 import { Telefone } from "@modules/telefone/infra/typeorm/entities/Telefone";
 import { Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";

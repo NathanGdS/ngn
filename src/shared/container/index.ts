@@ -43,6 +43,8 @@ import { IOrdemProcedimentosRepository } from "@modules/ordemServico/repositorie
 // import { OrdemPecasRepositoryInMemory } from "@modules/ordemServico/repositories/In-memory/OrdemPecasRepositoryInMemory";
 import { IOrdemPecasRepository } from "@modules/ordemServico/repositories/IOrdemPecasRepository";
 import { OrdemPecasRepository } from "@modules/ordemServico/infra/typeorm/repositories/OrdemPecasRepository";
+import { IOrdemServicoRepository } from "@modules/ordemServico/repositories/IOrdemServicoRepository";
+import { OrdemServicoRepository } from "@modules/ordemServico/infra/typeorm/repositories/OrdemServicoRepository";
 
 container.registerSingleton<ITipoAutomovelRepository>(
     "TipoAutomovelRepository",
@@ -87,4 +89,9 @@ container.registerSingleton<IOrdemProcedimentosRepository>(
 container.registerSingleton<IOrdemPecasRepository>(
     "OrdemPecasRepository",
     OrdemPecasRepository
+);
+
+container.registerSingleton<IOrdemServicoRepository>(
+    "OrdemServicoRepository",
+    OrdemServicoRepository
 );
