@@ -36,6 +36,7 @@ export async function ensureAuthenticated(
 
         request.usuario = {
             id: user_id,
+            isAdmin: user.isAdmin
         };
 
         // console.log(request.usuario);
