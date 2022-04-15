@@ -26,6 +26,6 @@ usuarioRoutes.get("/:id", ensureAuthenticated, listByIdUsuarioController.handle)
 usuarioRoutes.put("/:id", ensureAuthenticated, updateUsuarioController.handle)
 usuarioRoutes.delete("/:id", ensureAuthenticated, ensureAdmin, deleteUsuarioController.handle)
 
-usuarioRoutes.patch("/senha/:id", ensureAuthenticated, ensureAdmin, changePasswordController.handle)
+usuarioRoutes.patch("/senha/:id", ensureAuthenticated, changePasswordController.handle)
 
 export { usuarioRoutes };

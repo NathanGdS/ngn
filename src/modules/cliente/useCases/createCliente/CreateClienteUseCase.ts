@@ -2,6 +2,7 @@ import { ICreateClienteDTO } from "@modules/cliente/dtos/ICreateClienteDTO";
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
 import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
 import { AppError } from "@shared/errors/AppError";
+import { isValidCPF } from "@utils/isValidCPF";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
@@ -10,9 +11,13 @@ class CreateClienteUseCase {
     constructor(
         @inject("ClienteRepository")
         private clienteRepository: IClienteRepository
-    ){}
-
+    ) { }
+    
     async execute({ name, email, cpf, rg, birthDate }: ICreateClienteDTO): Promise<Cliente> {
+        
+        const validCPF = await isValidCPF(cpf)
+        if (validCPF == false) throw new AppError('CPF inválido!')
+        
         const emailExists = await this.clienteRepository.findByEmail(email)
         if (emailExists) throw new AppError('Email já cadastrado!')
 
