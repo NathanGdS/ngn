@@ -14,13 +14,15 @@ class OrdemPecasRepository implements IOrdemPecasRepository {
     async create({
         description,
         unit_value,
-        amount
+        amount,
+        ordemServicoId
     }: ICreateOrdemPecasDTO): Promise<OrdemPecas> {
         const peca = this.repository.create({
             description,
             unit_value,
             amount,
-            total_value: (unit_value * amount)
+            total_value: (unit_value * amount),
+            ordemServicoId
         })
 
         await this.repository.save(peca)
@@ -36,12 +38,13 @@ class OrdemPecasRepository implements IOrdemPecasRepository {
         return this.repository.findOne({ id })
     }
 
-    async update(id: string, { description, unit_value, amount }: IUpdateOrdemPecaDTO): Promise<OrdemPecas> {
+    async update(id: string, { description, unit_value, amount, ordemServicoId }: IUpdateOrdemPecaDTO): Promise<OrdemPecas> {
         const values: IUpdateOrdemPecaDTO = {
             description,
             unit_value,
             amount,
-            total_value: (unit_value * amount)
+            total_value: (unit_value * amount),
+            ordemServicoId
         }
 
         await this.repository

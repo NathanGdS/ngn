@@ -13,12 +13,14 @@ class CreateOrdemPecaUseCase {
     async execute({        
         description,
         unit_value,
-        amount
+        amount,
+        ordemServicoId
     }: ICreateOrdemPecasDTO): Promise<OrdemPecas> {
         const ordemPeca = await this.ordemPecasRepository.create({
             description,
             unit_value,
-            amount
+            amount,
+            ordemServicoId
         })
 
         return ordemPeca
