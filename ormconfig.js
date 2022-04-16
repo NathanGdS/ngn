@@ -25,6 +25,9 @@ if (process.env.SERVER_TYPE == 'dev') {
   entities = __dirname + "./dist/src/modules/**/infra/typeorm/entities/*.js";
   migrations = __dirname + "./dist/src/shared/infra/typeorm/migrations/*.js";
   migrationsDir = __dirname + "./dist/src/shared/infra/typeorm/migrations";
+  console.log(entities);
+  console.log(migrations);
+  console.log(migrationsDir);
   module.exports = {
     "type": "postgres",
     "url": process.env.DATABASE_URL,
