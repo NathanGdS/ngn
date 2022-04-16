@@ -22,9 +22,9 @@ if (process.env.SERVER_TYPE == 'dev') {
     }
   }
 } else {
-  entities = __dirname + "dist/src/modules/**/infra/typeorm/entities/*.js";
-  migrations = __dirname + "dist/src/shared/infra/typeorm/migrations/*.js";
-  migrationsDir = __dirname + "dist/src/shared/infra/typeorm/migrations";
+  entities = "dist/src/modules/**/infra/typeorm/entities/*.js";
+  migrations = "dist/src/shared/infra/typeorm/migrations/*.js";
+  migrationsDir ="dist/src/shared/infra/typeorm/migrations";
   module.exports = {
     "type": "postgres",
     "url": process.env.DATABASE_URL,
