@@ -1,15 +1,15 @@
 export async function isValidCPF(cpf: string) {
-    let soma = 0, resto = 0
+    let sum = 0, remainder = 0
 
     async function digitValidation(cpf: string, length: number) {
         for (let index = 0; index <= length; index++)
-            soma = soma + parseInt(cpf.substring(index - 1, index)) * ((length + 2) - index)
+            sum = sum + parseInt(cpf.substring(index - 1, index)) * ((length + 2) - index)
 
-        resto = (soma * 10) % 11
+        remainder = (sum * 10) % 11
 
-        if ((resto == (10 || 11))) resto = 0
+        if ((remainder == (10 || 11))) remainder = 0
 
-        if (resto != parseInt(cpf.substring(length, length + 1))) return false
+        if (remainder != parseInt(cpf.substring(length, length + 1))) return false
     }
     
     if (typeof cpf != 'string') return false
