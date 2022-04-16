@@ -30,8 +30,6 @@ class Cliente {
     @OneToMany(() => Automovel, automovel => automovel.customerId)
     automobiles: Automovel[];
 
-    // @OneToOne(() => Endereco, endereco => endereco.customerId)
-    // addresses: Endereco;
         
     constructor() {
         if (!this.id) {

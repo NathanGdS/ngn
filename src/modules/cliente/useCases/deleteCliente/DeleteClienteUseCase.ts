@@ -1,6 +1,5 @@
 import { IAutomovelRepository } from "@modules/automovel/repositories/IAutomovelRepository";
 import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
-import { ITelefoneRepository } from "@modules/telefone/repositories/ITelefoneRepository";
 import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 

@@ -25,12 +25,6 @@ class Usuario {
     @CreateDateColumn({name: 'created_at'})
     createdAt?: Date;
 
-    // @OneToMany(() => Telefone, telefone => telefone.userId)
-    // telefones: Telefone[];
-
-    // @OneToOne(() => Endereco, endereco => endereco.userId)
-    // enderecos: Endereco;
-
     constructor () {
         if(!this.id){
             this.id = uuidV4();
