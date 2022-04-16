@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table, TableColumn, TableForeignKey} from "typeorm";
+import {MigrationInterface, QueryRunner, TableColumn, TableForeignKey} from "typeorm";
 
 export class AlterTableOrdemProcedimentosAddOSFK1650064772932 implements MigrationInterface {
 

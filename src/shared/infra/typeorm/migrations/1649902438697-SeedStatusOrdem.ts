@@ -10,6 +10,9 @@ export class SeedStatusOrdem1649902438697 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await getRepository("ordem_status").delete(
+            StatusOrdemSeed
+        )
     }
 
 }
