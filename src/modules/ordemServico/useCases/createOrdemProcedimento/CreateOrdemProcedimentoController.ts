@@ -5,7 +5,7 @@ import { CreateOrdemProcedimentoUseCase } from "./CreateOrdemProcedimentoUseCase
 class CreateOrdemProcedimentoController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const { description, unit_value, amount } = request.body
+            const { description, unit_value, amount, ordemServicoId } = request.body
 
             const createOrdemProcedimentoUseCase = container.resolve(
                 CreateOrdemProcedimentoUseCase
@@ -14,7 +14,8 @@ class CreateOrdemProcedimentoController {
             const ordemPeca = await createOrdemProcedimentoUseCase.execute({
                 amount,
                 description,
-                unit_value
+                unit_value,
+                ordemServicoId
             })
 
             return response.status(201).json(ordemPeca)

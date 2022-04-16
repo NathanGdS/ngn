@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { OrdemServico } from "./OrdemServico";
 
 @Entity('ordem_procedimentos')
 class OrdemProcedimentos {
@@ -17,6 +18,11 @@ class OrdemProcedimentos {
 
     @Column({ name: "valor_total" })
     total_value: number;
+
+    @Column()
+    ordemServicoId: string;
+    @ManyToOne(() => OrdemServico, os => os.id, { eager: false })
+    ordemServico: OrdemServico
 
     @CreateDateColumn({ name: 'created_at' })
     createdAt?: Date;

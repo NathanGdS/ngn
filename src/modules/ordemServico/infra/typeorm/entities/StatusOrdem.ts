@@ -16,9 +16,6 @@ class StatusOrdem {
     @CreateDateColumn({ name: 'created_at' })
     createdAt?: Date;
 
-    @OneToMany(() => OrdemServico, os => os.statusId)
-    ordens: OrdemServico[];
-
     constructor() {
         if (!this.id) {
             this.id = uuidV4()
