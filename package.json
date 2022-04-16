@@ -4,6 +4,7 @@
   "description": "A API RESTFul deve ser desenvolvida na linguagem Typescript utilizando o framework Node.js;\r O banco de dados utilizado deve ser o PostgreSQL;\r Os containers devem ser rodados através do Docker Compose;\r A exclusão de registros deve ser realizada de forma lógica e não física;\r A API deve utilizar a notação JSON;\r A API deve ter o CORS ativo;\r A API deve ter um sistema de versionamento de endpoints;\r O sistema de autenticação deve conter JWT Token;\r Os identificadores (IDs) devem ser do tipo Universally Unique Identifier (UUID);\r A documentação da API deve ser feita utilizando o Swagger UI;\r Para garantir a corretude, deve ser realizado o TDD e TDA na aplicação;\r O versionamento do código deve ser feito através da ferramenta Git;\r O repositório deve estar contido na plataforma GitHub;",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "dev": "ts-node-dev --poll -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --respawn ./src/shared/infra/http/server.ts",
     "prod": "node ./dist/src/shared/infra/http/server.js",
     "start": "ts-node ./dist/src/shared/infra/http/server.js",

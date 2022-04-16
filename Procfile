@@ -1,1 +1,2 @@
-web: ts-node ./src/shared/infra/http/server.ts
+build: npm run build
+web: npm run prod
