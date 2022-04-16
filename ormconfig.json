@@ -1,10 +1,10 @@
 {
     "type": "postgres",
     "port": 5432,
-    "host": "localhost",
-    "username": "root",
-    "password": "1234",
-    "database": "oficina_database",
+    "host": "ec2-52-203-118-49.compute-1.amazonaws.com",
+    "username": "irzecfmpkxyfqi",
+    "password": "e8372907b8caf85145d0b5eeb44a990c4026a0f6576fd30172b75d5c66d7cb3a",
+    "database": "dcs4hd6ibe2949",
     "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
     "entities": [
         "./src/modules/**/infra/typeorm/entities/*.ts"
