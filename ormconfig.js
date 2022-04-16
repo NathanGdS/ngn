@@ -1,13 +1,30 @@
-console.log('process.env.DATABASEE_URL :>> ', process.env.DATABASE_URL);
+console.log('Ambiente: ', process.env.SERVER_TYPE);
+
+let entities = "";
+let migrations = "";
+let migrationsDir = "";
+
+if (process.env.SERVER_TYPE == 'dev') {
+  entities = "./src/modules/**/infra/typeorm/entities/*.ts";
+  migrations = "./src/shared/infra/typeorm/migrations/*.ts";
+  migrationsDir = "./src/shared/infra/typeorm/migrations";
+} else {
+  entities = "./dist/modules/**/infra/typeorm/entities/*.js";
+  migrations = "./dist/shared/infra/typeorm/migrations/*.js";
+  migrationsDir = "./dist/shared/infra/typeorm/migrations";
+}
+
 module.exports = {
   "type": "postgres",
-  "url": process.env.DATABASE_URL,
-  "entities": [
-    "./src/modules/**/infra/typeorm/entities/*.ts"
- ],
- "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
+  "port": process.env.DATABASE_PORT,
+  "host": process.env.DATABASE_HOST,
+  "username": process.env.DATABASE_USER,
+  "password": process.env.DATABASE_PASSWORD,
+  "database": process.env.DATABASE,
+  "entities": [entities],
+ "migrations": [migrations],
  "cli":{
-  "migrationsDir": "./src/shared/infra/typeorm/migrations",
+  "migrationsDir": migrationsDir,
   }
 }
 
