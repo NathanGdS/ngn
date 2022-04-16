@@ -4,24 +4,23 @@ import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
 import { ensureAdmin } from "../middlewares/ensureAdmin";
 
 // Ordem Procedimento Imports
-import { ListOrdemProcedimentosController } from "@modules/ordemServico/useCases/listOrdemProcedimentos/ListOrdemProcedimentosController";
-import { FindOneOrdemProcedimentoController } from "@modules/ordemServico/useCases/findOneOrdemProcedimento/FindOneOrdemProcedimentoController";
-import { CreateOrdemProcedimentoController } from "@modules/ordemServico/useCases/createOrdemProcedimento/CreateOrdemProcedimentoController";
-import { UpdateOrdemProcedimentoController } from "@modules/ordemServico/useCases/updateOrdemProcedimento/UpdateOrdemProcedimentoController";
-import { DeleteOrdemProcedimentoController } from "@modules/ordemServico/useCases/deleteOrdemProcedimento/DeleteOrdemProcedimentoController";
+import { ListOrdemProcedimentosController } from "@modules/ordemServico/useCases/ordemServicoProcedimento/listOrdemProcedimentos/ListOrdemProcedimentosController";
+import { FindOneOrdemProcedimentoController } from "@modules/ordemServico/useCases/ordemServicoProcedimento/findOneOrdemProcedimento/FindOneOrdemProcedimentoController";
+import { CreateOrdemProcedimentoController } from "@modules/ordemServico/useCases/ordemServicoProcedimento/createOrdemProcedimento/CreateOrdemProcedimentoController";
+import { UpdateOrdemProcedimentoController } from "@modules/ordemServico/useCases/ordemServicoProcedimento/updateOrdemProcedimento/UpdateOrdemProcedimentoController";
+import { DeleteOrdemProcedimentoController } from "@modules/ordemServico/useCases/ordemServicoProcedimento/deleteOrdemProcedimento/DeleteOrdemProcedimentoController";
 
 // Ordem Peça Imports
-import { ListOrdemPecasController } from "@modules/ordemServico/useCases/listOrdemPeca/ListOrdemPecasController";
-import { FindOneOrdemPecaController } from "@modules/ordemServico/useCases/findOneOrdemPeca/FindOneOrdemPecaController";
-import { CreateOrdemPecaController } from "@modules/ordemServico/useCases/createOrdemPeca/CreateOrdemPecaController";
-import { UpdateOrdemPecaController } from "@modules/ordemServico/useCases/updateOrdemPeca/UpdateOrdemPecaController";
-import { DeleteOrdemPecaController } from "@modules/ordemServico/useCases/deleteOrdemPeca/DeleteOrdemPecaController";
+import { ListOrdemPecasController } from "@modules/ordemServico/useCases/ordemServicoPeca/listOrdemPeca/ListOrdemPecasController";
+import { FindOneOrdemPecaController } from "@modules/ordemServico/useCases/ordemServicoPeca/findOneOrdemPeca/FindOneOrdemPecaController";
+import { CreateOrdemPecaController } from "@modules/ordemServico/useCases/ordemServicoPeca/createOrdemPeca/CreateOrdemPecaController";
+import { UpdateOrdemPecaController } from "@modules/ordemServico/useCases/ordemServicoPeca/updateOrdemPeca/UpdateOrdemPecaController";
+import { DeleteOrdemPecaController } from "@modules/ordemServico/useCases/ordemServicoPeca/deleteOrdemPeca/DeleteOrdemPecaController";
 
 // Ordem Status Imports
-import { ListStatusOrdemController } from "@modules/ordemServico/useCases/listStatusOrdem/ListStatusOrdemController";
+import { ListStatusOrdemController } from "@modules/ordemServico/useCases/ordemServicoStatus/listStatusOrdem/ListStatusOrdemController";
 
 // Ordem Serviço Imports
-
 import { ListOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOrdemServico/ListOrdemServicoController";
 import { CreateOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/createOrdemServico/CreateOrdemServicoController";
 import { ListOneOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOneOrdemServico/ListOneOrdemServicoController";
