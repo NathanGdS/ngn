@@ -1,7 +1,9 @@
 import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { OrdemPecas } from "./OrdemPecas";
+import { OrdemProcedimentos } from "./OrdemProcedimentos";
 import { StatusOrdem } from "./StatusOrdem";
 
 @Entity('ordem_servico')
@@ -26,6 +28,11 @@ export class OrdemServico {
     @ManyToOne(() => Automovel, { eager: true })
     automovel: Automovel;
 
+    @OneToMany(() => OrdemProcedimentos, op => op.ordemServico, { eager: true, cascade: true })
+    procedimentos: OrdemProcedimentos[];
+
+    @OneToMany(() => OrdemPecas, op => op.ordemServico, { eager: true, cascade: true })
+    pecas: OrdemPecas[];
 
     @CreateDateColumn()
     created_at: Date;

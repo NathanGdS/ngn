@@ -15,11 +15,13 @@ class OrdemProcedimentosRepository implements IOrdemProcedimentosRepository {
         description,
         unit_value,
         amount,
+        ordemServicoId
     }: ICreateOrdemProcedimentosDTO): Promise<OrdemProcedimentos> {
         const ordemProcedimento = this.repository.create({
             description,
             unit_value,
             amount,
+            ordemServicoId,
             total_value: (unit_value * amount)
         });
 
@@ -36,12 +38,13 @@ class OrdemProcedimentosRepository implements IOrdemProcedimentosRepository {
         return this.repository.findOne({id});
     }
 
-    async update(id:string, { amount, description, unit_value }: IUpdateOrdemProcedimentoDTO): Promise<OrdemProcedimentos> {
+    async update(id:string, { amount, description, unit_value, ordemServicoId }: IUpdateOrdemProcedimentoDTO): Promise<OrdemProcedimentos> {
         const values: IUpdateOrdemProcedimentoDTO = {
             amount,
             description,
             unit_value,
-            total_value: (unit_value * amount)
+            total_value: (unit_value * amount),
+            ordemServicoId
         }
 
         await this.repository

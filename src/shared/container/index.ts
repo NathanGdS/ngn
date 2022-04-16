@@ -20,16 +20,6 @@ import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepos
 import { ClienteRepository } from "@modules/cliente/infra/typeorm/repositories/ClienteRepository";
 import { IClienteRepository } from "@modules/cliente/repositories/IClienteRepository";
 
-// Telefone
-// import { TelefoneRepositoryInMemory } from "@modules/telefone/repositories/In-Memory/TelefoneRepositoryInMemory";
-import { ITelefoneRepository } from "@modules/telefone/repositories/ITelefoneRepository";
-import { TelefoneRepository } from "@modules/telefone/infra/typeorm/repositories/TelefoneRepository";
-
-// Endereço
-// import { EnderecoRepositoryInMemory } from "@modules/endereco/repositories/In-memory/EnderecoRepositoryInMemory";
-import { IEnderecoRepository } from "@modules/endereco/repositories/IEnderecoRepository";
-import { EnderecoRepository } from "@modules/endereco/infra/typeorm/repositories/EnderecoRepository";
-
 // Status Ordem
 // import { StatusOrdemRepositoryInMemory } from "@modules/ordemServico/repositories/In-memory/StatusOrdemRepositoryInMemory";
 import { IStatusOrdemRepository } from "@modules/ordemServico/repositories/IStatusOrdemRepository";
@@ -65,16 +55,6 @@ container.registerSingleton<IClienteRepository>(
     "ClienteRepository",
     ClienteRepository
 );
-
-// container.registerSingleton<ITelefoneRepository>(
-//      "TelefoneRepository",
-//      TelefoneRepository
-//  );
-
-// container.registerSingleton<IEnderecoRepository>(
-//     "EnderecoRepository",
-//     EnderecoRepository
-// );
 
 container.registerSingleton<IStatusOrdemRepository>(
     "StatusOrdemRepository",

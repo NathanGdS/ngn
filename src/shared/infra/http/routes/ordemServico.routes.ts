@@ -1,5 +1,8 @@
 import { Router } from "express";
 
+import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
+
 // Ordem Procedimento Imports
 import { ListOrdemProcedimentosController } from "@modules/ordemServico/useCases/listOrdemProcedimentos/ListOrdemProcedimentosController";
 import { FindOneOrdemProcedimentoController } from "@modules/ordemServico/useCases/findOneOrdemProcedimento/FindOneOrdemProcedimentoController";
@@ -17,9 +20,13 @@ import { DeleteOrdemPecaController } from "@modules/ordemServico/useCases/delete
 // Ordem Status Imports
 import { ListStatusOrdemController } from "@modules/ordemServico/useCases/listStatusOrdem/ListStatusOrdemController";
 
-import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+// Ordem Serviço Imports
+
 import { ListOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOrdemServico/ListOrdemServicoController";
 import { CreateOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/createOrdemServico/CreateOrdemServicoController";
+import { ListOneOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOneOrdemServico/ListOneOrdemServicoController";
+import { DeleteOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/deleteOrdemServico/DeleteOrdemServicoController";
+
 
 
 const ordemServicoRoutes = Router();
@@ -36,8 +43,6 @@ ordemServicoRoutes.get("/procedimentos/:id", ensureAuthenticated, findOneOrdemPr
 ordemServicoRoutes.post("/procedimentos", ensureAuthenticated, createOrdemProcedimentosController.handle);
 ordemServicoRoutes.put("/procedimentos/:id", ensureAuthenticated, updateOrdemProcedimentosController.handle);
 ordemServicoRoutes.delete("/procedimentos/:id", ensureAuthenticated, deleteOrdemProcedimentosController.handle);
-
-
 
 //Ordem Pecas
 const listOrdemPecasController = new ListOrdemPecasController();
@@ -57,12 +62,15 @@ const listStatusOrdemController = new ListStatusOrdemController();
 
 ordemServicoRoutes.get("/status", ensureAuthenticated, listStatusOrdemController.handle)
 
-
 // Ordem Servico
 const listOrdemServicoController = new ListOrdemServicoController();
+const listOneOrdemServicoController = new ListOneOrdemServicoController();
 const createOrdemServicoController = new CreateOrdemServicoController();
+const deleteOrdemServicoController = new DeleteOrdemServicoController();
 
 ordemServicoRoutes.get('/', ensureAuthenticated, listOrdemServicoController.handle)
+ordemServicoRoutes.get('/:id', ensureAuthenticated, listOneOrdemServicoController.handle)
 ordemServicoRoutes.post('/', ensureAuthenticated, createOrdemServicoController.handle)
+ordemServicoRoutes.delete('/:id', ensureAuthenticated, ensureAdmin, deleteOrdemServicoController.handle)
 
 export { ordemServicoRoutes };
