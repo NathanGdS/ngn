@@ -20,6 +20,10 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
         });
     }
 
+    async findByAutomovelId(id: string): Promise<OrdemServico[]> {
+        return this.repository.find({ automovelId: id });
+    }
+
     async findById(id: string): Promise<OrdemServico> {
         return this.repository.findOne({ id });
     }
