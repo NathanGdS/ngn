@@ -25,7 +25,7 @@ class CreateOrdemPecaUseCase {
         const found = await this.ordemServicoRepository.findById(ordemServicoId)
         const verifyOrdemStatus = await this.statusOrdemRepository.findById(found.statusId)
         
-        if (verifyOrdemStatus.statusNumber !== (1 || 6 || 7)) throw new Error("Peca não pode ser criada!")
+        if (verifyOrdemStatus.statusNumber !== (1 || 6)) throw new Error("Peça não pode ser criada!")
 
         const ordemPeca = await this.ordemPecasRepository.create({
             description,

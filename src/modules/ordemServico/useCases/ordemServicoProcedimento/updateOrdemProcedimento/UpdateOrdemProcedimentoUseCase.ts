@@ -25,7 +25,7 @@ class UpdateOrdemProcedimentoUseCase {
         const ordemServico = await this.ordemServicoRepository.findById(found.ordemServicoId)
         const verifyOrdemStatus = await this.statusOrdemRepository.findById(ordemServico.statusId)
 
-        if (verifyOrdemStatus.statusNumber !== (1 || 6 || 7)) throw new AppError('Procedimento não pode ser alterado!', 400)
+        if (verifyOrdemStatus.statusNumber !== (1 || 6)) throw new AppError('Procedimento não pode ser alterado!', 400)
         
         return await this.ordemProcedimentosRepository.update(id, data)
     }

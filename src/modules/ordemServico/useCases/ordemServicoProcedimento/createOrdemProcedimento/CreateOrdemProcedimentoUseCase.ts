@@ -25,7 +25,7 @@ class CreateOrdemProcedimentoUseCase {
         const found = await this.ordemServicoRepository.findById(ordemServicoId)
         const verifyOrdemStatus = await this.statusOrdemRepository.findById(found.statusId)
 
-        if (verifyOrdemStatus.statusNumber !== (1 || 6 || 7)) throw new Error("Procedimento não pode ser criado!")
+        if (verifyOrdemStatus.statusNumber !== (1 || 6)) throw new Error("Procedimento não pode ser criado!")
 
         const ordemProcedimento = await this.ordemProcedimentosRepository.create({
             description,
