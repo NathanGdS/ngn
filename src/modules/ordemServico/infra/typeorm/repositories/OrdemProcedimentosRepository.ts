@@ -23,19 +23,23 @@ class OrdemProcedimentosRepository implements IOrdemProcedimentosRepository {
             amount,
             ordemServicoId,
             total_value: (unit_value * amount)
-        });
+        })
 
-        await this.repository.save(ordemProcedimento);
+        await this.repository.save(ordemProcedimento)
 
-        return ordemProcedimento;
+        return ordemProcedimento
     }
 
     async findAll(): Promise<OrdemProcedimentos[]> {
-        return this.repository.find();
+        return this.repository.find()
     }
 
     async findById(id: string): Promise<OrdemProcedimentos> {
-        return this.repository.findOne({id});
+        return this.repository.findOne({id})
+    }
+
+    async findByOrdemServicoId(id: string): Promise<OrdemProcedimentos[]> {
+        return this.repository.find({where: {ordemServicoId: id}})
     }
 
     async update(id:string, { amount, description, unit_value, ordemServicoId }: IUpdateOrdemProcedimentoDTO): Promise<OrdemProcedimentos> {
@@ -57,11 +61,11 @@ class OrdemProcedimentosRepository implements IOrdemProcedimentosRepository {
             .setParameters({ id })
             .execute()
 
-        return await this.findById(id);
+        return await this.findById(id)
     }
 
     delete(id: string): void {
-        this.repository.delete({id});
+        this.repository.delete({id})
     }
 
 }

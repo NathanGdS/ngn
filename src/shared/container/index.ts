@@ -33,6 +33,8 @@ import { IOrdemProcedimentosRepository } from "@modules/ordemServico/repositorie
 // import { OrdemPecasRepositoryInMemory } from "@modules/ordemServico/repositories/In-memory/OrdemPecasRepositoryInMemory";
 import { IOrdemPecasRepository } from "@modules/ordemServico/repositories/IOrdemPecasRepository";
 import { OrdemPecasRepository } from "@modules/ordemServico/infra/typeorm/repositories/OrdemPecasRepository";
+
+// Ordem Serviço
 import { IOrdemServicoRepository } from "@modules/ordemServico/repositories/IOrdemServicoRepository";
 import { OrdemServicoRepository } from "@modules/ordemServico/infra/typeorm/repositories/OrdemServicoRepository";
 

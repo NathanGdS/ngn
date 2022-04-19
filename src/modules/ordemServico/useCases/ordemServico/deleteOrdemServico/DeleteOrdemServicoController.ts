@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { DeleteOrdemServicoUseCase } from "./DeleteOrdemServicoUseCase";
 
-
-
 class DeleteOrdemServicoController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {

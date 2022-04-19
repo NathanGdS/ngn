@@ -38,6 +38,10 @@ class OrdemPecasRepository implements IOrdemPecasRepository {
         return this.repository.findOne({ id })
     }
 
+    async findByOrdemServicoId(id: string): Promise<OrdemPecas[]> { 
+        return this.repository.find({ where: { ordemServicoId: id } })
+    }
+
     async update(id: string, { description, unit_value, amount, ordemServicoId }: IUpdateOrdemPecaDTO): Promise<OrdemPecas> {
         const values: IUpdateOrdemPecaDTO = {
             description,
