@@ -22,9 +22,9 @@ class UpdateOrdemPecaUseCase {
         if (!found) throw new AppError('Peça não encontrada!')
 
         const ordemServico = await this.ordemServicoRepository.findById(found.ordemServicoId)
-        const verifyOrdemStatus = await this.statusOrdemRepository.findById(ordemServico.statusId)
+        const verifyOrdemStatus = (await this.statusOrdemRepository.findById(ordemServico.statusId)).statusNumber
 
-        if(verifyOrdemStatus.statusNumber !== (1 || 6)) throw new AppError('Peça não pode ser alterada!', 400)
+        if(verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6) throw new AppError('Peça não pode ser alterada!', 400)
 
         return await this.ordemPecasRepository.update(id, data)
     }

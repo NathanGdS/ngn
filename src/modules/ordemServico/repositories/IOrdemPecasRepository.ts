@@ -9,7 +9,6 @@ interface IOrdemPecasRepository {
     create(data: ICreateOrdemPecasDTO): Promise<OrdemPecas>;
     update(id: string, data: IUpdateOrdemPecaDTO): Promise<OrdemPecas>;
     delete(id: string): void;
-    
 }
 
 export { IOrdemPecasRepository };

@@ -22,9 +22,10 @@ class DeleteOrdemProcedimentoUseCase {
         if (!found) throw new AppError('Ordem informada não encontrada!')
         
         const ordemServico = await this.ordemServicoRepository.findById(found.ordemServicoId)
-        const ordemStatus = await this.statusOrdemRepository.findById(ordemServico.statusId)
+        const verifyOrdemStatus = (await this.statusOrdemRepository.findById(ordemServico.statusId)).statusNumber
 
-        if (ordemStatus.statusNumber !== (1 || 6 || 7)) throw new AppError('Procedimento não pode ser deletado!', 400)
+        if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6 && verifyOrdemStatus !== 7)
+            throw new AppError('Procedimento não pode ser deletado!', 400)
 
         this.ordemProcedimentosRepository.delete(id);
     }

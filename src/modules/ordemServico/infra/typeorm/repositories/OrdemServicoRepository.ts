@@ -5,7 +5,7 @@ import { OrdemServico } from "../entities/OrdemServico";
 
 class OrdemServicoRepository implements IOrdemServicoRepository {
     private repository: Repository<OrdemServico>;
-
+    
     constructor() {
         this.repository = getRepository(OrdemServico);
     }
@@ -35,14 +35,10 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
     async create({
         automovelId,
         descricao,
-        statusId,
-        valorTotal
     }: ICreateOrdemServicoDTO): Promise<OrdemServico> {
         const os =  this.repository.create({
             automovelId,
             descricao,
-            statusId,
-            valorTotal,
             finished_at: null
         });
 
@@ -53,6 +49,18 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
 
     delete(id: string): void {
         this.repository.delete({ id });
+    }
+
+    async updateStatus(id: string, statusId: string): Promise<OrdemServico> { 
+        await this.repository.
+            createQueryBuilder()
+            .update()
+            .set({ statusId })
+            .where("id =:id")
+            .setParameters({ id })
+            .execute()
+        
+        return await this.findById(id)
     }
 }
 

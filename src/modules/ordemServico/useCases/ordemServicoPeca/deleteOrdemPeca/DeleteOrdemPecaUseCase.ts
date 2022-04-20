@@ -12,7 +12,7 @@ class DeleteOrdemPecaUseCase {
         @inject("OrdemServicoRepository")
         private ordemServicoRepository: IOrdemServicoRepository,
         @inject("StatusOrdemRepository")
-        private statusOrdemRepository: IStatusOrdemRepository
+        private statusOrdemRepository: IStatusOrdemRepository,
     ) { }
     
     async execute(id: string): Promise<void> {
@@ -20,9 +20,9 @@ class DeleteOrdemPecaUseCase {
         if (!found) throw new AppError('Ordem não encontrada!', 404)
         
         const ordemServico = await this.ordemServicoRepository.findById(found.ordemServicoId)
-        const verifyOrdemStatus = await this.statusOrdemRepository.findById(ordemServico.statusId)
+        const verifyOrdemStatus = (await this.statusOrdemRepository.findById(ordemServico.statusId)).statusNumber
 
-        if (verifyOrdemStatus.statusNumber !== (1 || 6 || 7)) throw new AppError('Peça não pode ser deletada!', 400)
+        if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6 && verifyOrdemStatus !== 7) throw new AppError('Peça não pode ser deletada!', 400)
 
         this.ordemPecasRepository.delete(id)
     }

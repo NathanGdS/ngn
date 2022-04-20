@@ -3,6 +3,7 @@ import { OrdemPecas } from "@modules/ordemServico/infra/typeorm/entities/OrdemPe
 import { IOrdemPecasRepository } from "@modules/ordemServico/repositories/IOrdemPecasRepository";
 import { IOrdemServicoRepository } from "@modules/ordemServico/repositories/IOrdemServicoRepository";
 import { IStatusOrdemRepository } from "@modules/ordemServico/repositories/IStatusOrdemRepository";
+import { AppError } from "@shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 @injectable()
@@ -13,7 +14,7 @@ class CreateOrdemPecaUseCase {
         @inject("OrdemServicoRepository")
         private ordemServicoRepository: IOrdemServicoRepository,
         @inject("StatusOrdemRepository")
-        private statusOrdemRepository: IStatusOrdemRepository
+        private statusOrdemRepository: IStatusOrdemRepository,
     ) { }
 
     async execute({        
@@ -23,9 +24,9 @@ class CreateOrdemPecaUseCase {
         ordemServicoId
     }: ICreateOrdemPecasDTO): Promise<OrdemPecas> {
         const found = await this.ordemServicoRepository.findById(ordemServicoId)
-        const verifyOrdemStatus = await this.statusOrdemRepository.findById(found.statusId)
+        const verifyOrdemStatus = (await this.statusOrdemRepository.findById(found.statusId)).statusNumber
         
-        if (verifyOrdemStatus.statusNumber !== (1 || 6)) throw new Error("Peça não pode ser criada!")
+        if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6) throw new AppError("Peça não pode ser criada!", 400)
 
         const ordemPeca = await this.ordemPecasRepository.create({
             description,
@@ -33,6 +34,11 @@ class CreateOrdemPecaUseCase {
             amount,
             ordemServicoId
         })
+
+        console.log(ordemPeca.total_value);
+
+        found.valorTotal = found.valorTotal + ordemPeca.total_value
+        
 
         return ordemPeca
     }

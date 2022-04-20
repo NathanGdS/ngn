@@ -23,9 +23,10 @@ class CreateOrdemProcedimentoUseCase {
         ordemServicoId
     }: ICreateOrdemProcedimentosDTO): Promise<OrdemProcedimentos> {
         const found = await this.ordemServicoRepository.findById(ordemServicoId)
-        const verifyOrdemStatus = await this.statusOrdemRepository.findById(found.statusId)
+        const verifyOrdemStatus = (await this.statusOrdemRepository.findById(found.statusId)).statusNumber
 
-        if (verifyOrdemStatus.statusNumber !== (1 || 6)) throw new Error("Procedimento não pode ser criado!")
+        if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6)
+            throw new Error("Procedimento não pode ser criado!")
 
         const ordemProcedimento = await this.ordemProcedimentosRepository.create({
             description,

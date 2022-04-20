@@ -24,15 +24,18 @@ class DeleteOrdemServicoUseCase {
         const found = await this.ordemServicoRepository.findById(id)
         if (!found) throw new AppError('Ordem não encontrada!', 404)
 
-        const verifyOrdemStatus = await this.statusOrdemRepository.findById(found.statusId)
+        const verifyOrdemStatus = (await this.statusOrdemRepository.findById(found.statusId)).statusNumber
 
-        if (verifyOrdemStatus.statusNumber !== (1 || 7)) throw new AppError('Ordem não pode ser deletada!', 400)
+        if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 7)
+            throw new AppError('Ordem não pode ser deletada!', 400)
         
         const ordemPecas = await this.ordemPecasRepository.findByOrdemServicoId(id)
-        if (ordemPecas.length > 0) throw new AppError('Ordem não pode ser excluída pois possui peças relacionadas!', 400)
+        if (ordemPecas.length > 0)
+            throw new AppError('Ordem não pode ser excluída pois possui peças relacionadas!', 400)
 
         const ordemProcedimentos = await this.ordemProcedimentosRepository.findByOrdemServicoId(id)
-        if (ordemProcedimentos.length > 0) throw new AppError('Ordem não pode ser excluída pois possui procedimentos relacionados!', 400)
+        if (ordemProcedimentos.length > 0)
+            throw new AppError('Ordem não pode ser excluída pois possui procedimentos relacionados!', 400)
 
         this.ordemServicoRepository.delete(id)
     }
