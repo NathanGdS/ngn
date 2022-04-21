@@ -961,7 +961,7 @@
                  }
             }
         },
-        "os/procedimentos/{id}": {
+        "/os/procedimentos/{id}": {
             "get": {
                 "security": [
                     {
@@ -1145,7 +1145,7 @@
                  }
             }
         },
-        "os/status/{id}": {
+        "/os/status/{id}": {
             "get": {
                 "security": [
                     {
@@ -1300,7 +1300,7 @@
                  }
             }
         },
-        "os/pecas/{id}": {
+        "/os/pecas/{id}": {
             "get": {
                 "security": [
                     {
@@ -1613,7 +1613,7 @@
                  }
             }
         },
-        "os/{id}": {
+        "/os/{id}": {
             "get": {
                 "security": [
                     {

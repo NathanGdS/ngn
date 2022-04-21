@@ -22,9 +22,9 @@ if (process.env.SERVER_TYPE == 'dev') {
     }
   }
 } else {
-  entities = __dirname + "/dist/src/modules/**/infra/typeorm/entities/*.js";
-  migrations = __dirname + "/dist/src/shared/infra/typeorm/migrations/*.js";
-  migrationsDir = __dirname + "/dist/src/shared/infra/typeorm/migrations";
+  entities = __dirname + "/src/modules/**/infra/typeorm/entities/*.ts";
+  migrations = __dirname + "/src/modules/**/infra/typeorm/entities/*.ts";
+  migrationsDir = __dirname + "//src/shared/infra/typeorm/migrations";
   console.log(entities);
   console.log(migrations);
   console.log(migrationsDir);
