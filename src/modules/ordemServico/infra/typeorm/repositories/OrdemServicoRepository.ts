@@ -45,7 +45,6 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
 
         await this.repository.save(os);
         return os;
-
     }
 
     delete(id: string): void {
@@ -69,6 +68,29 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
             .execute()
         
         return await this.findById(id)
+    }
+
+    async recalculateTotal(id: string): Promise<OrdemServico> {
+        let total = 0;
+        const { pecas, procedimentos } = await this.findById(id);
+        for (let index = 0; index < pecas.length; index++) {
+            console.log(typeof pecas[index].total_value);
+            total += parseFloat(pecas[index].total_value.toString());
+        }
+        for (let index = 0; index < procedimentos.length; index++) { 
+            console.log(typeof procedimentos[index].total_value);
+            total += parseFloat(procedimentos[index].total_value.toString());
+        }
+        
+        this.repository.
+            createQueryBuilder()
+            .update()
+            .set({ valorTotal: total })
+            .where("id = :id")
+            .setParameters({ id })
+            .execute()
+        
+        return this.findById(id);
     }
     
 }

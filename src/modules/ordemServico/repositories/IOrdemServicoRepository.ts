@@ -9,6 +9,7 @@ interface IOrdemServicoRepository {
     // update(id: string, data: IUpdateOrdemPecaDTO): Promise<OrdemServico>;
     delete(id: string): void;
     updateStatus(id: string, statusId: string): Promise<OrdemServico>;
+    recalculateTotal(id: string): Promise<OrdemServico>;
 }
 
 export { IOrdemServicoRepository };

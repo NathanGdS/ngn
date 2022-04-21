@@ -35,6 +35,8 @@ class CreateOrdemProcedimentoUseCase {
             ordemServicoId
         })
 
+        await this.ordemServicoRepository.recalculateTotal(ordemServicoId)
+
         return ordemProcedimento
     }
     
