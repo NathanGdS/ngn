@@ -10,13 +10,13 @@ if (process.env.SERVER_TYPE == 'dev') {
   migrationsDir = "./src/shared/infra/typeorm/migrations";
   module.exports = {
     "type": "postgres",
-    "port": process.env.DATABASE_PORT,
-    "host": process.env.DATABASE_HOST,
-    "username": process.env.DATABASE_USER,
-    "password": process.env.DATABASE_PASSWORD,
-    "database": process.env.DATABASE,
+    "url": process.env.DATABASE_URL,
     "entities": [entities],
     "migrations": [migrations],
+    "ssl": {
+      ssl: true,
+      rejectUnauthorized: false
+    },
     "cli": {
       "migrationsDir": migrationsDir,
     }
@@ -33,7 +33,10 @@ if (process.env.SERVER_TYPE == 'dev') {
     "url": process.env.DATABASE_URL,
     "entities": [entities],
     "migrations": [migrations],
-    "ssl": true,
+    "ssl": {
+      ssl: true,
+      rejectUnauthorized: false
+    },
     "cli": {
       "migrationsDir": migrationsDir,
     }
