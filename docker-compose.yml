@@ -25,7 +25,7 @@ services:
       - 8080:8080
       - 9229:9229
     volumes:
-      - .:/usr/app
+      - .:/usr/src/app
     links:
       - database
     depends_on:
