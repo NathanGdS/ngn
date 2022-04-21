@@ -425,7 +425,7 @@
                 }
             }
         },
-        "automovel/tipo/list": {
+        "/automovel/tipo/list": {
             "get": {
                 "security": [
                     {
