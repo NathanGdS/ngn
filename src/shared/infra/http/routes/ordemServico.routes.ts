@@ -24,6 +24,7 @@ import { ListStatusOrdemController } from "@modules/ordemServico/useCases/ordemS
 import { ListOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOrdemServico/ListOrdemServicoController";
 import { CreateOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/createOrdemServico/CreateOrdemServicoController";
 import { ListOneOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOneOrdemServico/ListOneOrdemServicoController";
+import { UpdateStatusOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/updateStatusOrdemServico/UpdateStatusOrdemServicoController";
 import { DeleteOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/deleteOrdemServico/DeleteOrdemServicoController";
 
 
@@ -65,11 +66,13 @@ ordemServicoRoutes.get("/status", ensureAuthenticated, listStatusOrdemController
 const listOrdemServicoController = new ListOrdemServicoController();
 const listOneOrdemServicoController = new ListOneOrdemServicoController();
 const createOrdemServicoController = new CreateOrdemServicoController();
+const updateStatusOrdemServicoController = new UpdateStatusOrdemServicoController();
 const deleteOrdemServicoController = new DeleteOrdemServicoController();
 
 ordemServicoRoutes.get('/', ensureAuthenticated, listOrdemServicoController.handle)
 ordemServicoRoutes.get('/:id', ensureAuthenticated, listOneOrdemServicoController.handle)
 ordemServicoRoutes.post('/', ensureAuthenticated, createOrdemServicoController.handle)
+ordemServicoRoutes.patch('/status/:id', ensureAuthenticated, updateStatusOrdemServicoController.handle)
 ordemServicoRoutes.delete('/:id', ensureAuthenticated, ensureAdmin, deleteOrdemServicoController.handle)
 
 export { ordemServicoRoutes };

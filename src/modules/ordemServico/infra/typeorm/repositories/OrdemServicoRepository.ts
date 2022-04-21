@@ -2,6 +2,7 @@ import { ICreateOrdemServicoDTO } from "@modules/ordemServico/dtos/ICreateOrdemS
 import { IOrdemServicoRepository } from "@modules/ordemServico/repositories/IOrdemServicoRepository";
 import { getRepository, Repository } from "typeorm";
 import { OrdemServico } from "../entities/OrdemServico";
+import { StatusOrdem } from "../entities/StatusOrdem";
 
 class OrdemServicoRepository implements IOrdemServicoRepository {
     private repository: Repository<OrdemServico>;
@@ -52,16 +53,24 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
     }
 
     async updateStatus(id: string, statusId: string): Promise<OrdemServico> { 
-        await this.repository.
+        const statusOrdem = await getRepository(StatusOrdem).findOne({ id: statusId });
+
+        const query = this.repository.
             createQueryBuilder()
             .update()
             .set({ statusId })
-            .where("id =:id")
+        
+        if (statusOrdem.statusNumber === 5) {
+            query.set({finished_at: new Date()})
+        }
+
+        await query.where("id = :id")
             .setParameters({ id })
             .execute()
         
         return await this.findById(id)
     }
+    
 }
 
 export { OrdemServicoRepository };
