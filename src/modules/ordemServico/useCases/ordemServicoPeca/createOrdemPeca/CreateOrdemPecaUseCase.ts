@@ -35,10 +35,7 @@ class CreateOrdemPecaUseCase {
             ordemServicoId
         })
 
-        console.log(ordemPeca.total_value);
-
-        found.valorTotal = found.valorTotal + ordemPeca.total_value
-        
+        await this.ordemServicoRepository.recalculateTotal(ordemServicoId)
 
         return ordemPeca
     }
