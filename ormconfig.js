@@ -33,10 +33,7 @@ if (process.env.SERVER_TYPE == 'dev') {
     "url": process.env.DATABASE_URL,
     "entities": [entities],
     "migrations": [migrations],
-    "ssl": {
-      ssl: true,
-      rejectUnauthorized: false
-    },
+    "ssl": true,
     "cli": {
       "migrationsDir": migrationsDir,
     }
