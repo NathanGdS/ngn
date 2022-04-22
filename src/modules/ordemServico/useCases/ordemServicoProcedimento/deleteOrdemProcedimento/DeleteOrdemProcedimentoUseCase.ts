@@ -27,7 +27,9 @@ class DeleteOrdemProcedimentoUseCase {
         if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6 && verifyOrdemStatus !== 7)
             throw new AppError('Procedimento não pode ser deletado!', 400)
 
-        this.ordemProcedimentosRepository.delete(id);
+        this.ordemProcedimentosRepository.delete(id)
+
+        await this.ordemServicoRepository.recalculateTotal(ordemServico.id)
     }
 
 }

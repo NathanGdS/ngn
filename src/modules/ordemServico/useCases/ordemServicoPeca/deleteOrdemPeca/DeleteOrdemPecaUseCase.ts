@@ -17,7 +17,7 @@ class DeleteOrdemPecaUseCase {
     
     async execute(id: string): Promise<void> {
         const found = await this.ordemPecasRepository.findById(id)
-        if (!found) throw new AppError('Ordem não encontrada!', 404)
+        if (!found) throw new AppError('Peça não encontrada!', 400)
         
         const ordemServico = await this.ordemServicoRepository.findById(found.ordemServicoId)
         const verifyOrdemStatus = (await this.statusOrdemRepository.findById(ordemServico.statusId)).statusNumber
@@ -25,6 +25,8 @@ class DeleteOrdemPecaUseCase {
         if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6 && verifyOrdemStatus !== 7) throw new AppError('Peça não pode ser deletada!', 400)
 
         this.ordemPecasRepository.delete(id)
+
+        await this.ordemServicoRepository.recalculateTotal(ordemServico.id)
     }
 }
 

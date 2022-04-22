@@ -10,11 +10,11 @@ import { inject, injectable } from "tsyringe";
 class UpdateOrdemPecaUseCase {
     constructor(
         @inject("OrdemPecasRepository")
-        private ordemPecasRepository: IOrdemPecasRepository,
+        private readonly ordemPecasRepository: IOrdemPecasRepository,
         @inject("OrdemServicoRepository")
-        private ordemServicoRepository: IOrdemServicoRepository,
+        private readonly ordemServicoRepository: IOrdemServicoRepository,
         @inject("StatusOrdemRepository")
-        private statusOrdemRepository: IStatusOrdemRepository
+        private readonly statusOrdemRepository: IStatusOrdemRepository
     ) { }
     
     async execute(id: string, data: IUpdateOrdemPecaDTO): Promise<OrdemPecas> {
@@ -26,7 +26,11 @@ class UpdateOrdemPecaUseCase {
 
         if(verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6) throw new AppError('Peça não pode ser alterada!', 400)
 
-        return await this.ordemPecasRepository.update(id, data)
+        const ordemPeca =  await this.ordemPecasRepository.update(id, data)
+        
+        await this.ordemServicoRepository.recalculateTotal(ordemServico.id)
+
+        return ordemPeca
     }
 }
 
