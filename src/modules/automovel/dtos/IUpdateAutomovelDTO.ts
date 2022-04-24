@@ -1,5 +1,4 @@
 interface IUpdateAutomovelDTO {
-    id: string,
     plate: string,
     model: string,
     brand: string,

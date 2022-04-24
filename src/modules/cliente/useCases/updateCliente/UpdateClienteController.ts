@@ -6,13 +6,13 @@ class UpdateClienteController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
             const { id } = request.params;
-            const { name, cpf, rg, birthDate, email } = request.body;
+            const { name, email, cpf, rg, birthDate } = request.body;
 
             const updateClienteUseCase = container.resolve(
                 UpdateClienteUseCase
             );
 
-            const cliente = updateClienteUseCase.execute({ id, name, rg, cpf, birthDate, email });
+            const cliente = await updateClienteUseCase.execute({ id, name, email, cpf, rg, birthDate });
 
             return response.status(200).json(cliente);
         } catch (e) {

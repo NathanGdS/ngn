@@ -7,7 +7,7 @@ class ListClienteUseCase {
     constructor(
         @inject("ClienteRepository")
         private clienteRepository: IClienteRepository
-    ) { }
+    ){}
     
     async execute(): Promise<Cliente[]> {
         const clientes = await this.clienteRepository.findAll();

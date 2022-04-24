@@ -1,0 +1,1675 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "NGN API Documentation",
+        "description": "Work Order API for Machine Shops",
+        "version": "1.0.0",
+        "contact": {
+            "email":"nathangarsantos@gmail.com"
+        }
+    },
+    "host": "localhost:8080",
+    "basePath": "/",
+    "components": {        
+        "securitySchemes": {
+          "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+          }
+        }
+      },
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": ["Autenticação"],
+                "summary": "Make the authentication",
+                "description": "Get the bearer token for authentication",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example":{
+                                "email": "ngnapi@corp.ngn.com",
+                                "password": "strongpassword"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json":{
+                                "schema": {
+                                    "type":"object",
+                                    "properties": {
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/usuarios": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Usuarios"],
+                "summary": "List all Usuarios",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "isAdmin": {
+                                                "type": "boolean"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "cpf": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Usuarios"],
+                "summary": "Create a new Usuario",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type":"string"
+                                    },
+                                    "password": {
+                                        "type":"string"
+                                    },
+                                    "email": {
+                                        "type":"string"
+                                    },
+                                    "cpf": {
+                                        "type":"string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "name": "teste",
+                                "password": "teste",
+                                "email": "teste@teste.com",
+                                "cpf": "12345678909"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "isAdmin": {
+                                                "type": "boolean"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "cpf": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/clientes": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Clientes"],
+                "summary": "List all Clientes",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "cpf": {
+                                                "type": "string"
+                                            },
+                                            "rg": {
+                                                "type": "string"
+                                            },
+                                            "birthDate": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Clientes"],
+                "summary": "Create a new Cliente",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type":"string"
+                                    },
+                                    "cpf": {
+                                        "type":"string"
+                                    },
+                                    "rg": {
+                                        "type":"string"
+                                    },
+                                    "birthDate": {
+                                        "type":"string"
+                                    },
+                                    "email": {
+                                        "type":"string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "name": "cliente",
+                                "cpf": "12345678909",
+                                "rg": "1233456650",
+                                "birthDate": "12345678909",
+                                "email": "cliente@cliente.com"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "createdAt": {
+                                                "type": "string"
+                                            },
+                                            "name": {
+                                                "type":"string"
+                                            },
+                                            "cpf": {
+                                                "type":"string"
+                                            },
+                                            "rg": {
+                                                "type":"string"
+                                            },
+                                            "birthDate": {
+                                                "type":"string"
+                                            },
+                                            "email": {
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/automovel/tipo": {
+            "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["TipoAutomovel"],
+                "summary": "Create a new Tipo Automovel",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "description": {
+                                        "type":"string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "description": "SUV"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/automovel/tipo/list": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["TipoAutomovel"],
+                "summary": "List all Tipo Automovel",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/automovel/tipo/{tipo_id}": {
+            "patch": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["TipoAutomovel"],
+                "summary": "Update Description of Tipo Automovel",
+                "parameters": [
+                    {
+                        "name": "tipo_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "description": {
+                                        "type":"string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "description": "SUV V2"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["TipoAutomovel"],
+                "summary": "Delete an Tipo Automovel",
+                "parameters": [
+                    {
+                        "name": "tipo_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/automovel": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Automovel"],
+                "summary": "List all Automoveis",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type":"string"
+                                            },
+                                            "plate":{
+                                                "type":"string"
+                                            },
+                                            "model":{
+                                                "type":"string"
+                                            },
+                                            "brand":{
+                                                "type":"string"
+                                            },
+                                            "color":{
+                                                "type":"string"
+                                            },
+                                            "year":{
+                                                "type":"string"
+                                            },
+                                            "renavam":{
+                                                "type":"string"
+                                            },
+                                            "customerId":{
+                                                "type":"string"
+                                            },
+                                            "typeId":{
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "plate": "ABC1234",
+                                    "model": "Toyota V120",
+                                    "brand": "Toyota",
+                                    "color": "blue",
+                                    "year": "2012",
+                                    "renavam": "ASDCS",
+                                    "customerId": "e21ca6df-8194-4374-822e-24fb2e550b4a",
+                                    "typeId": "a45474ba-55cb-4b84-beb0-462f2b7c2700"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Automovel"],
+                "summary": "Create a new Automovel",
+                "requestBody": {
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties": {
+                                    "id":{
+                                        "type":"string"
+                                    },
+                                    "created_at":{
+                                        "type":"string"
+                                    },
+                                    "plate":{
+                                        "type":"string"
+                                    },
+                                    "model":{
+                                        "type":"string"
+                                    },
+                                    "brand":{
+                                        "type":"string"
+                                    },
+                                    "color":{
+                                        "type":"string"
+                                    },
+                                    "year":{
+                                        "type":"string"
+                                    },
+                                    "renavam":{
+                                        "type":"string"
+                                    },
+                                    "customerId":{
+                                        "type":"string"
+                                    },
+                                    "typeId":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema":{
+                            "type":"object",
+                            "properties": {
+                                "id":{
+                                    "type":"string"
+                                },
+                                "created_at":{
+                                    "type":"string"
+                                },
+                                "plate":{
+                                    "type":"string"
+                                },
+                                "model":{
+                                    "type":"string"
+                                },
+                                "brand":{
+                                    "type":"string"
+                                },
+                                "color":{
+                                    "type":"string"
+                                },
+                                "year":{
+                                    "type":"string"
+                                },
+                                "renavam":{
+                                    "type":"string"
+                                },
+                                "customerId":{
+                                    "type":"string"
+                                },
+                                "typeId":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/automovel/{id}": {
+            "put": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Automovel"],
+                "summary": "Update a Automovel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "properties": {
+                                    "plate":{
+                                        "type":"string"
+                                    },
+                                    "model":{
+                                        "type":"string"
+                                    },
+                                    "brand":{
+                                        "type":"string"
+                                    },
+                                    "color":{
+                                        "type":"string"
+                                    },
+                                    "year":{
+                                        "type":"string"
+                                    },
+                                    "renavam":{
+                                        "type":"string"
+                                    },
+                                    "customerId":{
+                                        "type":"string"
+                                    },
+                                    "typeId":{
+                                        "type":"string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Updated",
+                        "schema":{
+                            "type":"object",
+                            "properties": {
+                                "id":{
+                                    "type":"string"
+                                },
+                                "created_at":{
+                                    "type":"string"
+                                },
+                                "plate":{
+                                    "type":"string"
+                                },
+                                "model":{
+                                    "type":"string"
+                                },
+                                "brand":{
+                                    "type":"string"
+                                },
+                                "color":{
+                                    "type":"string"
+                                },
+                                "year":{
+                                    "type":"string"
+                                },
+                                "renavam":{
+                                    "type":"string"
+                                },
+                                "customerId":{
+                                    "type":"string"
+                                },
+                                "typeId":{
+                                    "type":"string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Automovel"],
+                "summary": "Delete an Automovel",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/os/procedimentos": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["OrdemProcedimentos"],
+                "summary": "List all Ordem Procedimentos",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type":"string"
+                                            },
+                                            "sequence":{
+                                                "type":"integer"
+                                            },
+                                            "description":{
+                                                "type":"string"
+                                            },
+                                            "unit_value":{
+                                                "type":"string"
+                                            },
+                                            "amount":{
+                                                "type":"integer"
+                                            },
+                                            "total_value":{
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "id": "430da97c-4eff-43ae-85e4-cdb1b6574d67",
+                                    "createdAt": "2022-04-07T23:15:13.882Z",
+                                    "sequence": 1,
+                                    "description": "completar óleo",
+                                    "unit_value": "100.95",
+                                    "amount": 5,
+                                    "total_value": "504.5"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemProcedimentos"],
+                 "summary": "Create a new Ordem Procedimento",
+                 "requestBody": {
+                     "content": {
+                         "application/json": {
+                             "schema": {
+                                 "type": "object",
+                                 "properties": {
+                                     "description": { "type": "string" },
+                                     "unit_value": { "type": "number" },
+                                     "amount": { "type": "integer" },
+                                     "ordemServicoId": { "type": "string" }
+                                 }
+                             },
+                             "example": {
+                                 "description": "Troca de Pneu",
+                                 "unit_value": 400.00,
+                                 "amount": 4,
+                                 "ordemServicoId": "uuid string"
+                             }
+                         }
+                     }
+                 },
+                 "responses": {
+                     "201": {
+                         "description": "Created"
+                     },
+                     "400": {
+                         "description": "Error"
+                     },
+                     "404": {
+                         "description": "Ordem Servico not found"
+                     }
+                 }
+            }
+        },
+        "/os/procedimentos/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemProcedimentos"],
+                 "summary": "Find a Specific Ordem Procedimento",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Ordem Procedimento not Found!"
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemProcedimentos"],
+                 "summary": "Update an Ordem Procedimento",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "description": { "type":"string" },
+                                    "unit_value": { "type":"number" },
+                                    "amount": { "type":"integer" }
+                                }
+                            },
+                            "example": {
+                                "description": "Troca de óleo",
+                                "unit_value": 60,
+                                "amount": 1
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Ordem Procedimento not Found!"
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemProcedimentos"],
+                 "summary": "Delete an Ordem Procedimento",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Ordem Procedimento not Found!"
+                    }
+                }
+            }
+        },
+        "/os/status": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["OrdemStatus"],
+                "summary": "List all Ordem Status",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type":"string"
+                                            },
+                                            "statusNumber":{
+                                                "type":"integer"
+                                            },
+                                            "description":{
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "id": "e85cacd6-5b83-45e5-9a88-c6c8d2c9a588",
+                                    "createdAt": "2022-04-15T22:49:52.712Z",
+                                    "statusNumber": 1,
+                                    "description": "Aberta"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemStatus"],
+                 "summary": "Create a new Status Ordem Serviço",
+                 "requestBody": {
+                     "content": {
+                         "application/json": {
+                             "schema": {
+                                 "type": "object",
+                                 "properties": {
+                                     "statusNumber": { "type": "integer" },
+                                     "description": { "type": "string" }
+                                 }
+                             },
+                             "example": {
+                                "id": "e85cacd6-5b83-45e5-9a88-c6c8d2c9a588",
+                                "createdAt": "2022-04-15T22:49:52.712Z",
+                                "statusNumber": 1,
+                                "description": "Aberta"
+                             }
+                         }
+                     }
+                 },
+                 "responses": {
+                     "201": {
+                         "description": "Created"
+                     },
+                     "400": {
+                         "description": "Error"
+                     }
+                 }
+            }
+        },
+        "/os/status/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemStatus"],
+                 "summary": "Find a Specific Ordem Status",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Ordem Procedimento not Found!"
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemStatus"],
+                 "summary": "Delete an Ordem Status",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Ordem Status not Found!"
+                    }
+                }
+            }
+        },
+        "/os/pecas": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["OrdemPecas"],
+                "summary": "List all Ordem Pecas",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id":{
+                                                "type":"string"
+                                            },
+                                            "created_at":{
+                                                "type":"string"
+                                            },
+                                            "description":{
+                                                "type":"string"
+                                            },
+                                            "unit_value":{
+                                                "type":"string"
+                                            },
+                                            "amount":{
+                                                "type":"integer"
+                                            },
+                                            "total_value":{
+                                                "type":"string"
+                                            },
+                                            "ordemServicoId":{
+                                                "type":"string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "id": "430da97c-4eff-43ae-85e4-cdb1b6574d67",
+                                    "createdAt": "2022-04-07T23:15:13.882Z",
+                                    "sequence": 1,
+                                    "description": "completar óleo",
+                                    "unit_value": "100.95",
+                                    "amount": 5,
+                                    "total_value": "504.5"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemPecas"],
+                 "summary": "Create a new Ordem Procedimento",
+                 "requestBody": {
+                     "content": {
+                         "application/json": {
+                             "schema": {
+                                 "type": "object",
+                                 "properties": {
+                                     "description": { "type": "string" },
+                                     "unit_value": { "type": "number" },
+                                     "amount": { "type": "integer" },
+                                     "ordemServicoId": { "type": "string" }
+                                 }
+                             },
+                             "example": {
+                                 "description": "Troca de Pneu",
+                                 "unit_value": 400.00,
+                                 "amount": 4,
+                                 "ordemServicoId": "uuid string"
+                             }
+                         }
+                     }
+                 },
+                 "responses": {
+                     "201": {
+                         "description": "Created"
+                     },
+                     "400": {
+                         "description": "Error"
+                     },
+                     "404": {
+                         "description": "Ordem Servico not found"
+                     }
+                 }
+            }
+        },
+        "/os/pecas/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemPecas"],
+                 "summary": "Find a Specific Ordem Pecas",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Ordem Procedimento not Found!"
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemPecas"],
+                 "summary": "Update an Ordem Pecas",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "description": { "type":"string" },
+                                    "unit_value": { "type":"number" },
+                                    "amount": { "type":"integer" }
+                                }
+                            },
+                            "example": {
+                                "description": "Troca de óleo",
+                                "unit_value": 60,
+                                "amount": 1
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Ordem Procedimento not Found!"
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemPecas"],
+                 "summary": "Delete an Ordem Pecas",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Ordem Procedimento not Found!"
+                    }
+                }
+            }
+        },
+        "/os": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["OrdemServiço"],
+                "summary": "List all Ordem Status",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content":{
+                            "application/json":{
+                                "schema":{
+                                    "type":"array",
+                                    "items":{
+                                        "type":"object",
+                                        "properties":{
+                                            "id": { "type":"string" },
+                                            "created_at": { "type":"string" },
+                                            "descricao": { "type":"string" },
+                                            "valorTotal": { "type": "string" },
+                                            "statusId": { "type": "string" },
+                                            "automovelId": { "type": "string" },
+                                            "finished_at": { "type": "string" },
+                                            "status": { "type": "object", "properties": {
+                                                "id": { "type":"string" },
+                                                "created_at": { "type":"string" }, 
+                                                "statusNumber": { "type":"integer" }, 
+                                                "description": { "type":"string" }
+                                            } },
+                                            "automovel": { "type": "object", "properties": {
+                                                "id": { "type":"string" },
+                                                "created_at": { "type":"string" }, 
+                                                "plate": { "type":"string" }, 
+                                                "model": { "type":"string" },
+                                                "brand": { "type":"string" },
+                                                "color": { "type":"string" },
+                                                "year": { "type":"string" },
+                                                "renavam": { "type":"string" },
+                                                "modtypeIdel": { "type":"string" },
+                                                "customerId": { "type":"string" },
+                                                "tipoAutomovel": { "type":"object", "properties": { 
+                                                    "id": { "type": "string" },
+                                                    "created_at": { "type": "string" },
+                                                    "description": { "type": "string" }
+                                                } }
+                                            } },
+                                            "cliente": { "type": "object", "properties": {
+                                                "id": { "type":"string" },
+                                                "createdAt": { "type":"string" }, 
+                                                "name": { "type":"string" }, 
+                                                "email": { "type":"string" },
+                                                "cpf": { "type":"string" },
+                                                "rg": { "type":"string" },
+                                                "birthDate": { "type":"string" }
+                                            } },
+                                            "procedimentos": { "type": "array", "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": { "type":"string" },
+                                                    "createdAt": { "type":"string" },
+                                                    "description": { "type":"string" },
+                                                    "unit_value": { "type": "string" },
+                                                    "amount": { "type": "integer" },
+                                                    "total_value": { "type": "string" },
+                                                    "ordemServicoId": { "type": "integer" }
+                                                }
+                                            }},
+                                            "pecas": { "type": "array", "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": { "type":"string" },
+                                                    "createdAt": { "type":"string" },
+                                                    "description": { "type":"string" },
+                                                    "unit_value": { "type": "string" },
+                                                    "amount": { "type": "integer" },
+                                                    "total_value": { "type": "string" },
+                                                    "ordemServicoId": { "type": "integer" }
+                                                }
+                                            }}
+                                        }
+                                    }
+                                },
+                                "example": {
+                                    "id": "e6fce279-fc4c-44ea-bc08-1937becb5bcc",
+                                    "created_at": "2022-04-16T00:10:18.759Z",
+                                    "descricao": "Reparo do Chaci",
+                                    "valorTotal": "3000",
+                                    "statusId": "4aeb3926-9bc4-4735-a2e8-c5669ac25da2",
+                                    "automovelId": "cda007e3-f26f-48ec-8ef8-32077e07c82c",
+                                    "finished_at": null,
+                                    "status": {
+                                        "id": "4aeb3926-9bc4-4735-a2e8-c5669ac25da2",
+                                        "createdAt": "2022-04-13T19:30:24.970Z",
+                                        "statusNumber": 1,
+                                        "description": "A FAZER"
+                                    },
+                                    "automovel": {
+                                        "id": "cda007e3-f26f-48ec-8ef8-32077e07c82c",
+                                        "created_at": "2022-04-13T19:21:53.478Z",
+                                        "plate": "ABC1234",
+                                        "model": "Toyota V120",
+                                        "brand": "Toyota",
+                                        "color": "blue",
+                                        "year": "2012",
+                                        "renavam": "ASDACS",
+                                        "typeId": "cecb572d-88a5-43cf-a780-b656bef0f2ac",
+                                        "customerId": "39d2c9f2-acde-4160-b776-f909c58c7ee2",
+                                        "tipoAutomovel": {
+                                            "id": "cecb572d-88a5-43cf-a780-b656bef0f2ac",
+                                            "created_at": "2022-04-13T19:21:12.408Z",
+                                            "description": "Jipee"
+                                        },
+                                        "cliente": {
+                                            "id": "39d2c9f2-acde-4160-b776-f909c58c7ee2",
+                                            "createdAt": "2022-04-13T19:20:46.687Z",
+                                            "name": "nathan",
+                                            "email": "nathan@nathaan.com",
+                                            "cpf": "12345618319",
+                                            "rg": "143456484",
+                                            "birthDate": "2001-10-28T00:00:00.000Z"
+                                        }
+                                    },
+                                    "procedimentos": [
+                                        {
+                                            "id": "0af13a99-702d-4bd1-b286-ab0473787aa3",
+                                            "createdAt": "2022-04-16T00:12:41.545Z",
+                                            "description": "pega o martelo",
+                                            "unit_value": "100.95",
+                                            "amount": 3,
+                                            "total_value": "302.85",
+                                            "ordemServicoId": "e6fce279-fc4c-44ea-bc08-1937becb5bcc"
+                                        },
+                                        {
+                                            "id": "3d134786-017a-4bbd-9cf4-261a16b7589f",
+                                            "createdAt": "2022-04-16T00:16:56.706Z",
+                                            "description": "repor o oléo",
+                                            "unit_value": "800",
+                                            "amount": 1,
+                                            "total_value": "800",
+                                            "ordemServicoId": "e6fce279-fc4c-44ea-bc08-1937becb5bcc"
+                                        }
+                                    ],
+                                    "pecas": [
+                                        {
+                                            "id": "0db2cace-a49b-41c5-a163-3dd499f85481",
+                                            "createdAt": "2022-04-16T00:31:14.217Z",
+                                            "description": "Parafuso",
+                                            "unit_value": "5",
+                                            "amount": 10,
+                                            "total_value": "50",
+                                            "ordemServicoId": "e6fce279-fc4c-44ea-bc08-1937becb5bcc"
+                                        },
+                                        {
+                                            "id": "8361e20e-fcf3-4d43-ba70-82602657a7fd",
+                                            "createdAt": "2022-04-16T00:31:43.377Z",
+                                            "description": "Pneu",
+                                            "unit_value": "400",
+                                            "amount": 2,
+                                            "total_value": "800",
+                                            "ordemServicoId": "e6fce279-fc4c-44ea-bc08-1937becb5bcc"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemServiço"],
+                 "summary": "Create a new Ordem Serviço",
+                 "requestBody": {
+                     "content": {
+                         "application/json": {
+                             "schema": {
+                                 "type": "object",
+                                 "properties": {
+                                     "statusId": { "type": "string" },
+                                     "automovelId": { "type": "string" },
+                                     "descricao": { "type": "string" }
+                                 }
+                             },
+                             "example": {
+                                "statusId": "4aeb3926-9bc4-4735-a2e8-c5669ac25da2",
+                                "automovelId": "cda007e3-f26f-48ec-8ef8-32077e07c82c",
+                                "descricao": "Reparo do Chaci"
+                             }
+                         }
+                     }
+                 },
+                 "responses": {
+                     "201": {
+                         "description": "Created"
+                     },
+                     "400": {
+                         "description": "Error"
+                     }, 
+                     "404": {
+                         "description": "Id not Found"
+                     }
+                 }
+            }
+        },
+        "/os/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemServiço"],
+                 "summary": "Find a Specific Ordem Serviço",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Ordem Serviço not Found!"
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["OrdemServiço"],
+                 "summary": "Delete an Ordem Serviço",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Ordem Serviço not Found!"
+                    }
+                }
+            }
+        }
+    }
+}

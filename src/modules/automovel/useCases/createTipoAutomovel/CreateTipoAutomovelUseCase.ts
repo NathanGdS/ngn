@@ -15,7 +15,7 @@ class CreateTipoAutomovelUseCase {
 
         const tipoAutomovelExists = await this.tipoAutomovelRepository.findByDescription(description);
 
-        if(tipoAutomovelExists) throw new AppError('Tipo Automovel already exists!');
+        if(tipoAutomovelExists) throw new AppError('Tipo Automovel já existe!');
 
         const tipoAutomovel = await this.tipoAutomovelRepository.create({description});
 

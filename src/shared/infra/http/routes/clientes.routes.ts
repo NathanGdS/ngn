@@ -2,38 +2,26 @@ import { Router } from "express";
 
 import { CreateClienteController } from "@modules/cliente/useCases/createCliente/CreateClienteController";
 import { ListClienteController } from "@modules/cliente/useCases/listCliente/ListClienteController";
+import { ListByIdClienteController } from "@modules/cliente/useCases/listByIdCliente/ListByIdClienteController";
 import { UpdateClienteController } from "@modules/cliente/useCases/updateCliente/UpdateClienteController";
 import { DeleteClienteController } from "@modules/cliente/useCases/deleteCliente/DeleteClienteController";
 
-
-import { CreateTelefoneController } from "@modules/telefone/useCases/createTelefone/CreateTelefoneController";
-import { ListTelefoneController } from "@modules/telefone/useCases/listTelefone/ListTelefoneController";
-
-import { CreateEnderecoController } from "@modules/endereco/useCases/createEndereco/CreateEnderecoController";
-import { ListEnderecoController } from "@modules/endereco/useCases/listEndereco/ListEnderecoController";
+import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 
 const clienteRoutes = Router();
 
 const createClienteController = new CreateClienteController();
 const listClienteController = new ListClienteController();
+const listByIdClienteController = new ListByIdClienteController();
 const updateClienteController = new UpdateClienteController();
 const deleteClienteController = new DeleteClienteController();
 
-const createTelefoneController = new CreateTelefoneController();
-const listTelefoneController = new ListTelefoneController();
+clienteRoutes.post("/", ensureAuthenticated, createClienteController.handle);
+clienteRoutes.get("/", ensureAuthenticated, listClienteController.handle);
+clienteRoutes.get("/:id", ensureAuthenticated, listByIdClienteController.handle)
+clienteRoutes.put("/:id", ensureAuthenticated, updateClienteController.handle);
+clienteRoutes.delete("/:id", ensureAuthenticated, ensureAdmin, deleteClienteController.handle);
 
-const createEnderecoController = new CreateEnderecoController();
-const listEnderecoController = new ListEnderecoController();
-
-clienteRoutes.post("/", createClienteController.handle);
-clienteRoutes.get("/", listClienteController.handle);
-clienteRoutes.put("/:id", updateClienteController.handle);
-clienteRoutes.delete("/:id", deleteClienteController.handle);
-
-clienteRoutes.post("/telefone", createTelefoneController.handle);
-clienteRoutes.get("/telefone", listTelefoneController.handle);
-
-clienteRoutes.post("/endereco", createEnderecoController.handle);
-clienteRoutes.get("/endereco", listEnderecoController.handle);
 
 export { clienteRoutes };

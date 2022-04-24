@@ -1,11 +1,12 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response, Router } from "express";
 import { container } from "tsyringe";
 
 import { ListTipoAutomovelUseCase } from "./ListTipoAutomovelUseCase";
 
 class ListTipoAutomovelController {
-    async handle(request: Request, response: Response): Promise<Response> {
+    async handle(request: Request, response: Response, next: NextFunction): Promise<Response> {
         try{
+
             const listTipoAutomovelUseCase = container.resolve(
                 ListTipoAutomovelUseCase
             );

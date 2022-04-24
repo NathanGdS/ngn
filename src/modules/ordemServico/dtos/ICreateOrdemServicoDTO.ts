@@ -1,9 +1,6 @@
 interface ICreateOrdemServicoDTO {
-    orderNum: number,
-    orderDsc: string,
-    orderTotal: number,
-    customerId: string,
-    autoId: string   
+    automovelId: string;
+    descricao: string;
 }
 
 export { ICreateOrdemServicoDTO };

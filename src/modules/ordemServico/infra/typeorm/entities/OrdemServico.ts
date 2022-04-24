@@ -1,51 +1,50 @@
 import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
 import { Cliente } from "@modules/cliente/infra/typeorm/entities/Cliente";
-import { Column, CreateDateColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { v4 as uuidV4 } from 'uuid';
-import { OrdemServicoPeca } from "./OrdemServicoPeca";
-import { OrdemServicoProc } from "./OrdemServicoProc";
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
+import { OrdemPecas } from "./OrdemPecas";
+import { OrdemProcedimentos } from "./OrdemProcedimentos";
 import { StatusOrdem } from "./StatusOrdem";
 
-class OrdemServico {
+@Entity('ordem_servico')
+export class OrdemServico {
+
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
     @Column()
-    orderNum: number;
+    descricao: string;
 
     @Column()
-    orderDsc: string;
-    
-    @Column({type: "decimal", precision: 6, scale: 2 })
-    orderTotal: number;
+    valorTotal: number;
+
+    @Column()
+    statusId: string;
+    @ManyToOne(() => StatusOrdem, { eager: true })
+    status: StatusOrdem;
+
+    @Column()
+    automovelId: string;
+    @ManyToOne(() => Automovel, { eager: true })
+    automovel: Automovel;
+
+    @OneToMany(() => OrdemProcedimentos, op => op.ordemServico, { eager: true, cascade: true })
+    procedimentos: OrdemProcedimentos[];
+
+    @OneToMany(() => OrdemPecas, op => op.ordemServico, { eager: true, cascade: true })
+    pecas: OrdemPecas[];
 
     @CreateDateColumn()
-    created_at?: Date;
-    
-    @Column()
+    created_at: Date;
+
+    @Column({nullable: true})
     finished_at?: Date;
 
-    @ManyToOne(() => Cliente)
-    customerId: string;
-
-    @ManyToOne(() => Automovel)
-    autoId: string;
-
-    @OneToOne(() => StatusOrdem, status => status.orderStatusId)
-    orderStatusId: string;
-
-    @OneToMany(() => OrdemServicoPeca, peca => peca.orderId)
-    pieceOrderId: OrdemServicoPeca[];
-
-    @OneToMany(() => OrdemServicoProc, proc => proc.orderId)
-    procOrderId: OrdemServicoProc[];
-
-    constructor() {
-        if (!this.id) {
+    constructor () {
+        if(!this.id) {
             this.id = uuidV4();
             this.created_at = new Date();
         }
     }
-}
 
-export { OrdemServico };
+}

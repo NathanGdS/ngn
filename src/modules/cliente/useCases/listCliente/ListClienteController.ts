@@ -1,6 +1,5 @@
-import { Request, Response } from "express";
+import e, { Request, Response } from "express";
 import { container } from "tsyringe";
-
 import { ListClienteUseCase } from "./ListClienteUseCase";
 
 class ListClienteController {
@@ -14,7 +13,7 @@ class ListClienteController {
 
             return response.status(200).json(clientes);
         } catch (e) {
-            return response.status(400).json({ error: e.message }); 
+            return response.status(400).json({ error: e.message });
         }
     }
 }

@@ -2,16 +2,17 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "outDir": "./dist",
     "rootDir": "./",
     "baseUrl": "./src",
     "paths": {
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"],
-      "@shared/*": ["shared/*"],
+      "@shared/*": ["./shared/*"],
       "@errors/*": ["./shared/errors/*"],
       "@utils/*": ["utils/*"],
-      "@middlewares/*": ["middlewares/*"]
+      "@middlewares/*": ["./shared/infra/http/middlewares/*"]
   },
     "esModuleInterop": true,
     "experimentalDecorators": true,

@@ -1,16 +1,19 @@
-import { Automovel } from '@modules/automovel/infra/typeorm/entities/Automovel';
-import { Endereco } from '@modules/endereco/infra/typeorm/entities/Endereco';
-import { OrdemServico } from '@modules/ordemServico/infra/typeorm/entities/OrdemServico';
-import { Telefone } from '@modules/telefone/infra/typeorm/entities/Telefone';
-import { Column, CreateDateColumn, ManyToOne, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { v4 as uuidV4 } from 'uuid';
+import { Automovel } from "@modules/automovel/infra/typeorm/entities/Automovel";
 
+import { Column, CreateDateColumn, Entity, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { v4 as uuidV4 } from "uuid";
+
+@Entity("clientes")
 class Cliente {
+
     @PrimaryGeneratedColumn('uuid')
-    id: string;
+    id?: string;
 
     @Column()
     name: string;
+
+    @Column()
+    email: string;
 
     @Column()
     cpf: string;
@@ -18,21 +21,22 @@ class Cliente {
     @Column()
     rg: string;
 
-    @Column()
+    @Column({ name: 'birth_date' })
     birthDate: Date;
 
-    @Column()
-    email: string;
+    @CreateDateColumn({ name: 'created_at' })
+    createdAt?: Date;
 
-    @CreateDateColumn()
-    created_at?: Date;
+    @OneToMany(() => Automovel, automovel => automovel.customerId)
+    automobiles: Automovel[];
+
         
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
-            this.created_at = new Date();
+            this.createdAt = new Date();
         }
     }
 }
 
-export { Cliente };
+export { Cliente }; 

@@ -1,39 +1,31 @@
 import { Router } from "express";
 
-import { CreateUsuarioController } from "@modules/usuario/useCases/createUsuario/CreateUsuarioController";
-import { ListUsuarioController } from "@modules/usuario/useCases/listUsuario/ListUsuarioController";
-import { UpdateUsuarioController } from "@modules/usuario/useCases/updateUsuario/UpdateUsuarioController";
-import { DeleteUsuarioController } from "@modules/usuario/useCases/deleteUsuario/DeleteUsuarioController";
+import { CreateUsuarioController } from "@modules/accounts/useCases/createUsuario/CreateUsuarioController";
+import { ListUsuariosController } from "@modules/accounts/useCases/listUsuario/ListUsuariosController";
+import { ListByIdUsuarioController } from "@modules/accounts/useCases/listByIdUsuario/ListByIdUsuarioController";
+import { UpdateUsuarioController } from "@modules/accounts/useCases/updateUsuario/UpdateUsuarioController";
+import { DeleteUsuarioController } from "@modules/accounts/useCases/deleteUsuario/DeleteUsuarioController";
 
-import { CreateEnderecoController } from "@modules/endereco/useCases/createEndereco/CreateEnderecoController";
-import { ListEnderecoController } from "@modules/endereco/useCases/listEndereco/ListEnderecoController";
+import { ChangePasswordController } from "@modules/accounts/useCases/changePassword/ChangePasswordController";
 
-import { CreateTelefoneController } from "@modules/telefone/useCases/createTelefone/CreateTelefoneController";
-import { ListTelefoneController } from "@modules/telefone/useCases/listTelefone/ListTelefoneController";
+import { ensureAuthenticated } from "../middlewares/ensureAuthentication";
+import { ensureAdmin } from "../middlewares/ensureAdmin";
 
 const usuarioRoutes = Router();
 
 const createUsuarioController = new CreateUsuarioController();
-const listUsuarioController = new ListUsuarioController();
-const updateUsaurioController = new UpdateUsuarioController();
+const listUsuariosController = new ListUsuariosController();
+const listByIdUsuarioController = new ListByIdUsuarioController();
+const updateUsuarioController = new UpdateUsuarioController();
 const deleteUsuarioController = new DeleteUsuarioController();
+const changePasswordController = new ChangePasswordController();
 
-const createTelefoneController = new CreateTelefoneController();
-const listTelefoneController = new ListTelefoneController();
+usuarioRoutes.post('/', createUsuarioController.handle)
+usuarioRoutes.get('/', ensureAuthenticated, listUsuariosController.handle)
+usuarioRoutes.get("/:id", ensureAuthenticated, listByIdUsuarioController.handle)
+usuarioRoutes.put("/:id", ensureAuthenticated, updateUsuarioController.handle)
+usuarioRoutes.delete("/:id", ensureAuthenticated, ensureAdmin, deleteUsuarioController.handle)
 
-const createEnderecoController = new CreateEnderecoController();
-const listEnderecoController = new ListEnderecoController();
-
-usuarioRoutes.post("/", createUsuarioController.handle);
-usuarioRoutes.get("/", listUsuarioController.handle);
-usuarioRoutes.put("/:id", updateUsaurioController.handle);
-usuarioRoutes.delete("/:id", deleteUsuarioController.handle);
-
-usuarioRoutes.post("/telefone", createTelefoneController.handle);
-usuarioRoutes.get("/telefone", listTelefoneController.handle);
-
-usuarioRoutes.post("/endereco", createEnderecoController.handle);
-usuarioRoutes.get("/endereco", listEnderecoController.handle);
-
+usuarioRoutes.patch("/senha/:id", ensureAuthenticated, changePasswordController.handle)
 
 export { usuarioRoutes };
