@@ -27,7 +27,11 @@ class UpdateOrdemProcedimentoUseCase {
 
         if (verifyOrdemStatus !== 1 && verifyOrdemStatus !== 6) throw new AppError('Procedimento não pode ser alterado!', 400)
         
-        return await this.ordemProcedimentosRepository.update(id, data)
+        const ordemProcedimento = await this.ordemProcedimentosRepository.update(id, data)
+
+        await this.ordemServicoRepository.recalculateTotal(ordemServico.id)
+
+        return ordemProcedimento
     }
 }
 
