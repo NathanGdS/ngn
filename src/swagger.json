@@ -204,6 +204,105 @@
                 }
             }
         },
+        "/usuarios/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["Usuarios"],
+                 "summary": "Find a Specific Usuario",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Usuario not Found!"
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["Usuarios"],
+                 "summary": "Update an Cliente",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": { "type":"string" },
+                                    "password": { "type":"string" },
+                                    "email": { "type":"string" },
+                                    "cpf": { "type":"string" },
+                                    "isAdmin": { "type":"boolean" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Usuario not Found!"
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["Usuarios"],
+                 "summary": "Delete an Usuario",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Usuario not Found!"
+                    }
+                }
+            }
+        },
         "/clientes": {
             "get": {
                 "security": [
@@ -348,6 +447,105 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+        },
+        "/clientes/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["Clientes"],
+                 "summary": "Find a Specific Cliente",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Cliente not Found!"
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["Clientes"],
+                 "summary": "Update an Cliente",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": { "type":"string" },
+                                    "email": { "type":"string" },
+                                    "cpf": { "type":"string" },
+                                    "rg": { "type":"string" },
+                                    "birthDate": { "type":"string" }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "404": {
+                        "description": "Cliente not Found!"
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["Clientes"],
+                 "summary": "Delete an Cliente",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Deleted"
+                    },
+                    "404": {
+                        "description": "Cliente not Found!"
                     }
                 }
             }
@@ -1107,98 +1305,6 @@
                                 }
                             }
                         }
-                    }
-                }
-            },
-            "post": {
-                "security": [
-                    {
-                       "bearerAuth": []
-                    }
-                 ],
-                 "tags": ["OrdemStatus"],
-                 "summary": "Create a new Status Ordem Serviço",
-                 "requestBody": {
-                     "content": {
-                         "application/json": {
-                             "schema": {
-                                 "type": "object",
-                                 "properties": {
-                                     "statusNumber": { "type": "integer" },
-                                     "description": { "type": "string" }
-                                 }
-                             },
-                             "example": {
-                                "id": "e85cacd6-5b83-45e5-9a88-c6c8d2c9a588",
-                                "createdAt": "2022-04-15T22:49:52.712Z",
-                                "statusNumber": 1,
-                                "description": "Aberta"
-                             }
-                         }
-                     }
-                 },
-                 "responses": {
-                     "201": {
-                         "description": "Created"
-                     },
-                     "400": {
-                         "description": "Error"
-                     }
-                 }
-            }
-        },
-        "/os/status/{id}": {
-            "get": {
-                "security": [
-                    {
-                       "bearerAuth": []
-                    }
-                 ],
-                 "tags": ["OrdemStatus"],
-                 "summary": "Find a Specific Ordem Status",
-                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type":"string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Founded"
-                    },
-                    "404": {
-                        "description": "Ordem Procedimento not Found!"
-                    }
-                }
-            },
-            "delete": {
-                "security": [
-                    {
-                       "bearerAuth": []
-                    }
-                 ],
-                 "tags": ["OrdemStatus"],
-                 "summary": "Delete an Ordem Status",
-                 "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type":"string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Deleted"
-                    },
-                    "404": {
-                        "description": "Ordem Status not Found!"
                     }
                 }
             }
