@@ -239,7 +239,7 @@
                     }
                  ],
                  "tags": ["Usuarios"],
-                 "summary": "Update an Cliente",
+                 "summary": "Update an Usuario",
                  "parameters": [
                     {
                         "name": "id",
@@ -486,7 +486,7 @@
                     }
                  ],
                  "tags": ["Clientes"],
-                 "summary": "Update an Cliente",
+                 "summary": "Update a Cliente",
                  "parameters": [
                     {
                         "name": "id",
@@ -529,7 +529,7 @@
                     }
                  ],
                  "tags": ["Clientes"],
-                 "summary": "Delete an Cliente",
+                 "summary": "Delete a Cliente",
                  "parameters": [
                     {
                         "name": "id",
@@ -730,7 +730,7 @@
                     }
                  ],
                 "tags": ["TipoAutomovel"],
-                "summary": "Delete an Tipo Automovel",
+                "summary": "Delete a Tipo Automovel",
                 "parameters": [
                     {
                         "name": "tipo_id",
@@ -932,7 +932,7 @@
                     }
                  ],
                 "tags": ["Automovel"],
-                "summary": "Update a Automovel",
+                "summary": "Update an Automovel",
                 "parameters": [
                     {
                         "name": "id",
@@ -1356,7 +1356,7 @@
                                     "id": "430da97c-4eff-43ae-85e4-cdb1b6574d67",
                                     "createdAt": "2022-04-07T23:15:13.882Z",
                                     "sequence": 1,
-                                    "description": "completar óleo",
+                                    "description": "Radiador",
                                     "unit_value": "100.95",
                                     "amount": 5,
                                     "total_value": "504.5"
@@ -1373,7 +1373,7 @@
                     }
                  ],
                  "tags": ["OrdemPecas"],
-                 "summary": "Create a new Ordem Procedimento",
+                 "summary": "Create a new Ordem Peça",
                  "requestBody": {
                      "content": {
                          "application/json": {
@@ -1387,7 +1387,7 @@
                                  }
                              },
                              "example": {
-                                 "description": "Troca de Pneu",
+                                 "description": "Bateria Moura",
                                  "unit_value": 400.00,
                                  "amount": 4,
                                  "ordemServicoId": "uuid string"
@@ -1432,7 +1432,7 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Ordem Procedimento not Found!"
+                        "description": "Ordem Peça not Found!"
                     }
                 }
             },
@@ -1466,7 +1466,7 @@
                                 }
                             },
                             "example": {
-                                "description": "Troca de óleo",
+                                "description": "Carburador",
                                 "unit_value": 60,
                                 "amount": 1
                             }
@@ -1478,7 +1478,7 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Ordem Procedimento not Found!"
+                        "description": "Ordem Peça not Found!"
                     }
                 }
             },
@@ -1505,7 +1505,7 @@
                         "description": "Deleted"
                     },
                     "404": {
-                        "description": "Ordem Procedimento not Found!"
+                        "description": "Ordem Peça not Found!"
                     }
                 }
             }
@@ -1639,7 +1639,7 @@
                                         {
                                             "id": "0af13a99-702d-4bd1-b286-ab0473787aa3",
                                             "createdAt": "2022-04-16T00:12:41.545Z",
-                                            "description": "pega o martelo",
+                                            "description": "Serviço de troca de óleo",
                                             "unit_value": "100.95",
                                             "amount": 3,
                                             "total_value": "302.85",
@@ -1648,7 +1648,7 @@
                                         {
                                             "id": "3d134786-017a-4bbd-9cf4-261a16b7589f",
                                             "createdAt": "2022-04-16T00:16:56.706Z",
-                                            "description": "repor o oléo",
+                                            "description": "Serviço de manutenção da bateria",
                                             "unit_value": "800",
                                             "amount": 1,
                                             "total_value": "800",
@@ -1659,7 +1659,7 @@
                                         {
                                             "id": "0db2cace-a49b-41c5-a163-3dd499f85481",
                                             "createdAt": "2022-04-16T00:31:14.217Z",
-                                            "description": "Parafuso",
+                                            "description": "Carburador",
                                             "unit_value": "5",
                                             "amount": 10,
                                             "total_value": "50",
@@ -1703,7 +1703,7 @@
                              "example": {
                                 "statusId": "4aeb3926-9bc4-4735-a2e8-c5669ac25da2",
                                 "automovelId": "cda007e3-f26f-48ec-8ef8-32077e07c82c",
-                                "descricao": "Reparo do Chaci"
+                                "descricao": "Reparo do Chassi"
                              }
                          }
                      }
