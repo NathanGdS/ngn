@@ -1373,7 +1373,7 @@
                     }
                  ],
                  "tags": ["OrdemPecas"],
-                 "summary": "Create a new Ordem Procedimento",
+                 "summary": "Create a new Ordem Pecas",
                  "requestBody": {
                      "content": {
                          "application/json": {
