@@ -12,7 +12,7 @@ class UpdateClienteUseCase {
         private clienteRepository: IClienteRepository
     ) { }
     
-    async execute({ id, name, email, cpf, rg, birthDate }: IUpdateClienteDTO): Promise<Cliente> {
+    async execute({ id, name, email, cpf, rg, birthDate, telefoneCelular }: IUpdateClienteDTO): Promise<Cliente> {
         const clienteExists = await this.clienteRepository.findById(id)
 
         if (!clienteExists) throw new AppError('Cliente não existe!')
@@ -32,7 +32,7 @@ class UpdateClienteUseCase {
         if (rgExists && (rg != clienteExists.rg))
             throw new AppError('Já existe outro Cliente com este RG!')
         
-        const cliente = await this.clienteRepository.update({ id, name, email, cpf, rg, birthDate })
+        const cliente = await this.clienteRepository.update({ id, name, email, cpf, rg, birthDate, telefoneCelular })
 
         return cliente;
     }

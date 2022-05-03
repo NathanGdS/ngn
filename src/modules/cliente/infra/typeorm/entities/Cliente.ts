@@ -21,6 +21,9 @@ class Cliente {
     @Column()
     rg: string;
 
+    @Column()
+    telefoneCelular: string;
+
     @Column({ name: 'birth_date' })
     birthDate: Date;
 
