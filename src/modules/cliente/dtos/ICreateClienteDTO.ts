@@ -3,6 +3,7 @@ interface ICreateClienteDTO {
     email: string;
     cpf: string;
     rg: string;
+    telefoneCelular: string;
     birthDate: Date;
 }
 

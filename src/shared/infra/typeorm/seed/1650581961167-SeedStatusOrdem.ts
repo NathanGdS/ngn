@@ -1,5 +1,5 @@
 import { getRepository, MigrationInterface, QueryRunner } from "typeorm";
-import { StatusOrdemSeed } from "../seed/statusOrdem.seed";
+import { StatusOrdemSeed } from "./statusOrdem.seed";
 
 export class SeedStatusOrdem1650581961167 implements MigrationInterface {
 

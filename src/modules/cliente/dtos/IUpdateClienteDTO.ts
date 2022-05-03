@@ -4,6 +4,7 @@ interface IUpdateClienteDTO {
     email: string;
     cpf: string;
     rg: string;
+    telefoneCelular: string;
     birthDate: Date;
 }
 

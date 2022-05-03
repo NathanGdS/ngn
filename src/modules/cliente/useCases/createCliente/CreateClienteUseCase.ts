@@ -13,7 +13,7 @@ class CreateClienteUseCase {
         private clienteRepository: IClienteRepository
     ) { }
     
-    async execute({ name, email, cpf, rg, birthDate }: ICreateClienteDTO): Promise<Cliente> {
+    async execute({ name, email, cpf, rg, birthDate, telefoneCelular }: ICreateClienteDTO): Promise<Cliente> {
         
         const validCPF = await isValidCPF(cpf)
         if (validCPF == false) throw new AppError('CPF inválido!')
@@ -27,7 +27,7 @@ class CreateClienteUseCase {
         const rgExists = await this.clienteRepository.findByRG(rg)
         if (rgExists) throw new AppError('RG já cadastrado!')
 
-        const cliente = await this.clienteRepository.create({ name, email, cpf, rg, birthDate })
+        const cliente = await this.clienteRepository.create({ name, email, cpf, rg, birthDate, telefoneCelular })
 
         return cliente
     }

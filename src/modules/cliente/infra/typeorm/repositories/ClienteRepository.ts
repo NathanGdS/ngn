@@ -18,13 +18,15 @@ class ClienteRepository implements IClienteRepository {
         email,
         cpf,
         rg,
-        birthDate
+        birthDate,
+        telefoneCelular
     }: ICreateClienteDTO): Promise<Cliente> {
         const cliente = this.repository.create({
             name,
             email,
             cpf,
             rg,
+            telefoneCelular,
             birthDate
         });
 
@@ -53,7 +55,7 @@ class ClienteRepository implements IClienteRepository {
         return this.repository.find();
     }
 
-    async update({id, name, email, cpf, rg, birthDate }: IUpdateClienteDTO): Promise<Cliente> {
+    async update({id, name, email, cpf, rg, birthDate, telefoneCelular }: IUpdateClienteDTO): Promise<Cliente> {
         await this.repository
             .createQueryBuilder()
             .update()
@@ -62,6 +64,7 @@ class ClienteRepository implements IClienteRepository {
                 email,
                 cpf,
                 rg,
+                telefoneCelular,
                 birthDate
             })
             .where("id = :id")

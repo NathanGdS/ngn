@@ -11,7 +11,8 @@ class ClientesRepositoryInMemory implements IClienteRepository {
         email,
         rg,
         cpf,
-        birthDate
+        birthDate,
+        telefoneCelular
     }: ICreateClienteDTO): Promise<Cliente> {
         const cliente = new Cliente();
 
@@ -20,6 +21,7 @@ class ClientesRepositoryInMemory implements IClienteRepository {
             email,
             rg,
             cpf,
+            telefoneCelular,
             birthDate
         });
 
@@ -55,6 +57,7 @@ class ClientesRepositoryInMemory implements IClienteRepository {
         this.clientes[findIndex].cpf = data.cpf;
         this.clientes[findIndex].rg = data.rg;
         this.clientes[findIndex].birthDate = data.birthDate;
+        this.clientes[findIndex].telefoneCelular = data.telefoneCelular;
 
         return this.clientes[findIndex];
     }

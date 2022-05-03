@@ -6,7 +6,7 @@ export class AddTelefoneCeluarColumnInCliente1651535893232 implements MigrationI
         await queryRunner.addColumn('clientes', new TableColumn({
             name: 'telefoneCelular',
             type: 'varchar',
-            isNullable: false,
+            isNullable: true,
         }))
     }
 

@@ -5,13 +5,13 @@ import { CreateClienteUseCase } from "./CreateClienteUseCase";
 class CreateClienteController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
-            const { name, email, cpf, rg, birthDate } = request.body;
+            const { name, email, cpf, rg, birthDate, telefoneCelular } = request.body;
 
             const createClienteUseCase = container.resolve(
                 CreateClienteUseCase
             );
 
-            const cliente = await createClienteUseCase.execute({ name, email, cpf, rg, birthDate });
+            const cliente = await createClienteUseCase.execute({ name, email, cpf, rg, birthDate, telefoneCelular });
 
             return response.status(201).json(cliente);
         } catch (e) {
