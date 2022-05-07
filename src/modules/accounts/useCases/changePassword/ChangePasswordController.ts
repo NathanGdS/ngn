@@ -5,14 +5,14 @@ import { ChangePasswordUseCase } from "./ChangePasswordUseCase";
 class ChangePasswordController {
     async handle(request: Request, response: Response) {
         try {
-            const { id } = request.params
-            const { currentPassword, newPassword } = request.body
+            const { id } = request.params;
+            const { new_password, new_password_confirmation } = request.body;
             
             const changePasswordUseCase = container.resolve(
                 ChangePasswordUseCase
             )
 
-            await changePasswordUseCase.execute({ id, currentPassword, newPassword })
+            await changePasswordUseCase.execute({ id, new_password, new_password_confirmation })
 
             return response.status(200).send()
         } catch (e) {

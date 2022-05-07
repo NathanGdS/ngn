@@ -65,6 +65,56 @@
                 }
             }
         },
+        "/changePassword/{id}": {
+            "patch": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Autenticação"],
+                "summary": "Update Senha of an Usuario",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "new_password": {
+                                        "type":"string"
+                                    },
+                                    "new_password_confirmation": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "new_password": "strong1234",
+                                "new_password_confirmation": "strong1234"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "400": {
+                        "description": "Senhas divergentes!"
+                    }
+                }
+            }
+        },
         "/usuarios": {
             "get": {
                 "security": [
