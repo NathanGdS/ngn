@@ -4,6 +4,7 @@ import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepos
 import { AppError } from "@shared/errors/AppError";
 import { isValidCPF } from "@utils/isValidCPF";
 import { inject, injectable } from "tsyringe";
+import validate from "validator";
 
 @injectable()
 class UpdateUsuarioUseCase {
@@ -19,6 +20,8 @@ class UpdateUsuarioUseCase {
         email,
         isAdmin
     }: IUpdateUsuarioDTO): Promise<Usuario> {
+        if(!validate.isEmail(email)) throw new AppError('Email inválido!')
+
         const userExists = await this.usuarioRepository.findById(id)
         if (!userExists) throw new AppError('Usuário não existe!')
 

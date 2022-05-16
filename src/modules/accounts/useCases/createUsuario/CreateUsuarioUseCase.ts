@@ -5,6 +5,7 @@ import { inject, injectable } from "tsyringe";
 import { hashSync } from "bcryptjs";
 import { AppError } from "@shared/errors/AppError";
 import { isValidCPF } from "@utils/isValidCPF";
+import validate from "validator";
 
 @injectable()
 class CreateUsuarioUseCase {
@@ -19,6 +20,7 @@ class CreateUsuarioUseCase {
         name,
         password
     }:ICreateUsuarioDTO): Promise<Usuario> {
+        if(!validate.isEmail(email)) throw new AppError('Email inválido!')
 
         const validCPF = await isValidCPF(cpf)
         if (validCPF == false) throw new AppError('CPF inválido!')

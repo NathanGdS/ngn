@@ -65,6 +65,56 @@
                 }
             }
         },
+        "/changePassword/{id}": {
+            "patch": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                "tags": ["Autenticação"],
+                "summary": "Update Senha of an Usuario",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "new_password": {
+                                        "type":"string"
+                                    },
+                                    "new_password_confirmation": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "new_password": "strong1234",
+                                "new_password_confirmation": "strong1234"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated"
+                    },
+                    "400": {
+                        "description": "Senhas divergentes!"
+                    }
+                }
+            }
+        },
         "/usuarios": {
             "get": {
                 "security": [
@@ -660,7 +710,34 @@
                 }
             }
         },
-        "/automovel/tipo/{tipo_id}": {
+        "/automovel/tipo/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["TipoAutomovel"],
+                 "summary": "Find a Specific TipoAutomovel",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Tipo Automovel not Found!"
+                    }
+                }
+            },
             "patch": {
                 "security": [
                     {
@@ -671,7 +748,7 @@
                 "summary": "Update Description of Tipo Automovel",
                 "parameters": [
                     {
-                        "name": "tipo_id",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -733,7 +810,7 @@
                 "summary": "Delete a Tipo Automovel",
                 "parameters": [
                     {
-                        "name": "tipo_id",
+                        "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
@@ -925,6 +1002,33 @@
             }
         },
         "/automovel/{id}": {
+            "get": {
+                "security": [
+                    {
+                       "bearerAuth": []
+                    }
+                 ],
+                 "tags": ["Automovel"],
+                 "summary": "Find a Specific Automovel",
+                 "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type":"string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Founded"
+                    },
+                    "404": {
+                        "description": "Automovel not Found!"
+                    }
+                }
+            },
             "put": {
                 "security": [
                     {

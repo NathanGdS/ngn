@@ -1,3 +1,4 @@
+import { IChangePassword } from "@modules/accounts/interfaces/changepassword.interface";
 import { IUsuarioRepository } from "@modules/accounts/repositories/IUsuarioRepository";
 import { AppError } from "@shared/errors/AppError";
 import { compare, hashSync } from "bcryptjs";
@@ -10,16 +11,14 @@ class ChangePasswordUseCase {
         private usuarioRepository: IUsuarioRepository
     ) { }
     
-    async execute({ id, currentPassword, newPassword }): Promise<void>{
+    async execute({ id, new_password, new_password_confirmation }: IChangePassword): Promise<void>{
         const userExists = await this.usuarioRepository.findById(id)
         if (!userExists) throw new AppError('Usuário não existe!')
-        const passMatch = await compare(currentPassword, userExists.password)
         
-        if (!passMatch) {
-            throw new AppError('Senha Atual incorreta!')
+        if (!(new_password === new_password_confirmation)) {
+            throw new AppError('Senhas divergentes!', 400)
         } else {
-            if (newPassword === currentPassword) throw new AppError('Nova senha não pode ser a mesma que a senha atual!')
-            const hash = hashSync(newPassword, 8);            
+            const hash = hashSync(new_password, 8);            
             this.usuarioRepository.changePassword(
                 id,
                 hash
