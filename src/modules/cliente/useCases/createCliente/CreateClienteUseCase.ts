@@ -4,6 +4,7 @@ import { IClienteRepository } from "@modules/cliente/repositories/IClienteReposi
 import { AppError } from "@shared/errors/AppError";
 import { isValidCPF } from "@utils/isValidCPF";
 import { inject, injectable } from "tsyringe";
+import validate from "validator";
 
 @injectable()
 class CreateClienteUseCase {
@@ -14,6 +15,7 @@ class CreateClienteUseCase {
     ) { }
     
     async execute({ name, email, cpf, rg, birthDate, telefoneCelular }: ICreateClienteDTO): Promise<Cliente> {
+        if(!validate.isEmail(email)) throw new AppError('Email inválido!')
         
         const validCPF = await isValidCPF(cpf)
         if (validCPF == false) throw new AppError('CPF inválido!')

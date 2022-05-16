@@ -4,6 +4,7 @@ import { IClienteRepository } from "@modules/cliente/repositories/IClienteReposi
 import { AppError } from "@shared/errors/AppError";
 import { isValidCPF } from "@utils/isValidCPF";
 import { inject, injectable } from "tsyringe";
+import validate from "validator";
 
 @injectable()
 class UpdateClienteUseCase {
@@ -13,6 +14,8 @@ class UpdateClienteUseCase {
     ) { }
     
     async execute({ id, name, email, cpf, rg, birthDate, telefoneCelular }: IUpdateClienteDTO): Promise<Cliente> {
+        if(!validate.isEmail(email)) throw new AppError('Email inválido!')
+
         const clienteExists = await this.clienteRepository.findById(id)
 
         if (!clienteExists) throw new AppError('Cliente não existe!')
