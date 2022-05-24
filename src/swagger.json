@@ -5,30 +5,32 @@
         "description": "Work Order API for Machine Shops",
         "version": "1.0.0",
         "contact": {
-            "email":"nathangarsantos@gmail.com"
+            "email": "nathangarsantos@gmail.com"
         }
     },
     "host": "localhost:8080",
     "basePath": "/",
-    "components": {        
+    "components": {
         "securitySchemes": {
-          "bearerAuth": {
-            "type": "http",
-            "scheme": "bearer",
-            "bearerFormat": "JWT"
-          }
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
         }
-      },
+    },
     "paths": {
         "/login": {
             "post": {
-                "tags": ["Autenticação"],
+                "tags": [
+                    "Autenticação"
+                ],
                 "summary": "Make the authentication",
                 "description": "Get the bearer token for authentication",
                 "requestBody": {
                     "content": {
                         "application/json": {
-                            "schema":{
+                            "schema": {
                                 "type": "object",
                                 "properties": {
                                     "email": {
@@ -39,7 +41,7 @@
                                     }
                                 }
                             },
-                            "example":{
+                            "example": {
                                 "email": "ngnapi@corp.ngn.com",
                                 "password": "strongpassword"
                             }
@@ -50,9 +52,9 @@
                     "200": {
                         "description": "Success",
                         "content": {
-                            "application/json":{
+                            "application/json": {
                                 "schema": {
-                                    "type":"object",
+                                    "type": "object",
                                     "properties": {
                                         "token": {
                                             "type": "string"
@@ -69,10 +71,12 @@
             "patch": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Autenticação"],
+                ],
+                "tags": [
+                    "Autenticação"
+                ],
                 "summary": "Update Senha of an Usuario",
                 "parameters": [
                     {
@@ -80,7 +84,7 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -91,7 +95,7 @@
                                 "type": "object",
                                 "properties": {
                                     "new_password": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "new_password_confirmation": {
                                         "type": "string"
@@ -119,10 +123,12 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Usuarios"],
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
                 "summary": "List all Usuarios",
                 "responses": {
                     "200": {
@@ -164,7 +170,9 @@
                 }
             },
             "post": {
-                "tags": ["Usuarios"],
+                "tags": [
+                    "Usuarios"
+                ],
                 "summary": "Create a new Usuario",
                 "requestBody": {
                     "content": {
@@ -173,16 +181,16 @@
                                 "type": "object",
                                 "properties": {
                                     "name": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "password": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "email": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "cpf": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "telefoneCelular": {
                                         "type": "string"
@@ -239,7 +247,6 @@
                             }
                         }
                     },
-                    
                     "400": {
                         "description": "Error",
                         "content": {
@@ -265,18 +272,20 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["Usuarios"],
-                 "summary": "Find a Specific Usuario",
-                 "parameters": [
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Find a Specific Usuario",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -292,18 +301,20 @@
             "put": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["Usuarios"],
-                 "summary": "Update an Usuario",
-                 "parameters": [
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Update an Usuario",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -313,12 +324,24 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "name": { "type":"string" },
-                                    "password": { "type":"string" },
-                                    "email": { "type":"string" },
-                                    "cpf": { "type":"string" },
-                                    "telefoneCelular": { "type":"string" },
-                                    "isAdmin": { "type":"boolean" }
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "type": "string"
+                                    },
+                                    "telefoneCelular": {
+                                        "type": "string"
+                                    },
+                                    "isAdmin": {
+                                        "type": "boolean"
+                                    }
                                 }
                             }
                         }
@@ -336,18 +359,20 @@
             "delete": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["Usuarios"],
-                 "summary": "Delete an Usuario",
-                 "parameters": [
+                ],
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Delete an Usuario",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -365,10 +390,12 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Clientes"],
+                ],
+                "tags": [
+                    "Clientes"
+                ],
                 "summary": "List all Clientes",
                 "responses": {
                     "200": {
@@ -412,10 +439,12 @@
             "post": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Clientes"],
+                ],
+                "tags": [
+                    "Clientes"
+                ],
                 "summary": "Create a new Cliente",
                 "requestBody": {
                     "content": {
@@ -424,19 +453,19 @@
                                 "type": "object",
                                 "properties": {
                                     "name": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "cpf": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "rg": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "birthDate": {
-                                        "type":"string"
+                                        "type": "string"
                                     },
                                     "email": {
-                                        "type":"string"
+                                        "type": "string"
                                     }
                                 }
                             },
@@ -467,19 +496,19 @@
                                                 "type": "string"
                                             },
                                             "name": {
-                                                "type":"string"
+                                                "type": "string"
                                             },
                                             "cpf": {
-                                                "type":"string"
+                                                "type": "string"
                                             },
                                             "rg": {
-                                                "type":"string"
+                                                "type": "string"
                                             },
                                             "birthDate": {
-                                                "type":"string"
+                                                "type": "string"
                                             },
                                             "email": {
-                                                "type":"string"
+                                                "type": "string"
                                             }
                                         }
                                     }
@@ -487,7 +516,6 @@
                             }
                         }
                     },
-                    
                     "400": {
                         "description": "Error",
                         "content": {
@@ -513,18 +541,20 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["Clientes"],
-                 "summary": "Find a Specific Cliente",
-                 "parameters": [
+                ],
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Find a Specific Cliente",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -540,18 +570,20 @@
             "put": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["Clientes"],
-                 "summary": "Update a Cliente",
-                 "parameters": [
+                ],
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Update a Cliente",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -561,11 +593,21 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "name": { "type":"string" },
-                                    "email": { "type":"string" },
-                                    "cpf": { "type":"string" },
-                                    "rg": { "type":"string" },
-                                    "birthDate": { "type":"string" }
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "cpf": {
+                                        "type": "string"
+                                    },
+                                    "rg": {
+                                        "type": "string"
+                                    },
+                                    "birthDate": {
+                                        "type": "string"
+                                    }
                                 }
                             }
                         }
@@ -583,18 +625,20 @@
             "delete": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["Clientes"],
-                 "summary": "Delete a Cliente",
-                 "parameters": [
+                ],
+                "tags": [
+                    "Clientes"
+                ],
+                "summary": "Delete a Cliente",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -612,10 +656,12 @@
             "post": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["TipoAutomovel"],
+                ],
+                "tags": [
+                    "TipoAutomovel"
+                ],
                 "summary": "Create a new Tipo Automovel",
                 "requestBody": {
                     "content": {
@@ -624,7 +670,7 @@
                                 "type": "object",
                                 "properties": {
                                     "description": {
-                                        "type":"string"
+                                        "type": "string"
                                     }
                                 }
                             },
@@ -659,7 +705,6 @@
                             }
                         }
                     },
-                    
                     "400": {
                         "description": "Error",
                         "content": {
@@ -685,10 +730,12 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["TipoAutomovel"],
+                ],
+                "tags": [
+                    "TipoAutomovel"
+                ],
                 "summary": "List all Tipo Automovel",
                 "responses": {
                     "200": {
@@ -722,18 +769,20 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["TipoAutomovel"],
-                 "summary": "Find a Specific TipoAutomovel",
-                 "parameters": [
+                ],
+                "tags": [
+                    "TipoAutomovel"
+                ],
+                "summary": "Find a Specific TipoAutomovel",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -749,10 +798,12 @@
             "patch": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["TipoAutomovel"],
+                ],
+                "tags": [
+                    "TipoAutomovel"
+                ],
                 "summary": "Update Description of Tipo Automovel",
                 "parameters": [
                     {
@@ -760,7 +811,7 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -771,7 +822,7 @@
                                 "type": "object",
                                 "properties": {
                                     "description": {
-                                        "type":"string"
+                                        "type": "string"
                                     }
                                 }
                             },
@@ -811,10 +862,12 @@
             "delete": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["TipoAutomovel"],
+                ],
+                "tags": [
+                    "TipoAutomovel"
+                ],
                 "summary": "Delete a Tipo Automovel",
                 "parameters": [
                     {
@@ -822,7 +875,7 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -837,50 +890,52 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Automovel"],
+                ],
+                "tags": [
+                    "Automovel"
+                ],
                 "summary": "List all Automoveis",
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "content":{
-                            "application/json":{
-                                "schema":{
-                                    "type":"array",
-                                    "items":{
-                                        "type":"object",
-                                        "properties":{
-                                            "id":{
-                                                "type":"string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
                                             },
-                                            "created_at":{
-                                                "type":"string"
+                                            "created_at": {
+                                                "type": "string"
                                             },
-                                            "plate":{
-                                                "type":"string"
+                                            "plate": {
+                                                "type": "string"
                                             },
-                                            "model":{
-                                                "type":"string"
+                                            "model": {
+                                                "type": "string"
                                             },
-                                            "brand":{
-                                                "type":"string"
+                                            "brand": {
+                                                "type": "string"
                                             },
-                                            "color":{
-                                                "type":"string"
+                                            "color": {
+                                                "type": "string"
                                             },
-                                            "year":{
-                                                "type":"string"
+                                            "year": {
+                                                "type": "string"
                                             },
-                                            "renavam":{
-                                                "type":"string"
+                                            "renavam": {
+                                                "type": "string"
                                             },
-                                            "customerId":{
-                                                "type":"string"
+                                            "customerId": {
+                                                "type": "string"
                                             },
-                                            "typeId":{
-                                                "type":"string"
+                                            "typeId": {
+                                                "type": "string"
                                             }
                                         }
                                     }
@@ -903,40 +958,42 @@
             "post": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Automovel"],
+                ],
+                "tags": [
+                    "Automovel"
+                ],
                 "summary": "Create a new Automovel",
                 "requestBody": {
-                    "content":{
-                        "application/json":{
-                            "schema":{
-                                "type":"object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
                                 "properties": {
-                                    "plate":{
-                                        "type":"string"
+                                    "plate": {
+                                        "type": "string"
                                     },
-                                    "model":{
-                                        "type":"string"
+                                    "model": {
+                                        "type": "string"
                                     },
-                                    "brand":{
-                                        "type":"string"
+                                    "brand": {
+                                        "type": "string"
                                     },
-                                    "color":{
-                                        "type":"string"
+                                    "color": {
+                                        "type": "string"
                                     },
-                                    "year":{
-                                        "type":"string"
+                                    "year": {
+                                        "type": "string"
                                     },
-                                    "renavam":{
-                                        "type":"string"
+                                    "renavam": {
+                                        "type": "string"
                                     },
-                                    "customerId":{
-                                        "type":"string"
+                                    "customerId": {
+                                        "type": "string"
                                     },
-                                    "typeId":{
-                                        "type":"string"
+                                    "typeId": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -946,38 +1003,38 @@
                 "responses": {
                     "201": {
                         "description": "Created",
-                        "schema":{
-                            "type":"object",
+                        "schema": {
+                            "type": "object",
                             "properties": {
-                                "id":{
-                                    "type":"string"
+                                "id": {
+                                    "type": "string"
                                 },
-                                "created_at":{
-                                    "type":"string"
+                                "created_at": {
+                                    "type": "string"
                                 },
-                                "plate":{
-                                    "type":"string"
+                                "plate": {
+                                    "type": "string"
                                 },
-                                "model":{
-                                    "type":"string"
+                                "model": {
+                                    "type": "string"
                                 },
-                                "brand":{
-                                    "type":"string"
+                                "brand": {
+                                    "type": "string"
                                 },
-                                "color":{
-                                    "type":"string"
+                                "color": {
+                                    "type": "string"
                                 },
-                                "year":{
-                                    "type":"string"
+                                "year": {
+                                    "type": "string"
                                 },
-                                "renavam":{
-                                    "type":"string"
+                                "renavam": {
+                                    "type": "string"
                                 },
-                                "customerId":{
-                                    "type":"string"
+                                "customerId": {
+                                    "type": "string"
                                 },
-                                "typeId":{
-                                    "type":"string"
+                                "typeId": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1007,18 +1064,20 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["Automovel"],
-                 "summary": "Find a Specific Automovel",
-                 "parameters": [
+                ],
+                "tags": [
+                    "Automovel"
+                ],
+                "summary": "Find a Specific Automovel",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1034,10 +1093,12 @@
             "put": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Automovel"],
+                ],
+                "tags": [
+                    "Automovel"
+                ],
                 "summary": "Update an Automovel",
                 "parameters": [
                     {
@@ -1045,39 +1106,39 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
                 "requestBody": {
-                    "content":{
-                        "application/json":{
-                            "schema":{
-                                "type":"object",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
                                 "properties": {
-                                    "plate":{
-                                        "type":"string"
+                                    "plate": {
+                                        "type": "string"
                                     },
-                                    "model":{
-                                        "type":"string"
+                                    "model": {
+                                        "type": "string"
                                     },
-                                    "brand":{
-                                        "type":"string"
+                                    "brand": {
+                                        "type": "string"
                                     },
-                                    "color":{
-                                        "type":"string"
+                                    "color": {
+                                        "type": "string"
                                     },
-                                    "year":{
-                                        "type":"string"
+                                    "year": {
+                                        "type": "string"
                                     },
-                                    "renavam":{
-                                        "type":"string"
+                                    "renavam": {
+                                        "type": "string"
                                     },
-                                    "customerId":{
-                                        "type":"string"
+                                    "customerId": {
+                                        "type": "string"
                                     },
-                                    "typeId":{
-                                        "type":"string"
+                                    "typeId": {
+                                        "type": "string"
                                     }
                                 }
                             }
@@ -1087,38 +1148,38 @@
                 "responses": {
                     "201": {
                         "description": "Updated",
-                        "schema":{
-                            "type":"object",
+                        "schema": {
+                            "type": "object",
                             "properties": {
-                                "id":{
-                                    "type":"string"
+                                "id": {
+                                    "type": "string"
                                 },
-                                "created_at":{
-                                    "type":"string"
+                                "created_at": {
+                                    "type": "string"
                                 },
-                                "plate":{
-                                    "type":"string"
+                                "plate": {
+                                    "type": "string"
                                 },
-                                "model":{
-                                    "type":"string"
+                                "model": {
+                                    "type": "string"
                                 },
-                                "brand":{
-                                    "type":"string"
+                                "brand": {
+                                    "type": "string"
                                 },
-                                "color":{
-                                    "type":"string"
+                                "color": {
+                                    "type": "string"
                                 },
-                                "year":{
-                                    "type":"string"
+                                "year": {
+                                    "type": "string"
                                 },
-                                "renavam":{
-                                    "type":"string"
+                                "renavam": {
+                                    "type": "string"
                                 },
-                                "customerId":{
-                                    "type":"string"
+                                "customerId": {
+                                    "type": "string"
                                 },
-                                "typeId":{
-                                    "type":"string"
+                                "typeId": {
+                                    "type": "string"
                                 }
                             }
                         }
@@ -1146,10 +1207,12 @@
             "delete": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["Automovel"],
+                ],
+                "tags": [
+                    "Automovel"
+                ],
                 "summary": "Delete an Automovel",
                 "parameters": [
                     {
@@ -1157,7 +1220,7 @@
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1172,41 +1235,43 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["OrdemProcedimentos"],
+                ],
+                "tags": [
+                    "OrdemProcedimentos"
+                ],
                 "summary": "List all Ordem Procedimentos",
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "content":{
-                            "application/json":{
-                                "schema":{
-                                    "type":"array",
-                                    "items":{
-                                        "type":"object",
-                                        "properties":{
-                                            "id":{
-                                                "type":"string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
                                             },
-                                            "created_at":{
-                                                "type":"string"
+                                            "created_at": {
+                                                "type": "string"
                                             },
-                                            "sequence":{
-                                                "type":"integer"
+                                            "sequence": {
+                                                "type": "integer"
                                             },
-                                            "description":{
-                                                "type":"string"
+                                            "description": {
+                                                "type": "string"
                                             },
-                                            "unit_value":{
-                                                "type":"string"
+                                            "unit_value": {
+                                                "type": "string"
                                             },
-                                            "amount":{
-                                                "type":"integer"
+                                            "amount": {
+                                                "type": "integer"
                                             },
-                                            "total_value":{
-                                                "type":"string"
+                                            "total_value": {
+                                                "type": "string"
                                             }
                                         }
                                     }
@@ -1228,61 +1293,73 @@
             "post": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemProcedimentos"],
-                 "summary": "Create a new Ordem Procedimento",
-                 "requestBody": {
-                     "content": {
-                         "application/json": {
-                             "schema": {
-                                 "type": "object",
-                                 "properties": {
-                                     "description": { "type": "string" },
-                                     "unit_value": { "type": "number" },
-                                     "amount": { "type": "integer" },
-                                     "ordemServicoId": { "type": "string" }
-                                 }
-                             },
-                             "example": {
-                                 "description": "Troca de Pneu",
-                                 "unit_value": 400.00,
-                                 "amount": 4,
-                                 "ordemServicoId": "uuid string"
-                             }
-                         }
-                     }
-                 },
-                 "responses": {
-                     "201": {
-                         "description": "Created"
-                     },
-                     "400": {
-                         "description": "Error"
-                     },
-                     "404": {
-                         "description": "Ordem Servico not found"
-                     }
-                 }
+                ],
+                "tags": [
+                    "OrdemProcedimentos"
+                ],
+                "summary": "Create a new Ordem Procedimento",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "unit_value": {
+                                        "type": "number"
+                                    },
+                                    "amount": {
+                                        "type": "integer"
+                                    },
+                                    "ordemServicoId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "description": "Troca de Pneu",
+                                "unit_value": 400.00,
+                                "amount": 4,
+                                "ordemServicoId": "uuid string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Error"
+                    },
+                    "404": {
+                        "description": "Ordem Servico not found"
+                    }
+                }
             }
         },
         "/os/procedimentos/{id}": {
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemProcedimentos"],
-                 "summary": "Find a Specific Ordem Procedimento",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemProcedimentos"
+                ],
+                "summary": "Find a Specific Ordem Procedimento",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1298,18 +1375,20 @@
             "put": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemProcedimentos"],
-                 "summary": "Update an Ordem Procedimento",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemProcedimentos"
+                ],
+                "summary": "Update an Ordem Procedimento",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1319,9 +1398,15 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "description": { "type":"string" },
-                                    "unit_value": { "type":"number" },
-                                    "amount": { "type":"integer" }
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "unit_value": {
+                                        "type": "number"
+                                    },
+                                    "amount": {
+                                        "type": "integer"
+                                    }
                                 }
                             },
                             "example": {
@@ -1344,18 +1429,20 @@
             "delete": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemProcedimentos"],
-                 "summary": "Delete an Ordem Procedimento",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemProcedimentos"
+                ],
+                "summary": "Delete an Ordem Procedimento",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1373,32 +1460,34 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["OrdemStatus"],
+                ],
+                "tags": [
+                    "OrdemStatus"
+                ],
                 "summary": "List all Ordem Status",
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "content":{
-                            "application/json":{
-                                "schema":{
-                                    "type":"array",
-                                    "items":{
-                                        "type":"object",
-                                        "properties":{
-                                            "id":{
-                                                "type":"string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
                                             },
-                                            "created_at":{
-                                                "type":"string"
+                                            "created_at": {
+                                                "type": "string"
                                             },
-                                            "statusNumber":{
-                                                "type":"integer"
+                                            "statusNumber": {
+                                                "type": "integer"
                                             },
-                                            "description":{
-                                                "type":"string"
+                                            "description": {
+                                                "type": "string"
                                             }
                                         }
                                     }
@@ -1419,41 +1508,43 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["OrdemPecas"],
+                ],
+                "tags": [
+                    "OrdemPecas"
+                ],
                 "summary": "List all Ordem Peças",
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "content":{
-                            "application/json":{
-                                "schema":{
-                                    "type":"array",
-                                    "items":{
-                                        "type":"object",
-                                        "properties":{
-                                            "id":{
-                                                "type":"string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
                                             },
-                                            "created_at":{
-                                                "type":"string"
+                                            "created_at": {
+                                                "type": "string"
                                             },
-                                            "description":{
-                                                "type":"string"
+                                            "description": {
+                                                "type": "string"
                                             },
-                                            "unit_value":{
-                                                "type":"string"
+                                            "unit_value": {
+                                                "type": "string"
                                             },
-                                            "amount":{
-                                                "type":"integer"
+                                            "amount": {
+                                                "type": "integer"
                                             },
-                                            "total_value":{
-                                                "type":"string"
+                                            "total_value": {
+                                                "type": "string"
                                             },
-                                            "ordemServicoId":{
-                                                "type":"string"
+                                            "ordemServicoId": {
+                                                "type": "string"
                                             }
                                         }
                                     }
@@ -1475,61 +1566,73 @@
             "post": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemPecas"],
-                 "summary": "Create a new Ordem Pecas",
-                 "requestBody": {
-                     "content": {
-                         "application/json": {
-                             "schema": {
-                                 "type": "object",
-                                 "properties": {
-                                     "description": { "type": "string" },
-                                     "unit_value": { "type": "number" },
-                                     "amount": { "type": "integer" },
-                                     "ordemServicoId": { "type": "string" }
-                                 }
-                             },
-                             "example": {
-                                 "description": "Bateria Moura",
-                                 "unit_value": 400.00,
-                                 "amount": 4,
-                                 "ordemServicoId": "uuid string"
-                             }
-                         }
-                     }
-                 },
-                 "responses": {
-                     "201": {
-                         "description": "Created"
-                     },
-                     "400": {
-                         "description": "Error"
-                     },
-                     "404": {
-                         "description": "Ordem Servico not found"
-                     }
-                 }
+                ],
+                "tags": [
+                    "OrdemPecas"
+                ],
+                "summary": "Create a new Ordem Pecas",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "unit_value": {
+                                        "type": "number"
+                                    },
+                                    "amount": {
+                                        "type": "integer"
+                                    },
+                                    "ordemServicoId": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "example": {
+                                "description": "Bateria Moura",
+                                "unit_value": 400.00,
+                                "amount": 4,
+                                "ordemServicoId": "uuid string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Error"
+                    },
+                    "404": {
+                        "description": "Ordem Servico not found"
+                    }
+                }
             }
         },
         "/os/pecas/{id}": {
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemPecas"],
-                 "summary": "Find a Specific Ordem Peça",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemPecas"
+                ],
+                "summary": "Find a Specific Ordem Peça",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1545,18 +1648,20 @@
             "put": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemPecas"],
-                 "summary": "Update an Ordem Peça",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemPecas"
+                ],
+                "summary": "Update an Ordem Peça",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1566,9 +1671,15 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "description": { "type":"string" },
-                                    "unit_value": { "type":"number" },
-                                    "amount": { "type":"integer" }
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "unit_value": {
+                                        "type": "number"
+                                    },
+                                    "amount": {
+                                        "type": "integer"
+                                    }
                                 }
                             },
                             "example": {
@@ -1591,18 +1702,20 @@
             "delete": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemPecas"],
-                 "summary": "Delete an Ordem Peça",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemPecas"
+                ],
+                "summary": "Delete an Ordem Peça",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1620,84 +1733,194 @@
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                "tags": ["OrdemServiço"],
+                ],
+                "tags": [
+                    "OrdemServiço"
+                ],
                 "summary": "List all Ordem Status",
                 "responses": {
                     "200": {
                         "description": "Success",
-                        "content":{
-                            "application/json":{
-                                "schema":{
-                                    "type":"array",
-                                    "items":{
-                                        "type":"object",
-                                        "properties":{
-                                            "id": { "type":"string" },
-                                            "created_at": { "type":"string" },
-                                            "descricao": { "type":"string" },
-                                            "valorTotal": { "type": "string" },
-                                            "statusId": { "type": "string" },
-                                            "automovelId": { "type": "string" },
-                                            "finished_at": { "type": "string" },
-                                            "status": { "type": "object", "properties": {
-                                                "id": { "type":"string" },
-                                                "created_at": { "type":"string" }, 
-                                                "statusNumber": { "type":"integer" }, 
-                                                "description": { "type":"string" }
-                                            } },
-                                            "automovel": { "type": "object", "properties": {
-                                                "id": { "type":"string" },
-                                                "created_at": { "type":"string" }, 
-                                                "plate": { "type":"string" }, 
-                                                "model": { "type":"string" },
-                                                "brand": { "type":"string" },
-                                                "color": { "type":"string" },
-                                                "year": { "type":"string" },
-                                                "renavam": { "type":"string" },
-                                                "modtypeIdel": { "type":"string" },
-                                                "customerId": { "type":"string" },
-                                                "tipoAutomovel": { "type":"object", "properties": { 
-                                                    "id": { "type": "string" },
-                                                    "created_at": { "type": "string" },
-                                                    "description": { "type": "string" }
-                                                } }
-                                            } },
-                                            "cliente": { "type": "object", "properties": {
-                                                "id": { "type":"string" },
-                                                "createdAt": { "type":"string" }, 
-                                                "name": { "type":"string" }, 
-                                                "email": { "type":"string" },
-                                                "cpf": { "type":"string" },
-                                                "rg": { "type":"string" },
-                                                "birthDate": { "type":"string" }
-                                            } },
-                                            "procedimentos": { "type": "array", "items": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "created_at": {
+                                                "type": "string"
+                                            },
+                                            "descricao": {
+                                                "type": "string"
+                                            },
+                                            "valorTotal": {
+                                                "type": "string"
+                                            },
+                                            "statusId": {
+                                                "type": "string"
+                                            },
+                                            "automovelId": {
+                                                "type": "string"
+                                            },
+                                            "finished_at": {
+                                                "type": "string"
+                                            },
+                                            "status": {
                                                 "type": "object",
                                                 "properties": {
-                                                    "id": { "type":"string" },
-                                                    "createdAt": { "type":"string" },
-                                                    "description": { "type":"string" },
-                                                    "unit_value": { "type": "string" },
-                                                    "amount": { "type": "integer" },
-                                                    "total_value": { "type": "string" },
-                                                    "ordemServicoId": { "type": "integer" }
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string"
+                                                    },
+                                                    "statusNumber": {
+                                                        "type": "integer"
+                                                    },
+                                                    "description": {
+                                                        "type": "string"
+                                                    }
                                                 }
-                                            }},
-                                            "pecas": { "type": "array", "items": {
+                                            },
+                                            "automovel": {
                                                 "type": "object",
                                                 "properties": {
-                                                    "id": { "type":"string" },
-                                                    "createdAt": { "type":"string" },
-                                                    "description": { "type":"string" },
-                                                    "unit_value": { "type": "string" },
-                                                    "amount": { "type": "integer" },
-                                                    "total_value": { "type": "string" },
-                                                    "ordemServicoId": { "type": "integer" }
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string"
+                                                    },
+                                                    "plate": {
+                                                        "type": "string"
+                                                    },
+                                                    "model": {
+                                                        "type": "string"
+                                                    },
+                                                    "brand": {
+                                                        "type": "string"
+                                                    },
+                                                    "color": {
+                                                        "type": "string"
+                                                    },
+                                                    "year": {
+                                                        "type": "string"
+                                                    },
+                                                    "renavam": {
+                                                        "type": "string"
+                                                    },
+                                                    "modtypeIdel": {
+                                                        "type": "string"
+                                                    },
+                                                    "customerId": {
+                                                        "type": "string"
+                                                    },
+                                                    "tipoAutomovel": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "created_at": {
+                                                                "type": "string"
+                                                            },
+                                                            "description": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
                                                 }
-                                            }}
+                                            },
+                                            "cliente": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "createdAt": {
+                                                        "type": "string"
+                                                    },
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "email": {
+                                                        "type": "string"
+                                                    },
+                                                    "cpf": {
+                                                        "type": "string"
+                                                    },
+                                                    "rg": {
+                                                        "type": "string"
+                                                    },
+                                                    "birthDate": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            },
+                                            "procedimentos": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "createdAt": {
+                                                            "type": "string"
+                                                        },
+                                                        "description": {
+                                                            "type": "string"
+                                                        },
+                                                        "unit_value": {
+                                                            "type": "string"
+                                                        },
+                                                        "amount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "total_value": {
+                                                            "type": "string"
+                                                        },
+                                                        "ordemServicoId": {
+                                                            "type": "integer"
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "pecas": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "createdAt": {
+                                                            "type": "string"
+                                                        },
+                                                        "description": {
+                                                            "type": "string"
+                                                        },
+                                                        "unit_value": {
+                                                            "type": "string"
+                                                        },
+                                                        "amount": {
+                                                            "type": "integer"
+                                                        },
+                                                        "total_value": {
+                                                            "type": "string"
+                                                        },
+                                                        "ordemServicoId": {
+                                                            "type": "integer"
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 },
@@ -1790,61 +2013,118 @@
             "post": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemServiço"],
-                 "summary": "Create a new Ordem Serviço",
-                 "requestBody": {
-                     "content": {
-                         "application/json": {
-                             "schema": {
-                                 "type": "object",
-                                 "properties": {
-                                     "statusId": { "type": "string" },
-                                     "automovelId": { "type": "string" },
-                                     "descricao": { "type": "string" },
-                                     "valorTotal": { "type": "number" }
-                                 }
-                             },
-                             "example": {
+                ],
+                "tags": [
+                    "OrdemServiço"
+                ],
+                "summary": "Create a new Ordem Serviço",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "statusId": {
+                                        "type": "string"
+                                    },
+                                    "automovelId": {
+                                        "type": "string"
+                                    },
+                                    "descricao": {
+                                        "type": "string"
+                                    },
+                                    "valorTotal": {
+                                        "type": "number"
+                                    }
+                                }
+                            },
+                            "example": {
                                 "statusId": "4aeb3926-9bc4-4735-a2e8-c5669ac25da2",
                                 "automovelId": "cda007e3-f26f-48ec-8ef8-32077e07c82c",
                                 "descricao": "Reparo do Chassi",
                                 "valorTotal": 3000.00
-                             }
-                         }
-                     }
-                 },
-                 "responses": {
-                     "201": {
-                         "description": "Created"
-                     },
-                     "400": {
-                         "description": "Error"
-                     }, 
-                     "404": {
-                         "description": "Id not Found"
-                     }
-                 }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Error"
+                    },
+                    "404": {
+                        "description": "Id not Found"
+                    }
+                }
+            }
+        },
+        "/os/status/{id}": {
+            "patch": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
+                "tags": [
+                    "OrdemServiço"
+                ],
+                "summary": "Update Status of an Ordem Serviço",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "statusId": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description": "Founded"
+                        },
+                        "404": {
+                            "description": "Ordem Serviço not Found!"
+                        }
+                    }
+                }
             }
         },
         "/os/{id}": {
             "get": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemServiço"],
-                 "summary": "Find a Specific Ordem Serviço",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemServiço"
+                ],
+                "summary": "Find a Specific Ordem Serviço",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
@@ -1860,18 +2140,20 @@
             "delete": {
                 "security": [
                     {
-                       "bearerAuth": []
+                        "bearerAuth": []
                     }
-                 ],
-                 "tags": ["OrdemServiço"],
-                 "summary": "Delete an Ordem Serviço",
-                 "parameters": [
+                ],
+                "tags": [
+                    "OrdemServiço"
+                ],
+                "summary": "Delete an Ordem Serviço",
+                "parameters": [
                     {
                         "name": "id",
                         "in": "path",
                         "required": true,
                         "schema": {
-                            "type":"string"
+                            "type": "string"
                         }
                     }
                 ],
