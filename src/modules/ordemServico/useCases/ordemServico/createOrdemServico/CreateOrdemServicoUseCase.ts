@@ -13,7 +13,9 @@ class CreateOrdemServicoUseCase {
 
     async execute({
         automovelId,
-        descricao
+        descricao,
+        statusId,
+        valorTotal
     }: ICreateOrdemServicoDTO): Promise<OrdemServico> {
 
         const anotherAutomovelOrdemExists = await this.ordemServicoRepository.findByAutomovelId(automovelId)
@@ -30,6 +32,8 @@ class CreateOrdemServicoUseCase {
         return await this.ordemServicoRepository.create({
             automovelId,
             descricao,
+            statusId,
+            valorTotal
         })
     }
 }

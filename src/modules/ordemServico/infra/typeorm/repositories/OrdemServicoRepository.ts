@@ -36,10 +36,14 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
     async create({
         automovelId,
         descricao,
+        statusId,
+        valorTotal
     }: ICreateOrdemServicoDTO): Promise<OrdemServico> {
         const os =  this.repository.create({
             automovelId,
             descricao,
+            valorTotal,
+            statusId,
             finished_at: null
         });
 

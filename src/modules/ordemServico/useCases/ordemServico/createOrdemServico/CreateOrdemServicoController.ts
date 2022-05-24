@@ -7,7 +7,7 @@ class CreateOrdemServicoController {
     async handle(request: Request, response: Response): Promise<Response> {
         try {
 
-            const { automovelId, descricao }:ICreateOrdemServicoDTO = request.body;
+            const { automovelId, descricao, statusId, valorTotal }:ICreateOrdemServicoDTO = request.body;
 
             const createOrdemServicoUseCase = container.resolve(
                 CreateOrdemServicoUseCase
@@ -16,6 +16,8 @@ class CreateOrdemServicoController {
             const ordemServico = await createOrdemServicoUseCase.execute({
                 automovelId,
                 descricao,
+                statusId,
+                valorTotal
             });
 
             return response.status(201).json(ordemServico);
