@@ -1803,13 +1803,15 @@
                                  "properties": {
                                      "statusId": { "type": "string" },
                                      "automovelId": { "type": "string" },
-                                     "descricao": { "type": "string" }
+                                     "descricao": { "type": "string" },
+                                     "valorTotal": { "type": "number" }
                                  }
                              },
                              "example": {
                                 "statusId": "4aeb3926-9bc4-4735-a2e8-c5669ac25da2",
                                 "automovelId": "cda007e3-f26f-48ec-8ef8-32077e07c82c",
-                                "descricao": "Reparo do Chassi"
+                                "descricao": "Reparo do Chassi",
+                                "valorTotal": 3000.00
                              }
                          }
                      }
