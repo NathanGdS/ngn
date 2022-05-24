@@ -58,16 +58,14 @@ class OrdemServicoRepository implements IOrdemServicoRepository {
     async updateStatus(id: string, statusId: string): Promise<OrdemServico> { 
         const statusOrdem = await getRepository(StatusOrdem).findOne({ id: statusId });
 
-        const query = this.repository.
+        await this.repository.
             createQueryBuilder()
             .update()
-            .set({ statusId })
-        
-        if (statusOrdem.statusNumber === 5) {
-            query.set({finished_at: new Date()})
-        }
-
-        await query.where("id = :id")
+            .set({ 
+                statusId,
+                finished_at: statusOrdem.statusNumber === 5 ? new Date() : null
+             })
+            .where("id = :id")
             .setParameters({ id })
             .execute()
         
