@@ -5,6 +5,7 @@ interface IStatusOrdemRepository {
     findByNumber(number: number): Promise<StatusOrdem>;
     findById(id: string): Promise<StatusOrdem>;
     findByDescription(description: string): Promise<StatusOrdem>;
+    create(description:string): Promise<StatusOrdem>;
 }
 
 export { IStatusOrdemRepository };

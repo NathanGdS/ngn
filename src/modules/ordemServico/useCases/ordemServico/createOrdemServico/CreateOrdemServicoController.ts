@@ -8,7 +8,7 @@ class CreateOrdemServicoController {
         try {
 
             const { automovelId, descricao, statusId, valorTotal }:ICreateOrdemServicoDTO = request.body;
-
+            
             const createOrdemServicoUseCase = container.resolve(
                 CreateOrdemServicoUseCase
             );

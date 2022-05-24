@@ -27,6 +27,15 @@ class StatusOrdemRepository implements IStatusOrdemRepository {
         return this.repository.findOne({ description });
     }
 
+    async create(description: string): Promise<StatusOrdem> {
+        const osStatus =  this.repository.create({
+            description
+        })
+
+        await this.repository.save(osStatus)
+        return osStatus
+    }
+
 }
 
 export { StatusOrdemRepository };

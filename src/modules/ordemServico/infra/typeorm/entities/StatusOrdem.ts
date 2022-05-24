@@ -1,6 +1,5 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
-import { OrdemServico } from "./OrdemServico";
 
 @Entity('ordem_status')
 class StatusOrdem {

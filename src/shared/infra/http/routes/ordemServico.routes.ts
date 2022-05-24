@@ -26,6 +26,7 @@ import { CreateOrdemServicoController } from "@modules/ordemServico/useCases/ord
 import { ListOneOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/listOneOrdemServico/ListOneOrdemServicoController";
 import { UpdateStatusOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/updateStatusOrdemServico/UpdateStatusOrdemServicoController";
 import { DeleteOrdemServicoController } from "@modules/ordemServico/useCases/ordemServico/deleteOrdemServico/DeleteOrdemServicoController";
+import { CreateStatusOrdemController } from "@modules/ordemServico/useCases/ordemServicoStatus/createOrdemStatus/CreateStatusOrdemController";
 
 
 
@@ -59,8 +60,10 @@ ordemServicoRoutes.delete("/pecas/:id", ensureAuthenticated, deleteOrdemPecaCont
 
 //Status Ordem
 const listStatusOrdemController = new ListStatusOrdemController();
+const createStatusOrdemController = new CreateStatusOrdemController();
 
 ordemServicoRoutes.get("/status", ensureAuthenticated, listStatusOrdemController.handle)
+ordemServicoRoutes.post("/status", ensureAuthenticated, ensureAdmin, createStatusOrdemController.handle)
 
 // Ordem Servico
 const listOrdemServicoController = new ListOrdemServicoController();
