@@ -1739,7 +1739,7 @@
                 "tags": [
                     "OrdemServiço"
                 ],
-                "summary": "List all Ordem Status",
+                "summary": "List all Ordem Serviços",
                 "responses": {
                     "200": {
                         "description": "Success",
@@ -2095,14 +2095,14 @@
                                 }
                             }
                         }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Updated!"
                     },
-                    "responses": {
-                        "200": {
-                            "description": "Founded"
-                        },
-                        "404": {
-                            "description": "Ordem Serviço not Found!"
-                        }
+                    "404": {
+                        "description": "Ordem Serviço not Found!"
                     }
                 }
             }
