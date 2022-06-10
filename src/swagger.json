@@ -63,6 +63,21 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -114,7 +129,19 @@
                         "description": "Updated"
                     },
                     "400": {
-                        "description": "Senhas divergentes!"
+                        "description": "Senhas divergentes!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -170,6 +197,11 @@
                 }
             },
             "post": {
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ],
                 "tags": [
                     "Usuarios"
                 ],
@@ -191,9 +223,6 @@
                                     },
                                     "cpf": {
                                         "type": "string"
-                                    },
-                                    "telefoneCelular": {
-                                        "type": "string"
                                     }
                                 }
                             },
@@ -201,8 +230,7 @@
                                 "name": "teste",
                                 "password": "teste",
                                 "email": "teste@teste.com",
-                                "cpf": "12345678909",
-                                "telefoneCelular": "11912341234"
+                                "cpf": "12345678909"
                             }
                         }
                     }
@@ -232,13 +260,7 @@
                                             "email": {
                                                 "type": "string"
                                             },
-                                            "password": {
-                                                "type": "string"
-                                            },
                                             "cpf": {
-                                                "type": "string"
-                                            },
-                                            "telefoneCelular": {
                                                 "type": "string"
                                             }
                                         }
@@ -252,13 +274,10 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "error": {
-                                                "type": "string"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -294,7 +313,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Usuario not Found!"
+                        "description": "Usuario not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -336,9 +367,6 @@
                                     "cpf": {
                                         "type": "string"
                                     },
-                                    "telefoneCelular": {
-                                        "type": "string"
-                                    },
                                     "isAdmin": {
                                         "type": "boolean"
                                     }
@@ -352,7 +380,19 @@
                         "description": "Updated"
                     },
                     "404": {
-                        "description": "Usuario not Found!"
+                        "description": "Usuario not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -381,7 +421,19 @@
                         "description": "Deleted"
                     },
                     "404": {
-                        "description": "Usuario not Found!"
+                        "description": "Usuario not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -427,6 +479,9 @@
                                             },
                                             "birthDate": {
                                                 "type": "string"
+                                            },
+                                            "telefoneCelular": {
+                                                "type": "string"
                                             }
                                         }
                                     }
@@ -466,6 +521,9 @@
                                     },
                                     "email": {
                                         "type": "string"
+                                    },
+                                    "telefoneCelular": {
+                                        "type": "string"
                                     }
                                 }
                             },
@@ -473,7 +531,7 @@
                                 "name": "cliente",
                                 "cpf": "12345678909",
                                 "rg": "1233456650",
-                                "birthDate": "19-05-2001",
+                                "birthDate": "2001-05-15",
                                 "email": "cliente@cliente.com"
                             }
                         }
@@ -521,13 +579,10 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "error": {
-                                                "type": "string"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -563,7 +618,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Cliente not Found!"
+                        "description": "Cliente not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -615,10 +682,55 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Updated"
+                        "description": "Updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        },
+                                        "name": {
+                                            "type": "boolean"
+                                        },
+                                        "email": {
+                                            "type": "string"
+                                        },
+                                        "cpf": {
+                                            "type": "string"
+                                        },
+                                        "rg": {
+                                            "type": "string"
+                                        },
+                                        "telefoneCelular": {
+                                            "type": "string"
+                                        },
+                                        "birthDate": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Cliente not Found!"
+                        "description": "Cliente not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -647,7 +759,19 @@
                         "description": "Deleted"
                     },
                     "404": {
-                        "description": "Cliente not Found!"
+                        "description": "Cliente not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -710,13 +834,10 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "error": {
-                                                "type": "string"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -788,10 +909,40 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Founded"
+                        "description": "Founded",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Tipo Automovel not Found!"
+                        "description": "Tipo Automovel not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -856,6 +1007,21 @@
                                 }
                             }
                         }
+                    },
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -882,6 +1048,21 @@
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+                    "404": {
+                        "description": "Tipo Automovel not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1044,13 +1225,10 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "error": {
-                                                "type": "string"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -1086,7 +1264,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Automovel not Found!"
+                        "description": "Automovel not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1148,38 +1338,42 @@
                 "responses": {
                     "201": {
                         "description": "Updated",
-                        "schema": {
-                            "type": "object",
-                            "properties": {
-                                "id": {
-                                    "type": "string"
-                                },
-                                "created_at": {
-                                    "type": "string"
-                                },
-                                "plate": {
-                                    "type": "string"
-                                },
-                                "model": {
-                                    "type": "string"
-                                },
-                                "brand": {
-                                    "type": "string"
-                                },
-                                "color": {
-                                    "type": "string"
-                                },
-                                "year": {
-                                    "type": "string"
-                                },
-                                "renavam": {
-                                    "type": "string"
-                                },
-                                "customerId": {
-                                    "type": "string"
-                                },
-                                "typeId": {
-                                    "type": "string"
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "createdAt": {
+                                            "type": "string"
+                                        },
+                                        "plate": {
+                                            "type": "boolean"
+                                        },
+                                        "model": {
+                                            "type": "string"
+                                        },
+                                        "brand": {
+                                            "type": "string"
+                                        },
+                                        "color": {
+                                            "type": "string"
+                                        },
+                                        "year": {
+                                            "type": "string"
+                                        },
+                                        "renavam": {
+                                            "type": "string"
+                                        },
+                                        "typeId": {
+                                            "type": "string"
+                                        },
+                                        "customerId": {
+                                            "type": "string"
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -1189,13 +1383,10 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "properties": {
-                                            "error": {
-                                                "type": "string"
-                                            }
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
                                         }
                                     }
                                 }
@@ -1227,6 +1418,22 @@
                 "responses": {
                     "200": {
                         "description": "Success"
+                    },
+
+                    "400": {
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1334,10 +1541,34 @@
                         "description": "Created"
                     },
                     "400": {
-                        "description": "Error"
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Ordem Servico not found"
+                        "description": "Ordem Servico not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1368,7 +1599,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Ordem Procedimento not Found!"
+                        "description": "Ordem Procedimento not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1422,7 +1665,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Ordem Procedimento not Found!"
+                        "description": "Ordem Procedimento not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1451,7 +1706,19 @@
                         "description": "Deleted"
                     },
                     "404": {
-                        "description": "Ordem Procedimento not Found!"
+                        "description": "Ordem Procedimento not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1607,10 +1874,34 @@
                         "description": "Created"
                     },
                     "400": {
-                        "description": "Error"
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Ordem Servico not found"
+                        "description": "Ordem Servico not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -1641,7 +1932,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Ordem Peça not Found!"
+                        "description": "Ordem Peça not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1695,7 +1998,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Ordem Peça not Found!"
+                        "description": "Ordem Peça not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1724,7 +2039,19 @@
                         "description": "Deleted"
                     },
                     "404": {
-                        "description": "Ordem Peça not Found!"
+                        "description": "Ordem Peça not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -2051,13 +2378,142 @@
                 },
                 "responses": {
                     "201": {
-                        "description": "Created"
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "created_at": {
+                                            "type": "string"
+                                        },
+                                        "descricao": {
+                                            "type": "string"
+                                        },
+                                        "valorTotal": {
+                                            "type": "string"
+                                        },
+                                        "statusId": {
+                                            "type": "string"
+                                        },
+                                        "automovelId": {
+                                            "type": "string"
+                                        },
+                                        "finished_at": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": { "type": "string" },
+                                                "createdAt": { "type": "string" },
+                                                "statusNumber": { "type": "number" },
+                                                "description": { "type": "string" }
+                                            }
+                                        },
+                                        "automovel": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": { "type": "string" },
+                                                "created_at": { "type": "string" },
+                                                "plate": { "type": "string" },
+                                                "model": { "type": "string" },
+                                                "brand": { "type": "string" },
+                                                "color": { "type": "string" },
+                                                "year": { "type": "string" },
+                                                "renavam": { "type": "string" },
+                                                "typeId": { "type": "string" },
+                                                "customerId": { "type": "string" },
+                                                "tipoAutomovel": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": { "type": "string" },
+                                                        "created_at": { "type": "string" },
+                                                        "description": { "type": "string" }
+                                                    }
+                                                },
+                                                "cliente": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": { "type": "string" },
+                                                        "created_at": { "type": "string" },
+                                                        "name": { "type": "string" },
+                                                        "email": { "type": "string" },
+                                                        "cpf": { "type": "string" },
+                                                        "rg": { "type": "string" },
+                                                        "telefoneCelular": { "type": "string" },
+                                                        "birthDate": { "type": "string" }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "procedimentos": {
+                                            "type": "array",
+                                            "items": {
+                                                "type":"object",
+                                                "properties": {
+                                                    "id": { "type": "string" },
+                                                    "createdAt": { "type": "string" },
+                                                    "description": { "type": "string" },
+                                                    "unit_value": { "type": "string" },
+                                                    "amount": { "type": "number" },
+                                                    "total_value": { "type": "string" },
+                                                    "ordemServicoId": { "type": "string" }
+                                                }
+                                            }
+                                        },
+                                        "pecas": {
+                                            "type": "array",
+                                            "items": {
+                                                "type":"object",
+                                                "properties": {
+                                                    "id": { "type": "string" },
+                                                    "createdAt": { "type": "string" },
+                                                    "description": { "type": "string" },
+                                                    "unit_value": { "type": "string" },
+                                                    "amount": { "type": "number" },
+                                                    "total_value": { "type": "string" },
+                                                    "ordemServicoId": { "type": "string" }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "400": {
-                        "description": "Error"
+                        "description": "Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     },
                     "404": {
-                        "description": "Id not Found"
+                        "description": "Id not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -2102,7 +2558,19 @@
                         "description": "Updated!"
                     },
                     "404": {
-                        "description": "Ordem Serviço not Found!"
+                        "description": "Ordem Serviço not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -2133,7 +2601,19 @@
                         "description": "Founded"
                     },
                     "404": {
-                        "description": "Ordem Serviço not Found!"
+                        "description": "Ordem Serviço not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2162,7 +2642,19 @@
                         "description": "Deleted"
                     },
                     "404": {
-                        "description": "Ordem Serviço not Found!"
+                        "description": "Ordem Serviço not Found!",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

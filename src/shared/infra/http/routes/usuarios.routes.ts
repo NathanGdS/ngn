@@ -16,7 +16,7 @@ const listByIdUsuarioController = new ListByIdUsuarioController();
 const updateUsuarioController = new UpdateUsuarioController();
 const deleteUsuarioController = new DeleteUsuarioController();
 
-usuarioRoutes.post('/', createUsuarioController.handle)
+usuarioRoutes.post('/', ensureAuthenticated, createUsuarioController.handle)
 usuarioRoutes.get('/', ensureAuthenticated, listUsuariosController.handle)
 usuarioRoutes.get("/:id", ensureAuthenticated, listByIdUsuarioController.handle)
 usuarioRoutes.put("/:id", ensureAuthenticated, updateUsuarioController.handle)
