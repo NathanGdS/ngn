@@ -17,7 +17,7 @@ class AuthenticateUserController {
                 email,
             });
 
-            return response.status(200).json(token);
+            return response.status(200).json({token: token.token, "expires_in": "1d"});
         } catch (e) {
             return response.status(403).json({ error: e.message });
         }
